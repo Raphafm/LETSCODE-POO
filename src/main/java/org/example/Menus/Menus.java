@@ -3,10 +3,10 @@ package org.example.Menus;
 import java.util.Scanner;
 
 public class Menus {
-    private final Scanner sc = new Scanner(System.in);
-    private String opcao;
+    private static final Scanner sc = new Scanner(System.in);
+    private static String opcao;
 
-    public void menuPrincipal() {
+    public static void menuPrincipal() {
 
         System.out.println("Bem vindo ao menu principal");
         System.out.println("Digite:\n0 - Sair\n1 - Fazer o login\n2 - Criar conta\n3 - Fazer simulação");
@@ -32,7 +32,7 @@ public class Menus {
         menuPrincipal();
     }
 
-    public void menuCliente() {
+    public static void menuCliente() {
         System.out.println("Bem vindo ao menu do cliente");
         System.out.println("Digite:\n0 - Sair da conta\n1 - Tirar o extrato\n2 - Realizar uma transferência\n3 - Investir");
         opcao = sc.nextLine();
@@ -57,7 +57,7 @@ public class Menus {
         menuCliente();
     }
 
-    public void menuCorretora() {
+    public static void menuCorretora() {
         System.out.println("Bem vindo ao menu da corretora");
         System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar produto\n2 - Atualizar produto");
         System.out.println("3 - Obter Relatório\n4 - Obter arrecadação");
