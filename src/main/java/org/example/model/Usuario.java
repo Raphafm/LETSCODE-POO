@@ -3,7 +3,7 @@ package org.example.model;
 public class Usuario {
     protected String nome;
     protected final String login;
-    protected String senha;
+    protected final String senha;
     protected final String identificador;
 
     public Usuario(String nome, String login, String senha, String identificador) {
@@ -23,14 +23,6 @@ public class Usuario {
 
     public String getLogin() {
         return login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getIdentificador() {
