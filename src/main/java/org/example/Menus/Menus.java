@@ -26,7 +26,7 @@ public class Menus {
             case "3":
                 System.out.println("simulação");
                 Scanner ler = new Scanner(System.in);
-                //quantia sera pega do titulo por switch?
+                //Taxa de juros anual sera pega de acordo com o produto, sem o input do usuario
                 System.out.print("Insira o juros anual: ");
                 double JurosAnual = ler.nextFloat();
                 Simulacao investimento = new Simulacao(JurosAnual);
