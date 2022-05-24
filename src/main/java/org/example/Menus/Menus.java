@@ -1,6 +1,7 @@
 package org.example.Menus;
 
 import java.util.Scanner;
+import org.example.simulacao.Simulacao;
 
 public class Menus {
     private static final Scanner sc = new Scanner(System.in);
@@ -24,6 +25,12 @@ public class Menus {
                 break;
             case "3":
                 System.out.println("simulação");
+                Scanner ler = new Scanner(System.in);
+                //quantia sera pega do titulo por switch?
+                System.out.print("Insira o juros anual: ");
+                double JurosAnual = ler.nextFloat();
+                Simulacao investimento = new Simulacao(JurosAnual);
+                investimento.relatorio();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente");

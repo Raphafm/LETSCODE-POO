@@ -1,3 +1,4 @@
+package org.example.simulacao;
 import java.util.ArrayList;
 import java.util.Scanner;
 

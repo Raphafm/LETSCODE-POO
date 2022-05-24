@@ -1,5 +1,4 @@
 package org.example;
-
 import org.example.Menus.Menus;
 
 public class App {
