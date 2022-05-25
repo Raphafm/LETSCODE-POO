@@ -1,6 +1,11 @@
 package org.example.Menus;
 
+import java.util.Objects;
 import java.util.Scanner;
+
+import org.example.Telas.AcessarConta;
+import org.example.model.Corretora;
+import org.example.model.Usuario;
 import org.example.simulacao.Simulacao;
 
 public class Menus {
@@ -18,9 +23,19 @@ public class Menus {
                 System.out.println("Obrigado por utilizar nossos serviços, até a próxima");
                 return;
             case "1":
-                System.out.println("Login");
+                Usuario usuario = AcessarConta.executar();
+                // verifica se é corretora ou cliente
+                if (Objects.isNull(usuario)){
+                    System.err.println("Usuario não encontrado!");
+                }else if(usuario instanceof Corretora){
+                    menuCorretora();
+                }else{
+                    menuCliente();
+                }
+
                 break;
             case "2":
+
                 System.out.println("Criar conta");
                 break;
             case "3":
@@ -66,8 +81,8 @@ public class Menus {
 
     public static void menuCorretora() {
         System.out.println("Bem vindo ao menu da corretora");
-        System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar produto\n2 - Atualizar produto");
-        System.out.println("3 - Obter Relatório\n4 - Obter arrecadação");
+        System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar/Atualizar produto");
+        System.out.println("2 - Obter Relatório\n3 - Obter arrecadação");
         opcao = sc.nextLine();
 
         switch (opcao) {
@@ -75,15 +90,13 @@ public class Menus {
                 System.out.println("Saindo da Conta e voltando para o menu principal");
                 return;
             case "1":
-                System.out.println("Cadastrar produto");
+                System.out.println("Cadastrar/Atualizar produto");
+                //new Corretora();
                 break;
             case "2":
-                System.out.println("Atualizarproduto");
-                break;
-            case "3":
                 System.out.println("Obter relatorio");
                 break;
-            case "4":
+            case "3":
                 System.out.println("Obter arrecadação");
                 break;
             default:

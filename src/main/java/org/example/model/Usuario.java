@@ -25,12 +25,16 @@ public class Usuario {
         return login;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
     public String getIdentificador() {
         return identificador;
     }
 
     public boolean autenticarLogin(String login, String senha){
-        return this.login.equalsIgnoreCase(login) && this.senha.equals(senha);
+        return this.login.equals(login) && this.senha.equals(senha);
     }
 
     //Realizar um metodo para autenticar o identificador ao criar a conta.
