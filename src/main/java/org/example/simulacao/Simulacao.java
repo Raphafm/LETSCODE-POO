@@ -1,4 +1,6 @@
 package org.example.simulacao;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,14 +9,14 @@ public class Simulacao {
     static int opcao;
     double jurosDiarios;
     double jurosAnual;
-    double quantiaInvestida;
+    BigDecimal quantiaInvestida;
     //inicalizacao
-    ArrayList<Double> rendimentos = new ArrayList<>();
-    ArrayList<Double> tributacao = new ArrayList<Double>();
-    ArrayList<Double> ganhoLiquido = new ArrayList<Double>();
-    ArrayList<Double> valoresFinais = new ArrayList<Double>();
-    ArrayList<Double> iof = new ArrayList<Double>();
-    ArrayList<Double>  tempoDeInvestimento = new ArrayList<Double>();
+    ArrayList<BigDecimal> rendimentos;
+    ArrayList<BigDecimal> tributacao;
+    ArrayList<BigDecimal> ganhoLiquido;
+    ArrayList<BigDecimal> valoresFinais;
+    ArrayList<BigDecimal> iof;
+    ArrayList<Double>  tempoDeInvestimento;
     //Cria Objeto
     public Simulacao(double jurosAnual){
         this.quantiaInvestida = getQuantiaInvestida();
@@ -23,19 +25,19 @@ public class Simulacao {
         this.jurosDiarios=getjurosDiarios(jurosAnual);
         this.rendimentos = rendimentos(quantiaInvestida,jurosDiarios,tempoDeInvestimento);
         this.iof = iof(rendimentos,tempoDeInvestimento);
-        this.tributacao = gettributacao(rendimentos,tempoDeInvestimento,iof,quantiaInvestida);
+        this.tributacao = gettributacao(rendimentos,tempoDeInvestimento,iof);
         this.ganhoLiquido = getRendimentosLiquidos(tributacao,rendimentos,iof);
         this.valoresFinais = getvaloresFinais(quantiaInvestida,ganhoLiquido);
     }
     //Quantia investida
-    public double getQuantiaInvestida() {
+    public BigDecimal getQuantiaInvestida() {
         System.out.print("Insira a Quantia a ser investida: ");
-        quantiaInvestida = ler.nextDouble();
+        quantiaInvestida = ler.nextBigDecimal();
         return quantiaInvestida;
     }
     //Tempo de investimento
     public static ArrayList<Double>  tempoDeInvestimento(){
-        ArrayList<Double> tempoDeInvestimento = new ArrayList<Double>();
+        ArrayList<Double> tempoDeInvestimento = new ArrayList<>();
         System.out.print("Deseja inserir o tempo pelo qual vai deixar o investimento?\nDigite 1 para SIM ou digite 2 para NÃO\n");
         opcao = ler.nextInt();
         if (opcao==1) {
@@ -64,55 +66,55 @@ public class Simulacao {
         return jurosDiarios;
     }
     //Calculo do rendimento de acordo com o investimento
-    public ArrayList<Double> rendimentos(double quantiaInvestida, double jurosDiarios,  ArrayList<Double> tempoDeInvestimento) {
-        for(int i = 0; i< tempoDeInvestimento.size(); i++){
-            rendimentos.add(Math.pow((1+jurosDiarios),tempoDeInvestimento.get(i))*quantiaInvestida-quantiaInvestida);
+    public ArrayList<BigDecimal> rendimentos(BigDecimal quantiaInvestida, double jurosDiarios, ArrayList<Double> tempoDeInvestimento) {
+        for (Double periodo : tempoDeInvestimento) {
+            rendimentos.add(BigDecimal.valueOf(Math.pow((1 + jurosDiarios), periodo)).multiply(quantiaInvestida).subtract(quantiaInvestida));
         }
         return rendimentos;
     }
     //Funcao IOF
-    public ArrayList<Double> iof(ArrayList<Double> rendimentos,  ArrayList<Double> tempoDeInvestimento) {
+    public ArrayList<BigDecimal> iof(ArrayList<BigDecimal> rendimentos,  ArrayList<Double> tempoDeInvestimento) {
         for (int i=0;i<tempoDeInvestimento.size();i++){
-            double txIof = 0;
+            BigDecimal txIof;
             if (tempoDeInvestimento.get(i)<30){
-                txIof=(2880d-96d*tempoDeInvestimento.get(i))/2900d;
+                txIof= BigDecimal.valueOf((2880d-96d*tempoDeInvestimento.get(i))/2900d);
             }else{
-                txIof=0;
+                txIof= BigDecimal.valueOf(0);
             }
-            iof.add(txIof*rendimentos.get(i));
+            iof.add(rendimentos.get(i).multiply(txIof));
         }
         return iof;
     }
     //Funcao IR
-    public ArrayList<Double> gettributacao(ArrayList<Double> rendimentos,  ArrayList<Double> tempoDeInvestimento,ArrayList<Double> iof,double quantiaInvestida) {
-            double Txtributacao;
-            for (int i = 0; i < tempoDeInvestimento.size(); i++) {
-                if (180 > tempoDeInvestimento.get(i)) {
-                    Txtributacao = 22.5;
-                } else if (tempoDeInvestimento.get(i) < 360 || tempoDeInvestimento.get(i) == 360) {
-                    Txtributacao = 20;
+    public ArrayList<BigDecimal> gettributacao(ArrayList<BigDecimal> rendimentos,  ArrayList<Double> tempoDeInvestimento,ArrayList<BigDecimal> iof) {
+        BigDecimal Txtributacao;
+        for (int i = 0; i < tempoDeInvestimento.size(); i++) {
+            if (180 > tempoDeInvestimento.get(i)) {
+                Txtributacao = BigDecimal.valueOf(0.225);
+            } else if (tempoDeInvestimento.get(i) < 360 || tempoDeInvestimento.get(i) == 360) {
+                Txtributacao = BigDecimal.valueOf(0.20);
+            } else {
+                if (tempoDeInvestimento.get(i) < 720 || tempoDeInvestimento.get(i) == 720) {
+                    Txtributacao = BigDecimal.valueOf(0.175);
                 } else {
-                    if (tempoDeInvestimento.get(i) < 720 || tempoDeInvestimento.get(i) == 720) {
-                        Txtributacao = 17.5;
-                    } else {
-                        Txtributacao = 15;
-                    }
+                    Txtributacao = BigDecimal.valueOf(0.15);
                 }
-                tributacao.add(Txtributacao * (rendimentos.get(i) - iof.get(i)) / 100);
             }
+            tributacao.add(Txtributacao.multiply(rendimentos.get(i).subtract(iof.get(i))));
+        }
         return tributacao;
     }
     //Calculo Liquido, em função do IR e do IOF
-    public ArrayList<Double> getRendimentosLiquidos(ArrayList<Double> tributacao,ArrayList<Double> rendimentos,ArrayList<Double> iof) {
+    public ArrayList<BigDecimal> getRendimentosLiquidos(ArrayList<BigDecimal> tributacao,ArrayList<BigDecimal> rendimentos,ArrayList<BigDecimal> iof) {
         for(int i=0; i<rendimentos.size();i++){
-            ganhoLiquido.add((rendimentos.get(i)-tributacao.get(i)-iof.get(i)));
+            ganhoLiquido.add((rendimentos.get(i).subtract(tributacao.get(i)).subtract(iof.get(i))));
         }
         return ganhoLiquido;
     }
     //Valores Finais
-    public ArrayList<Double> getvaloresFinais(double quantiaInvestida,ArrayList<Double> ganhoLiquido){
-        for(int i=0; i<ganhoLiquido.size();i++) {
-            valoresFinais.add(quantiaInvestida + ganhoLiquido.get(i));
+    public ArrayList<BigDecimal> getvaloresFinais(BigDecimal quantiaInvestida,ArrayList<BigDecimal> ganhoLiquido){
+        for (BigDecimal ganhos : ganhoLiquido) {
+            valoresFinais.add(quantiaInvestida.add(ganhos));
         }
         return valoresFinais;
     }
@@ -132,20 +134,4 @@ public class Simulacao {
         }
         System.out.println("-----------------------------------------------------------------------------------------");
     }
-    /*    public void relatorio(List<Double> tempoDeInvestimento,double quantiaInvestida,ArrayList<Double> rendimentos,
-               ArrayList<Double>tributacao,ArrayList<Double>ganhoLiquido,ArrayList<Double>valoresFinais){
-        System.out.println("-----------------------------------------------------------------------------------------");
-        System.out.printf("Relatório de investimento para %.2f R$ investidos\n",quantiaInvestida);
-        for (int i=0; i<tempoDeInvestimento.size();i++){
-            System.out.printf("%d - %.0f dias\n",i+1,tempoDeInvestimento.get(i));
-        }
-        System.out.println("-----------------------------------------------------------------------------------------");
-
-        for (int i=0; i<tempoDeInvestimento.size();i++){
-            System.out.printf("%d - Rendimento: %.2fR$, Tributos: %.2fR$, rendimentos Líquidos: %.2fR$, Valor Final: " +
-                            "%.2fR$\n",i+1,rendimentos.get(i),
-                    tributacao.get(i),ganhoLiquido.get(i),valoresFinais.get(i));
-        }
-        System.out.println("-----------------------------------------------------------------------------------------");
-    }*/
 }
