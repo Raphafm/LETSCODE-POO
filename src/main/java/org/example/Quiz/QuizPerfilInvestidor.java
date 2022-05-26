@@ -3,9 +3,7 @@ import java.util.Scanner;
 import org.example.Quiz.TipoPerfilInvestidor;
 
 public class QuizPerfilInvestidor {
-    private static Scanner sc = new Scanner(System.in);
     private static int[] respostas = new int[6];
-    private static int pontos = 0;
     static TipoPerfilInvestidor tipoPerfilInvestidor;
     private static String[][] perguntas = {
             {"(1) Qual o seu principal objetivo ao investir seu dinheiro?",
@@ -34,14 +32,7 @@ public class QuizPerfilInvestidor {
                     "2 - Pelo menos uma vez por semana eu tento me atualizar.",
                     "3 - Todos os dias leio pelo menos um pouquinho sobre o assunto."}};
 
-    public static void main(String[] args) {
-        quiz(sc);
-        pontuacao();
-        tipoPerfilInvestidor = TipoPerfilInvestidor.getTipoPerfilInvestidor(pontos);
-        System.out.println(tipoPerfilInvestidor);
-    }
-
-    private static void quiz(Scanner sc){
+    public static int quiz(Scanner sc){
         for (int i = 0; i < perguntas.length; i++) {
             do {
                 System.out.println("-----------------------------------------------------------------");
@@ -63,12 +54,17 @@ public class QuizPerfilInvestidor {
             }while(!(respostas[i] >= 1 && respostas[i] <= perguntas[i].length-1));
         }
         System.out.println("-----------------------------------------------------------------");
+
+       return pontuacao();
     }
 
-    private static void pontuacao(){
+    private static int pontuacao(){
+        int pontos = 0;
         for (int resposta : respostas) {
             pontos += resposta;
         }
+        return pontos;
     }
+
 
 }

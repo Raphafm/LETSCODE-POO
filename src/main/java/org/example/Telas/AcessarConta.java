@@ -1,8 +1,5 @@
 package org.example.Telas;
-
-
 import org.example.Repository.RepositoryUsuarios;
-import org.example.model.Corretora;
 import org.example.model.Usuario;
 
 import java.util.Scanner;
