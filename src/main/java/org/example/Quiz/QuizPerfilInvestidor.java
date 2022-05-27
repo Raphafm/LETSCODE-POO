@@ -1,11 +1,8 @@
 package org.example.Quiz;
 import java.util.Scanner;
-import org.example.Quiz.TipoPerfilInvestidor;
 
 public class QuizPerfilInvestidor {
-    private static int[] respostas = new int[6];
-    static TipoPerfilInvestidor tipoPerfilInvestidor;
-    private static String[][] perguntas = {
+    private static final String[][] PERGUNTAS = {
             {"(1) Qual o seu principal objetivo ao investir seu dinheiro?",
                     "1 - Preservar meu patrimônio assumindo um menor risco.",
                     "2 - Uma combinação entre preservação do patrimônio e sua valorização.",
@@ -33,38 +30,32 @@ public class QuizPerfilInvestidor {
                     "3 - Todos os dias leio pelo menos um pouquinho sobre o assunto."}};
 
     public static int quiz(Scanner sc){
-        for (int i = 0; i < perguntas.length; i++) {
+        int resposta = 0;
+        int respostaFinal = 0;
+        for (int i = 0; i < PERGUNTAS.length; i++) {
             do {
                 System.out.println("-----------------------------------------------------------------");
-                for (int i1 = 0; i1 < perguntas[i].length; i1++) {
-                    System.out.println(perguntas[i][i1]);
+                for (int i1 = 0; i1 < PERGUNTAS[i].length; i1++) {
+                    System.out.println(PERGUNTAS[i][i1]);
                 }
                 try{
                     System.out.print("Resposta: ");
-                    respostas[i] = sc.nextInt();
-                    if (respostas[i] < 1 || respostas[i] > perguntas[i].length-1) {
+                    resposta = sc.nextInt();
+                    if (resposta < 1 || resposta > PERGUNTAS[i].length-1) {
                         System.err.println("Resposta invalida! Tente novamente.");
                         System.out.println("-----------------------------------------------------------------");
+                    } else if (resposta >= 1 && resposta <= PERGUNTAS[i].length-1){
+                        respostaFinal += resposta;
                     }
                 }catch(Exception NumberFormatException ){
                     System.err.println("Resposta invalida! Tente novamente.");
                     sc.next();
                     System.out.println("-----------------------------------------------------------------");
                 }
-            }while(!(respostas[i] >= 1 && respostas[i] <= perguntas[i].length-1));
+            }while(!(resposta >= 1 && resposta <= PERGUNTAS[i].length-1));
         }
         System.out.println("-----------------------------------------------------------------");
 
-       return pontuacao();
+       return respostaFinal;
     }
-
-    private static int pontuacao(){
-        int pontos = 0;
-        for (int resposta : respostas) {
-            pontos += resposta;
-        }
-        return pontos;
-    }
-
-
 }
