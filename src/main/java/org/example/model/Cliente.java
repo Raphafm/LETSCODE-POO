@@ -1,9 +1,7 @@
 package org.example.model;
-
 import org.example.Quiz.TipoPerfilInvestidor;
-
 import java.math.BigDecimal;
-import java.util.ArrayList;
+
 
 public class Cliente extends Usuario {
 
@@ -38,7 +36,11 @@ public class Cliente extends Usuario {
         this.valor = valor;
     }
 
-//    public Tipoinvestidor getTipoinvestidor() {
+    public String getAGENCIA() {
+        return AGENCIA;
+    }
+
+    //    public Tipoinvestidor getTipoinvestidor() {
 //        return tipoinvestidor;
 //    }
 //
