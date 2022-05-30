@@ -34,16 +34,25 @@ public class CriarConta {
             senha1 = sc.nextLine();
             System.out.print("Escreva novamente a senha: ");
             senha2 = sc.nextLine();
-
         }while(validarSenha(senha1,senha2));
 
         // criar um numero da conta
         String numeroConta = String.format("%04d", new Random().nextInt());
 
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println("Ufa! Agora falta pouco para completar a criação da sua conta, assim que \n" +
+                "concluir o quiz para definir o seu perfil de investidor sua conta será criada.");
+
         // chamar o quiz
         int pontos = QuizPerfilInvestidor.quiz(sc);
         Cliente cliente = new Cliente(nome,login,senha1,cpf,numeroConta, TipoPerfilInvestidor.getTipoPerfilInvestidor(pontos));
         RepositoryUsuarios.addCliente(cliente);
+
+        System.out.println("Parabéns, sua conta foi criada com sucesso!");
+        System.out.printf("Cliente: %s %n",nome);
+        System.out.printf("Agência: %s %n", cliente.getAGENCIA());
+        System.out.printf("Conta: %s %n", numeroConta);
+        System.out.println("-----------------------------------------------------------------");
 
 
     }
@@ -52,13 +61,15 @@ public class CriarConta {
         if (senha1.equals(senha2)){
             return false;
         }
-        System.err.println("As senhas não são identicas, digite novamente!");
+        System.err.println("As senhas não são idênticas, digite novamente!");
+        System.out.println();
         return true;
     }
 
     private boolean validarCPF(String cpf){
         if(cpf.length() != 11){
             System.err.println("CPF invalido, digite novamente!");
+            System.out.println();
             return true;
         }
         return false;
@@ -67,7 +78,7 @@ public class CriarConta {
     private void verificarExistencia(String cpf){
         for (Usuario usuario : RepositoryUsuarios.getContasLista()) {
             if(usuario.getIdentificador().equals(cpf)){
-                System.out.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
+                System.err.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
                 Menus.menuPrincipal();
             }
         }

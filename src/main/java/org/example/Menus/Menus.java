@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import org.example.Telas.AcessarConta;
+import org.example.Telas.CriarConta;
 import org.example.model.Corretora;
 import org.example.model.Usuario;
 import org.example.simulacao.Simulacao;
@@ -16,6 +17,7 @@ public class Menus {
 
         System.out.println("Bem vindo ao menu principal");
         System.out.println("Digite:\n0 - Sair\n1 - Fazer o login\n2 - Criar conta\n3 - Fazer simulação");
+        System.out.print("Opcao: ");
         opcao = sc.nextLine();
 
         switch (opcao) {
@@ -28,15 +30,16 @@ public class Menus {
                 if (Objects.isNull(usuario)){
                     System.err.println("Usuario não encontrado!");
                 }else if(usuario instanceof Corretora){
-                    menuCorretora();
+                    menuCorretora(usuario);
                 }else{
                     menuCliente();
                 }
 
                 break;
             case "2":
-
+                new CriarConta().excecutar();
                 System.out.println("Criar conta");
+
                 break;
             case "3":
                 System.out.println("simulação");
@@ -57,6 +60,7 @@ public class Menus {
     public static void menuCliente() {
         System.out.println("Bem vindo ao menu do cliente");
         System.out.println("Digite:\n0 - Sair da conta\n1 - Tirar o extrato\n2 - Realizar uma transferência\n3 - Investir");
+        System.out.print("Opcao: ");
         opcao = sc.nextLine();
 
         switch (opcao) {
@@ -64,13 +68,13 @@ public class Menus {
                 System.out.println("Saindo da Conta e voltando para o menu principal");
                 return;
             case "1":
-                System.out.println("extrato");
+                System.out.println("extrato em construção");
                 break;
             case "2":
-                System.out.println("transferencia");
+                System.out.println("transferencia em construção");
                 break;
             case "3":
-                System.out.println("investir");
+                System.out.println("investir em construção");
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente");
@@ -79,11 +83,13 @@ public class Menus {
         menuCliente();
     }
 
-    public static void menuCorretora() {
+    public static void menuCorretora(Usuario usuario) {
         System.out.println("Bem vindo ao menu da corretora");
         System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar/Atualizar produto");
         System.out.println("2 - Obter Relatório\n3 - Obter arrecadação");
+        System.out.print("Opcao: ");
         opcao = sc.nextLine();
+        Corretora corretora = new Corretora(usuario.getNome(), usuario.getLogin(), usuario.getSenha(), usuario.getIdentificador());
 
         switch (opcao) {
             case "0":
@@ -91,18 +97,18 @@ public class Menus {
                 return;
             case "1":
                 System.out.println("Cadastrar/Atualizar produto");
-                //new Corretora();
+                corretora.cadastrarAtualizar();
                 break;
             case "2":
-                System.out.println("Obter relatorio");
+                System.out.println("Obter relatorio em construção");
                 break;
             case "3":
-                System.out.println("Obter arrecadação");
+                System.out.println("Obter arrecadação em construção");
                 break;
             default:
-                System.out.println("Opção inválida, digite novamente");
+                System.out.println("Opção inválida, digite novamente.");
                 break;
         }
-        menuCorretora();
+        menuCorretora(usuario);
     }
 }
