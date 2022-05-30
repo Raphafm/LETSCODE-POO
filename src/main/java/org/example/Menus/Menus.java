@@ -1,11 +1,16 @@
 package org.example.Menus;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+import org.example.Repository.RepositoryUsuarios;
+import org.example.Repository.RepositoryProdutos;
 import org.example.Telas.AcessarConta;
 import org.example.Telas.CriarConta;
 import org.example.model.Corretora;
+import org.example.model.Produtos;
 import org.example.model.Usuario;
 import org.example.simulacao.Simulacao;
 
@@ -43,12 +48,8 @@ public class Menus {
                 break;
             case "3":
                 System.out.println("simulação");
-                Scanner ler = new Scanner(System.in);
-                //Taxa de juros anual sera pega de acordo com o produto, sem o input do usuario
-                System.out.print("Insira o juros anual: ");
-                double JurosAnual = ler.nextFloat();
-                Simulacao investimento = new Simulacao(JurosAnual);
-                investimento.relatorio();
+                Simulacao meuInvestimento = new Simulacao(RepositoryProdutos.getInvestimento().getRentabilidadeAnual().doubleValue());
+                meuInvestimento.relatorio();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente");

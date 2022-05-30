@@ -6,17 +6,17 @@ import java.util.Scanner;
 
 public class Simulacao {
     static Scanner ler = new Scanner(System.in);
-    static int opcao;
+    //static int opcao;
     double jurosDiarios;
     double jurosAnual;
     BigDecimal quantiaInvestida;
     //inicalizacao
-    ArrayList<BigDecimal> rendimentos;
-    ArrayList<BigDecimal> tributacao;
-    ArrayList<BigDecimal> ganhoLiquido;
-    ArrayList<BigDecimal> valoresFinais;
-    ArrayList<BigDecimal> iof;
-    ArrayList<Double>  tempoDeInvestimento;
+    ArrayList<BigDecimal> rendimentos = new ArrayList<>();
+    ArrayList<BigDecimal> tributacao= new ArrayList<>();
+    ArrayList<BigDecimal> ganhoLiquido= new ArrayList<>();
+    ArrayList<BigDecimal> valoresFinais= new ArrayList<>();
+    ArrayList<BigDecimal> iof= new ArrayList<>();
+    ArrayList<Double>  tempoDeInvestimento= new ArrayList<>();
     //Cria Objeto
     public Simulacao(double jurosAnual){
         this.quantiaInvestida = getQuantiaInvestida();
@@ -38,9 +38,7 @@ public class Simulacao {
     //Tempo de investimento
     public static ArrayList<Double>  tempoDeInvestimento(){
         ArrayList<Double> tempoDeInvestimento = new ArrayList<>();
-        System.out.print("Deseja inserir o tempo pelo qual vai deixar o investimento?\nDigite 1 para SIM ou digite 2 para NÃO\n");
-        opcao = ler.nextInt();
-        if (opcao==1) {
+
             System.out.println("Insira o(s) tempo(s) pelo qual quer ver o rendimento (insira o tempo em dias)\nDigite -1 para encerrar a inserção:");
             double tempo;
             while (true) {
@@ -50,6 +48,12 @@ public class Simulacao {
                 }
                 tempoDeInvestimento.add(tempo);
             }
+        /*
+        Coloquei essa parte antes para opções pré definidas de tempo, mas acho que não faz sentido, é melhor deixar a encargo do usuário quanto tempo ele quer
+
+        System.out.print("Deseja inserir o tempo pelo qual vai deixar o investimento?\nDigite 1 para SIM ou digite 2 para NÃO\n");
+        opcao = ler.nextInt();
+        if (opcao==1) {
         }else{
             //em dias
             tempoDeInvestimento.add(50d);
@@ -57,12 +61,12 @@ public class Simulacao {
             tempoDeInvestimento.add(365d);
             tempoDeInvestimento.add(730d);
             tempoDeInvestimento.add(1825d);
-        }
+        }*/
         return tempoDeInvestimento;
     }
     //Transformação do juros anual em juros diario
     public double getjurosDiarios(double jurosAnual){
-        jurosDiarios = Math.pow((1.0d+jurosAnual/100.0d),1.0d/365.0d)-1.0d;
+        jurosDiarios = Math.pow((1.0d+jurosAnual),1.0d/365.0d)-1.0d;
         return jurosDiarios;
     }
     //Calculo do rendimento de acordo com o investimento
@@ -122,7 +126,7 @@ public class Simulacao {
     public void relatorio(){
         System.out.println("-----------------------------------------------------------------------------------------");
         System.out.printf("Relatório de investimento para %.2fR$ investidos, a uma taxa de juros anual de %.2f porcento.\n",
-                this.quantiaInvestida,this.jurosAnual);
+                this.quantiaInvestida,this.jurosAnual*100);
         for (int i=0; i<this.tempoDeInvestimento.size();i++){
             System.out.printf("%d - %.0f dias\n",i+1,this.tempoDeInvestimento.get(i));
         }
