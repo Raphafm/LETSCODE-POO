@@ -44,8 +44,8 @@ public class Menus {
                 break;
             case "3":
                 System.out.println("simulação em construção");
-//                Simulacao meuInvestimento = new Simulacao(RepositoryProdutos.getInvestimento().getRentabilidadeAnual().doubleValue());
-//                meuInvestimento.relatorio();
+                Simulacao meuInvestimento = new Simulacao(RepositoryProdutos.getInvestimento().getRentabilidadeAnual().doubleValue());
+                meuInvestimento.relatorio();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente");
@@ -103,7 +103,7 @@ public class Menus {
                 System.out.println("Obter arrecadação em construção");
                 break;
             case "4":
-                RepositoryProdutos.getInvestimento();
+                RepositoryProdutos.getListaDeInvestimento();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente.");

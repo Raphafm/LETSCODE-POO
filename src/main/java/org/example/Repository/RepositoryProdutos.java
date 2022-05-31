@@ -19,7 +19,14 @@ public class RepositoryProdutos {
         return titulos;
     }
     //printa todos investimentos do repositório e suas caracteristicas e depois disso pede ao usuário para escolher um
-    public static void getInvestimento() {
+    public static Produtos getInvestimento() {
+        ArrayList<Produtos> listaDeInvestimentos =getTitulos();
+        getListaDeInvestimento();
+        System.out.print("Escolha uma opção: ");
+        int escolha = ler.nextInt();
+        return listaDeInvestimentos.get(escolha-1);
+    }
+    public static void getListaDeInvestimento() {
         ArrayList<Produtos> listaDeInvestimentos =getTitulos();
         int i =0;
         for (Produtos investimento : listaDeInvestimentos) {
@@ -30,8 +37,5 @@ public class RepositoryProdutos {
                     investimento.getRentabilidadeAnual().multiply(BigDecimal.valueOf(100d)),
                     investimento.getVencimento());
         }
-//        System.out.print("Escolha uma opção: ");
-//        int escolha = ler.nextInt();
-//        return listaDeInvestimentos.get(escolha-1);
     }
 }
