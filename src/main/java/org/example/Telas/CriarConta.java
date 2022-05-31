@@ -1,5 +1,5 @@
 package org.example.Telas;
-import org.example.Menus.Menus;
+import org.example.Menus.MenuPrincipal;
 import org.example.Quiz.QuizPerfilInvestidor;
 import org.example.Quiz.TipoPerfilInvestidor;
 import org.example.Repository.RepositoryUsuarios;
@@ -10,9 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class CriarConta {
-    public void excecutar(){
-        Scanner sc = new Scanner(System.in);
-
+    public void excecutar(Scanner sc){
         System.out.println("Informe as seguintes informações");
         System.out.print("Nome: ");
         String nome = sc.nextLine();
@@ -77,7 +75,7 @@ public class CriarConta {
         for (Usuario usuario : RepositoryUsuarios.getContasLista()) {
             if(usuario.getIdentificador().equals(cpf)){
                 System.err.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
-                Menus.menuPrincipal();
+                MenuPrincipal.menuPrincipal();
             }
         }
     }

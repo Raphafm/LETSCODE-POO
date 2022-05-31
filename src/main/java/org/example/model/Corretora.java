@@ -3,6 +3,7 @@ import org.example.Repository.RepositoryProdutos;
 import org.example.Telas.CriarProduto;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Corretora extends Usuario {
 
@@ -18,9 +19,9 @@ public class Corretora extends Usuario {
         return BigDecimal.ZERO;
     }
 
-    public void cadastrarAtualizar(){
+    public void cadastrarAtualizar(Scanner sc){
         CriarProduto titulo = new CriarProduto();
-        new CadastrarAtualizar().registerUpdate(RepositoryProdutos.getTitulos(),titulo.informarProduto());
+        new CadastrarAtualizar().registerUpdate(RepositoryProdutos.getTitulos(),titulo.informarProduto(sc));
     }
 
 

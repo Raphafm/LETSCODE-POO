@@ -8,8 +8,7 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class  CriarProduto {
-    public Produtos informarProduto(){
-        Scanner sc = new Scanner(System.in);
+    public Produtos informarProduto(Scanner sc){
         System.out.println("Por favor, insira os dados.");
         System.out.print("Codigo: ");
         int code = sc.nextInt();

@@ -5,10 +5,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class RepositoryProdutos {
     private static ArrayList<Produtos> titulos;
-    static Scanner ler = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     public static void inicializar(){
         titulos = new ArrayList<>();
         Produtos produto1 = new Produtos(1,"Tesouro Prefixado", BigDecimal.valueOf(12.38d),BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), "01/01/2025");
@@ -23,7 +22,7 @@ public class RepositoryProdutos {
         ArrayList<Produtos> listaDeInvestimentos =getTitulos();
         getListaDeInvestimento();
         System.out.print("Escolha uma opção: ");
-        int escolha = ler.nextInt();
+        int escolha = sc.nextInt();
         return listaDeInvestimentos.get(escolha-1);
     }
     public static void getListaDeInvestimento() {

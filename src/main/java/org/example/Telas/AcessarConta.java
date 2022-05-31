@@ -5,8 +5,7 @@ import org.example.model.Usuario;
 import java.util.Scanner;
 
 public class AcessarConta {
-    public static Usuario executar(){
-        Scanner sc = new Scanner(System.in);
+    public static Usuario executar(Scanner sc){
         System.out.print("Login: ");
         String login = sc.nextLine();
         System.out.print("Senha: ");
