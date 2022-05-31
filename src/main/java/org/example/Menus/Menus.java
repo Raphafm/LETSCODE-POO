@@ -1,16 +1,12 @@
 package org.example.Menus;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-import org.example.Repository.RepositoryUsuarios;
 import org.example.Repository.RepositoryProdutos;
 import org.example.Telas.AcessarConta;
 import org.example.Telas.CriarConta;
 import org.example.model.Corretora;
-import org.example.model.Produtos;
 import org.example.model.Usuario;
 import org.example.simulacao.Simulacao;
 
@@ -32,11 +28,11 @@ public class Menus {
             case "1":
                 Usuario usuario = AcessarConta.executar();
                 // verifica se é corretora ou cliente
-                if (Objects.isNull(usuario)){
+                if (Objects.isNull(usuario)) {
                     System.err.println("Usuario não encontrado!");
-                }else if(usuario instanceof Corretora){
+                } else if (usuario instanceof Corretora) {
                     menuCorretora(usuario);
-                }else{
+                } else {
                     menuCliente();
                 }
 
@@ -47,9 +43,9 @@ public class Menus {
 
                 break;
             case "3":
-                System.out.println("simulação");
-                Simulacao meuInvestimento = new Simulacao(RepositoryProdutos.getInvestimento().getRentabilidadeAnual().doubleValue());
-                meuInvestimento.relatorio();
+                System.out.println("simulação em construção");
+//                Simulacao meuInvestimento = new Simulacao(RepositoryProdutos.getInvestimento().getRentabilidadeAnual().doubleValue());
+//                meuInvestimento.relatorio();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente");
@@ -87,7 +83,7 @@ public class Menus {
     public static void menuCorretora(Usuario usuario) {
         System.out.println("Bem vindo ao menu da corretora");
         System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar/Atualizar produto");
-        System.out.println("2 - Obter Relatório\n3 - Obter arrecadação");
+        System.out.println("2 - Obter Relatório\n3 - Obter arrecadação\n4 - Visualizar produtos");
         System.out.print("Opcao: ");
         opcao = sc.nextLine();
         Corretora corretora = new Corretora(usuario.getNome(), usuario.getLogin(), usuario.getSenha(), usuario.getIdentificador());
@@ -105,6 +101,9 @@ public class Menus {
                 break;
             case "3":
                 System.out.println("Obter arrecadação em construção");
+                break;
+            case "4":
+                RepositoryProdutos.getInvestimento();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente.");

@@ -3,6 +3,8 @@ package org.example.Telas;
 import org.example.model.Produtos;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class  CriarProduto {
@@ -23,6 +25,9 @@ public class  CriarProduto {
         sc.nextLine();
         System.out.print("Vencimento: ");
         String vencimento = sc.nextLine();
+        //dia 1 a 30
+        //mes 1 a 12
+        //ano maior atual
 
         return new Produtos(code,nome,rentabilidadeAnual,investimentoMinimo,precoUnitario,vencimento);
     }

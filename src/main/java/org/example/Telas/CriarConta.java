@@ -25,7 +25,7 @@ public class CriarConta {
         verificarExistencia(cpf);
 
         System.out.print("Login: ");
-        String login = sc.nextLine();
+        String login = sc.nextLine();//verificar se o login existe
 
         String senha1;
         String senha2;
@@ -37,7 +37,7 @@ public class CriarConta {
         }while(validarSenha(senha1,senha2));
 
         // criar um numero da conta
-        String numeroConta = String.format("%04d", new Random().nextInt());
+        String numeroConta = String.format("%04d", new Random().nextInt(9999));//nao pode ser uma conta que ja existe
 
         System.out.println("-----------------------------------------------------------------");
         System.out.println("Ufa! Agora falta pouco para completar a criação da sua conta, assim que \n" +
@@ -61,15 +61,13 @@ public class CriarConta {
         if (senha1.equals(senha2)){
             return false;
         }
-        System.err.println("As senhas não são idênticas, digite novamente!");
-        System.out.println();
+        System.err.println("As senhas não são idênticas, digite novamente!\n");
         return true;
     }
 
     private boolean validarCPF(String cpf){
         if(cpf.length() != 11){
-            System.err.println("CPF invalido, digite novamente!");
-            System.out.println();
+            System.err.println("CPF invalido, digite novamente!\n");
             return true;
         }
         return false;
