@@ -1,4 +1,4 @@
-package org.example.Model;
+package org.example.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -65,6 +65,4 @@ public class Produtos {
     public int getCode() {
         return code;
     }
-
-
 }

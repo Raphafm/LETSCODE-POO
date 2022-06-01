@@ -1,5 +1,6 @@
-package org.example.model;
+package org.example.service;
 import java.util.ArrayList;
+import org.example.Model.Produtos;
 public class CadastrarAtualizar {
 
     public void registerUpdate(ArrayList<Produtos> titulos, Produtos titulo){

@@ -3,11 +3,12 @@ package org.example.Menus;
 import java.util.Objects;
 import java.util.Scanner;
 
+import org.example.Model.Cliente;
 import org.example.Repository.RepositoryProdutos;
 import org.example.Telas.AcessarConta;
 import org.example.Telas.CriarConta;
-import org.example.model.Corretora;
-import org.example.model.Usuario;
+import org.example.Model.Corretora;
+import org.example.Model.Usuario;
 import org.example.simulacao.Simulacao;
 
 public class MenuPrincipal {
@@ -26,13 +27,12 @@ public class MenuPrincipal {
                 return;
             case "1":
                 Usuario usuario = AcessarConta.executar(sc);
-                // verifica se é corretora ou cliente
                 if (Objects.isNull(usuario)) {
                     System.err.println("Usuario não encontrado!");
                 } else if (usuario instanceof Corretora) {
-                    MenuCorretora.menuCorretora(sc, usuario);
+                    MenuCorretora.menuCorretora(sc, ((Corretora) usuario));
                 } else {
-                    MenuCliente.menuCliente(sc);
+                    MenuCliente.menuCliente(sc, ((Cliente) usuario));
                 }
                 break;
             case "2":

@@ -1,5 +1,5 @@
 package org.example.Repository;
-import org.example.model.Produtos;
+import org.example.Model.Produtos;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -27,11 +27,9 @@ public class RepositoryProdutos {
     }
     public static void getListaDeInvestimento() {
         ArrayList<Produtos> listaDeInvestimentos =getTitulos();
-        int i =0;
         for (Produtos investimento : listaDeInvestimentos) {
-            i+=1;
             System.out.printf("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- Preço unitário: R$ %.2f -- " +
-                            "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",i, investimento.getNome(),
+                            "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",investimento.getCode(), investimento.getNome(),
                     investimento.getInvestimentoMinimo(), investimento.getPrecoUnitario(),
                     investimento.getRentabilidadeAnual().multiply(BigDecimal.valueOf(100d)),
                     investimento.getVencimento());

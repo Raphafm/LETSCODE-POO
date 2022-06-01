@@ -1,4 +1,4 @@
-package org.example.Model;
+package org.example.model;
 
 public abstract class Usuario {
     protected String nome;

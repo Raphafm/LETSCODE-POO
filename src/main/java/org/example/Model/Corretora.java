@@ -1,10 +1,8 @@
-package org.example.Model;
+package org.example.model;
 import org.example.Repository.RepositoryProdutos;
 import org.example.Telas.CriarProduto;
-import org.example.service.CadastrarAtualizar;
-
 import java.math.BigDecimal;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Corretora extends Usuario {
 
@@ -20,9 +18,9 @@ public class Corretora extends Usuario {
         return BigDecimal.ZERO;
     }
 
-    public void cadastrarAtualizar(Scanner sc){
+    public void cadastrarAtualizar(){
         CriarProduto titulo = new CriarProduto();
-        new CadastrarAtualizar().registerUpdate(RepositoryProdutos.getTitulos(),titulo.informarProduto(sc));
+        new CadastrarAtualizar().registerUpdate(RepositoryProdutos.getTitulos(),titulo.informarProduto());
     }
 
 

@@ -3,8 +3,8 @@ import org.example.Menus.MenuPrincipal;
 import org.example.Quiz.QuizPerfilInvestidor;
 import org.example.Quiz.TipoPerfilInvestidor;
 import org.example.Repository.RepositoryUsuarios;
-import org.example.model.Cliente;
-import org.example.model.Usuario;
+import org.example.Model.Cliente;
+import org.example.Model.Usuario;
 
 import java.util.Random;
 import java.util.Scanner;

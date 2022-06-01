@@ -1,8 +1,8 @@
 package org.example.Repository;
 import org.example.Quiz.TipoPerfilInvestidor;
-import org.example.model.Cliente;
-import org.example.model.Corretora;
-import org.example.model.Usuario;
+import org.example.Model.Cliente;
+import org.example.Model.Corretora;
+import org.example.Model.Usuario;
 import java.util.ArrayList;
 
 public class RepositoryUsuarios {

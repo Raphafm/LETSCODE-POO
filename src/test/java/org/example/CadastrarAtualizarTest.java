@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.model.CadastrarAtualizar;
-import org.example.model.Produtos;
+import org.example.service.CadastrarAtualizar;
+import org.example.Model.Produtos;
 import org.junit.Test;
 
 import java.math.BigDecimal;

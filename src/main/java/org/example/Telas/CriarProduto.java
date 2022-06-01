@@ -1,6 +1,6 @@
 package org.example.Telas;
 
-import org.example.model.Produtos;
+import org.example.Model.Produtos;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

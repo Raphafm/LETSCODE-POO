@@ -1,18 +1,16 @@
 package org.example.Menus;
 
 import org.example.Repository.RepositoryProdutos;
-import org.example.model.Corretora;
-import org.example.model.Usuario;
+import org.example.Model.Corretora;
 import java.util.Scanner;
 
 public class MenuCorretora {
-    public static void menuCorretora(Scanner sc, Usuario usuario) {
+    public static void menuCorretora(Scanner sc, Corretora corretora) {
         System.out.println("Bem vindo ao menu da corretora");
         System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar/Atualizar produto");
         System.out.println("2 - Obter Relatório\n3 - Obter arrecadação\n4 - Visualizar produtos");
         System.out.print("Opcao: ");
         String opcao = sc.nextLine();
-        Corretora corretora = new Corretora(usuario.getNome(), usuario.getLogin(), usuario.getSenha(), usuario.getIdentificador());
 
         switch (opcao) {
             case "0":
@@ -35,6 +33,6 @@ public class MenuCorretora {
                 System.out.println("Opção inválida, digite novamente.");
                 break;
         }
-        menuCorretora(sc, usuario);
+        menuCorretora(sc, corretora);
     }
 }
