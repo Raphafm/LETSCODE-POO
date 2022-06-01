@@ -1,9 +1,9 @@
-package org.example.Model;
+package org.example.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.math.MathContext;
 
-public class Produtos {
+public class Products {
 
     private final int code;
     private String nome;
@@ -12,11 +12,11 @@ public class Produtos {
     private BigDecimal precoUnitario;
     private String vencimento;
 
-    public Produtos(int code, String nome, BigDecimal rentabilidadeAnual, BigDecimal investimentoMinimo,
+    public Products(int code, String nome, BigDecimal rentabilidadeAnual, BigDecimal investimentoMinimo,
                     BigDecimal precoUnitario, String vencimento) {
         this.code = code;
         this.nome = nome;
-        this.rentabilidadeAnual = rentabilidadeAnual.divide(BigDecimal.valueOf(100.d)) ;
+        this.rentabilidadeAnual = rentabilidadeAnual.divide(BigDecimal.valueOf(100.d), new MathContext(2));
         this.investimentoMinimo = investimentoMinimo;
         this.precoUnitario = precoUnitario;
         this.vencimento = vencimento;

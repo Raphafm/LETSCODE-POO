@@ -1,7 +1,7 @@
-package org.example.Quiz;
+package org.example.quiz;
 import java.util.Scanner;
 
-public class QuizPerfilInvestidor {
+public class QuizInvestorProfile {
     private static final String[][] PERGUNTAS = {
             {"(1) Qual o seu principal objetivo ao investir seu dinheiro?",
                     "1 - Preservar meu patrimônio assumindo um menor risco.",
@@ -49,10 +49,11 @@ public class QuizPerfilInvestidor {
                     }
                 }catch(Exception NumberFormatException ){
                     System.err.println("Resposta invalida! Tente novamente.");
-                    sc.next();
+                    sc.nextLine();
                     System.out.println("-----------------------------------------------------------------");
                 }
             }while(!(resposta >= 1 && resposta <= PERGUNTAS[i].length-1));
+            sc.nextLine();
         }
         System.out.println("-----------------------------------------------------------------");
 

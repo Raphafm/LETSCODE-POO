@@ -3,22 +3,23 @@ import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class AcessarTransferencia {
-    public static BigDecimal executar(Scanner sc){
-        BigDecimal valor = BigDecimal.ZERO;
+public class AcessTransfer {
+    public static BigDecimal run(Scanner sc){
+        BigDecimal value = BigDecimal.ZERO;
         do {
-            System.out.print("Informe o valor: ");
+            System.out.print("Informe o value: ");
             try {
-                valor = sc.nextBigDecimal();
+                value = sc.nextBigDecimal();
                 sc.nextLine();
             }catch (InputMismatchException ex){
                 System.err.println("Valor invalido!");
-                executar(sc);
+                run(sc);
             }
-        }while(validarValor(sc, valor));
-        return valor;
+        }while(validateValue(sc, value));
+        return value;
     }
-    public static boolean validarValor(Scanner sc, BigDecimal valor){
+
+    public static boolean validateValue(Scanner sc, BigDecimal valor){
         System.err.printf("Você confirma o valor de: R$ %.2f %nS - Sim %nN - Nao%n",valor);
         System.err.print("Resposta: ");
         String confirmacao = sc.nextLine();
@@ -27,8 +28,7 @@ public class AcessarTransferencia {
         }else if (confirmacao.equalsIgnoreCase("N") || confirmacao.equalsIgnoreCase("Nao")) {
             return true;
         }
-        System.out.println("Opção invalida! \nDigite novamente!");
-        return validarValor(sc, valor);
+        System.err.println("Opção invalida! \nDigite novamente!");
+        return validateValue(sc, valor);
     }
-
 }

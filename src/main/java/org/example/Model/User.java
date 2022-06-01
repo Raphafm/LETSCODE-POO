@@ -1,12 +1,12 @@
-package org.example.Model;
+package org.example.model;
 
-public abstract class Usuario {
+public abstract class User {
     protected String nome;
     protected final String login;
     protected final String senha;
     protected final String identificador;
 
-    public  Usuario(String nome, String login, String senha, String identificador) {
+    public User(String nome, String login, String senha, String identificador) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;

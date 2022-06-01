@@ -1,11 +1,11 @@
-package org.example.simulacao;
+package org.example.simulation;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Simulacao {
-    static Scanner ler = new Scanner(System.in);
+public class Simulation {
+    static Scanner sc = new Scanner(System.in);
     //static int opcao;
     double jurosDiarios;
     double jurosAnual;
@@ -18,7 +18,7 @@ public class Simulacao {
     ArrayList<BigDecimal> iof= new ArrayList<>();
     ArrayList<Double>  tempoDeInvestimento= new ArrayList<>();
     //Cria Objeto
-    public Simulacao(double jurosAnual){
+    public Simulation(double jurosAnual){
         this.quantiaInvestida = getQuantiaInvestida();
         this.tempoDeInvestimento=tempoDeInvestimento();
         this.jurosAnual = jurosAnual;
@@ -32,7 +32,7 @@ public class Simulacao {
     //Quantia investida
     public BigDecimal getQuantiaInvestida() {
         System.out.print("Insira a Quantia a ser investida: ");
-        quantiaInvestida = ler.nextBigDecimal();
+        quantiaInvestida = sc.nextBigDecimal();
         return quantiaInvestida;
     }
     //Tempo de investimento
@@ -42,7 +42,7 @@ public class Simulacao {
             System.out.println("Insira o(s) tempo(s) pelo qual quer ver o rendimento (insira o tempo em dias)\nDigite -1 para encerrar a inserção:");
             double tempo;
             while (true) {
-                tempo = ler.nextDouble();
+                tempo = sc.nextDouble();
                 if (tempo == -1){
                     break;
                 }
@@ -52,7 +52,7 @@ public class Simulacao {
         Coloquei essa parte antes para opções pré definidas de tempo, mas acho que não faz sentido, é melhor deixar a encargo do usuário quanto tempo ele quer
 
         System.out.print("Deseja inserir o tempo pelo qual vai deixar o investimento?\nDigite 1 para SIM ou digite 2 para NÃO\n");
-        opcao = ler.nextInt();
+        opcao = sc.nextInt();
         if (opcao==1) {
         }else{
             //em dias

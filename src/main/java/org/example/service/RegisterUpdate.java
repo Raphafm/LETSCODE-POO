@@ -1,9 +1,11 @@
 package org.example.service;
-import java.util.ArrayList;
-import org.example.Model.Produtos;
-public class CadastrarAtualizar {
+import org.example.model.Products;
 
-    public void registerUpdate(ArrayList<Produtos> titulos, Produtos titulo){
+import java.util.ArrayList;
+
+public class RegisterUpdate {
+
+    public void run(ArrayList<Products> titulos, Products titulo){
         int code = titulo.getCode();
         int linha = verificarExistencia(titulos, code);
 
@@ -16,8 +18,8 @@ public class CadastrarAtualizar {
         }
     }
 
-    private int verificarExistencia(ArrayList<Produtos> titulos, int code){
-        for (Produtos titulo : titulos) {
+    private int verificarExistencia(ArrayList<Products> titulos, int code){
+        for (Products titulo : titulos) {
             if (titulo.getCode() == code){
              return titulos.indexOf(titulo);
             }

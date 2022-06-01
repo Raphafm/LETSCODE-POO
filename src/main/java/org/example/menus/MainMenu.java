@@ -1,52 +1,52 @@
-package org.example.Menus;
+package org.example.menus;
 
 import java.util.Objects;
 import java.util.Scanner;
 
-import org.example.Model.Cliente;
-import org.example.Repository.RepositoryProdutos;
-import org.example.Telas.AcessarConta;
-import org.example.Telas.CriarConta;
-import org.example.Model.Corretora;
-import org.example.Model.Usuario;
-import org.example.simulacao.Simulacao;
+import org.example.model.Client;
+import org.example.Repository.RepositoryProducts;
+import org.example.Telas.AccessAccount;
+import org.example.Telas.CreateAccount;
+import org.example.model.Stockbroker;
+import org.example.model.User;
+import org.example.simulation.Simulation;
 
-public class MenuPrincipal {
+public class MainMenu {
     private static final Scanner sc = new Scanner(System.in);
 
-    public static void menuPrincipal() {
+    public static void mainMenu() {
 
         System.out.println("Bem vindo ao menu principal");
         System.out.println("Digite:\n0 - Sair\n1 - Fazer o login\n2 - Criar conta\n3 - Fazer simulação");
         System.out.print("Opcao: ");
-        String opcao = sc.nextLine();
+        String option = sc.nextLine();
 
-        switch (opcao) {
+        switch (option) {
             case "0":
                 System.out.println("Obrigado por utilizar nossos serviços, até a próxima");
                 return;
             case "1":
-                Usuario usuario = AcessarConta.executar(sc);
+                User usuario = AccessAccount.run(sc);
                 if (Objects.isNull(usuario)) {
                     System.err.println("Usuario não encontrado!");
-                } else if (usuario instanceof Corretora) {
-                    MenuCorretora.menuCorretora(sc, ((Corretora) usuario));
+                } else if (usuario instanceof Stockbroker) {
+                    StockbrokerMenu.stockbrokerMenu(sc, ((Stockbroker) usuario));
                 } else {
-                    MenuCliente.menuCliente(sc, ((Cliente) usuario));
+                    ClientMenu.clientMenu(sc, ((Client) usuario));
                 }
                 break;
             case "2":
-                new CriarConta().excecutar(sc);
+                new CreateAccount().run(sc);
                 break;
             case "3":
                 System.out.println("simulação em construção");
-                Simulacao meuInvestimento = new Simulacao(RepositoryProdutos.getInvestimento().getRentabilidadeAnual().doubleValue());
+                Simulation meuInvestimento = new Simulation(RepositoryProducts.getInvestimento().getRentabilidadeAnual().doubleValue());
                 meuInvestimento.relatorio();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente");
                 break;
         }
-        menuPrincipal();
+        mainMenu();
     }
 }

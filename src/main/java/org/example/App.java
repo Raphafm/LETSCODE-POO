@@ -1,12 +1,12 @@
 package org.example;
-import org.example.Menus.MenuPrincipal;
-import org.example.Repository.RepositoryProdutos;
-import org.example.Repository.RepositoryUsuarios;
+import org.example.menus.MainMenu;
+import org.example.Repository.RepositoryProducts;
+import org.example.Repository.RepositoryUsers;
 
 public class App {
     public static void main( String[] args ) {
-        RepositoryUsuarios.inicializar();
-        RepositoryProdutos.inicializar();
-        MenuPrincipal.menuPrincipal();
+        RepositoryUsers.initialize();
+        RepositoryProducts.initialize();
+        MainMenu.mainMenu();
     }
 }

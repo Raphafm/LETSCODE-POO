@@ -1,14 +1,12 @@
 package org.example.Telas;
 
-import org.example.Model.Produtos;
+import org.example.model.Products;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class  CriarProduto {
-    public Produtos informarProduto(Scanner sc){
+public class CreateProduct {
+    public Products run(Scanner sc){
         System.out.println("Por favor, insira os dados.");
         System.out.print("Codigo: ");
         int code = sc.nextInt();
@@ -28,7 +26,7 @@ public class  CriarProduto {
         //mes 1 a 12
         //ano maior atual
 
-        return new Produtos(code,nome,rentabilidadeAnual,investimentoMinimo,precoUnitario,vencimento);
+        return new Products(code,nome,rentabilidadeAnual,investimentoMinimo,precoUnitario,vencimento);
     }
 
 }
