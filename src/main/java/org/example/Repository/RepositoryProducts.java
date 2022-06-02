@@ -1,8 +1,6 @@
 package org.example.Repository;
-
 import java.math.BigDecimal;
-import org.example.model.Products;
-
+import org.example.Model.Products;
 import java.util.ArrayList;
 import java.util.Scanner;
 

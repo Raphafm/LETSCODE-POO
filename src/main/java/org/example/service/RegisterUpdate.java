@@ -1,6 +1,5 @@
 package org.example.service;
-import org.example.model.Products;
-
+import org.example.Model.Products;
 import java.util.ArrayList;
 
 public class RegisterUpdate {

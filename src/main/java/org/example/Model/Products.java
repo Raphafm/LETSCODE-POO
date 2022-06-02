@@ -1,5 +1,4 @@
-package org.example.model;
-
+package org.example.Model;
 import java.math.BigDecimal;
 import java.math.MathContext;
 

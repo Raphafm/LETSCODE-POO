@@ -1,6 +1,6 @@
 package org.example.Telas;
 import org.example.Repository.RepositoryUsers;
-import org.example.model.User;
+import org.example.Model.User;
 
 import java.util.Scanner;
 

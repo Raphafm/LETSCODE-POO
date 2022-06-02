@@ -1,7 +1,6 @@
 package org.example.menus;
-
 import org.example.Repository.RepositoryProducts;
-import org.example.model.Stockbroker;
+import org.example.Model.Stockbroker;
 import java.util.Scanner;
 
 public class StockbrokerMenu {

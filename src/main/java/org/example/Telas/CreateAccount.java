@@ -3,9 +3,8 @@ import org.example.menus.MainMenu;
 import org.example.quiz.QuizInvestorProfile;
 import org.example.quiz.TypeInvestorProfile;
 import org.example.Repository.RepositoryUsers;
-import org.example.model.Client;
-import org.example.model.User;
-
+import org.example.Model.Client;
+import org.example.Model.User;
 import java.util.Random;
 import java.util.Scanner;
 

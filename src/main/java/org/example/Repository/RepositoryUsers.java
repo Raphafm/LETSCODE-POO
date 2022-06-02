@@ -1,8 +1,8 @@
 package org.example.Repository;
 import org.example.quiz.TypeInvestorProfile;
-import org.example.model.Client;
-import org.example.model.Stockbroker;
-import org.example.model.User;
+import org.example.Model.Client;
+import org.example.Model.Stockbroker;
+import org.example.Model.User;
 import java.util.ArrayList;
 
 public class RepositoryUsers {

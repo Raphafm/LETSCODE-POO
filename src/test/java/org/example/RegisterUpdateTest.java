@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.service.RegisterUpdate;
-import org.example.model.Products;
+import org.example.Model.Products;
 import org.junit.Test;
 
 import java.math.BigDecimal;

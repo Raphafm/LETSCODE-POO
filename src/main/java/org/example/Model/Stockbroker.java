@@ -1,8 +1,7 @@
-package org.example.model;
+package org.example.Model;
 import org.example.Repository.RepositoryProducts;
 import org.example.Telas.CreateProduct;
 import org.example.service.RegisterUpdate;
-
 import java.math.BigDecimal;
 import java.util.Scanner;
 
