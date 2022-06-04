@@ -1,6 +1,6 @@
-package org.example.Model;
-import org.example.Repository.RepositoryProducts;
-import org.example.Telas.CreateProduct;
+package org.example.model;
+import org.example.repository.RepositoryProducts;
+import org.example.views.CreateProduct;
 import org.example.service.RegisterUpdate;
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -21,7 +21,7 @@ public class Stockbroker extends User {
 
     public void registerUpdate(Scanner sc){
         CreateProduct titulo = new CreateProduct();
-        new RegisterUpdate().run(RepositoryProducts.getTitulos(),titulo.run(sc));
+        new RegisterUpdate().run(RepositoryProducts.getProducts(),titulo.run(sc));
     }
 
 

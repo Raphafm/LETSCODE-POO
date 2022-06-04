@@ -1,6 +1,6 @@
 package org.example.menus;
-import org.example.Model.Client;
-import org.example.Telas.AcessTransfer;
+import org.example.model.Client;
+import org.example.views.AcessTransfer;
 import java.util.Scanner;
 
 public class ClientMenu {

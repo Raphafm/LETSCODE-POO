@@ -1,5 +1,5 @@
-package org.example.Telas;
-import org.example.Model.Products;
+package org.example.views;
+import org.example.model.Products;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

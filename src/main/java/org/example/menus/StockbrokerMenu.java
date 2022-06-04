@@ -1,6 +1,11 @@
 package org.example.menus;
-import org.example.Repository.RepositoryProducts;
-import org.example.Model.Stockbroker;
+import org.example.model.Products;
+import org.example.repository.RepositoryProducts;
+import org.example.model.Stockbroker;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class StockbrokerMenu {
@@ -26,7 +31,7 @@ public class StockbrokerMenu {
                 System.out.println("Obter arrecadação em construção");
                 break;
             case "4":
-                RepositoryProducts.getListaDeInvestimento();
+                RepositoryProducts.printListaDeInvestimento();
                 break;
             default:
                 System.out.println("Opção inválida, digite novamente.");

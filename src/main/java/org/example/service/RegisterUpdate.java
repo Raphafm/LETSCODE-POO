@@ -1,5 +1,7 @@
 package org.example.service;
-import org.example.Model.Products;
+import org.example.model.Products;
+import org.example.repository.RepositoryProducts;
+
 import java.util.ArrayList;
 
 public class RegisterUpdate {
@@ -13,7 +15,7 @@ public class RegisterUpdate {
             titulos.set(linha,titulo);
         }else{
             // adicionar
-            titulos.add(titulo);
+            RepositoryProducts.save(titulo);
         }
     }
 

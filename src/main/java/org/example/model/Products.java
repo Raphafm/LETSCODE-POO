@@ -1,6 +1,7 @@
-package org.example.Model;
+package org.example.model;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.Objects;
 
 public class Products {
 
@@ -65,5 +66,11 @@ public class Products {
         return code;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- Preço unitário: R$ %.2f -- " +
+                        "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",code, nome,
+                investimentoMinimo, precoUnitario, rentabilidadeAnual.multiply(BigDecimal.valueOf(100d)), vencimento);
+    }
 
 }

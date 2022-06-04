@@ -1,11 +1,11 @@
-package org.example.Model;
+package org.example.model;
 import org.example.quiz.TypeInvestorProfile;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class Client extends User {
+public class Client extends User implements Comparable<Client> {
 
     private TypeInvestorProfile tipoPerfilInvestidor;
     private BigDecimal valorDisponivel;
@@ -87,5 +87,17 @@ public class Client extends User {
                 extrato + String.format("------------------------------------------------------------ %n" +
                 "%-20s  %9.2f %n",data,this.valorDisponivel) +
                 "------------------------------------------------------------\n";
+    }
+
+    @Override
+    //TODO numeroConta para inteiro ou passar investimento
+    public int compareTo(Client cliente) {
+//        if (this.numeroConta < cliente.numeroConta) {
+//            return -1;
+//        }
+//        if (this.matricula > empregado.matricula) {
+//            return 1;
+//        }
+        return 0;
     }
 }

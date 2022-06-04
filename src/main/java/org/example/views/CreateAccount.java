@@ -1,15 +1,15 @@
-package org.example.Telas;
+package org.example.views;
 import org.example.menus.MainMenu;
 import org.example.quiz.QuizInvestorProfile;
 import org.example.quiz.TypeInvestorProfile;
-import org.example.Repository.RepositoryUsers;
-import org.example.Model.Client;
-import org.example.Model.User;
+import org.example.repository.RepositoryUsers;
+import org.example.model.Client;
+import org.example.model.User;
 import java.util.Random;
 import java.util.Scanner;
 
 public class CreateAccount {
-    public void run(Scanner sc){
+    public static void run(Scanner sc){
         System.out.println("Informe as seguintes informações");
         System.out.print("Nome: ");
         String nome = sc.nextLine();
@@ -46,13 +46,14 @@ public class CreateAccount {
         RepositoryUsers.addCliente(client);
 
         System.out.println("Parabéns, sua conta foi criada com sucesso!");
-        System.out.printf("Client: %s %n",nome);
+        System.out.printf("Cliente: %s %n",nome);
         System.out.printf("Agência: %s %n", client.getAGENCIA());
         System.out.printf("Conta: %s %n", numeroConta);
+        System.out.printf("Perfil do investidor: %s %n", TypeInvestorProfile.getTipeInvestorPerfil(pontos));
         System.out.println("-----------------------------------------------------------------");
     }
 
-    private boolean validatePassword(String senha1, String senha2){
+    private static boolean validatePassword(String senha1, String senha2){
         if (senha1.equals(senha2)){
             return false;
         }
@@ -60,15 +61,20 @@ public class CreateAccount {
         return true;
     }
 
-    private boolean validateCPF(String cpf){
+    private static boolean validateCPF(String cpf){
         if(cpf.length() != 11){
-            System.out.println("CPF invalido, digite novamente!");
+            System.err.println("CPF invalido, digite novamente!");
             return true;
+        }
+        try{
+            Integer.parseInt(cpf);
+        } catch (NumberFormatException ex){
+            System.err.println("Digite apenas números.");
         }
         return false;
     }
 
-    private void verifyExistence(String cpf){
+    private static void verifyExistence(String cpf){
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getIdentificador().equals(cpf)){
                 System.err.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");

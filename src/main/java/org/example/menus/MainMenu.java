@@ -1,13 +1,11 @@
 package org.example.menus;
 import java.util.Objects;
 import java.util.Scanner;
-import org.example.Model.Client;
-import org.example.Repository.RepositoryProducts;
-import org.example.Telas.AccessAccount;
-import org.example.Telas.CreateAccount;
-import org.example.Model.Stockbroker;
-import org.example.Model.User;
-import org.example.simulation.Simulation;
+import org.example.model.Client;
+import org.example.views.AccessAccount;
+import org.example.views.CreateAccount;
+import org.example.model.Stockbroker;
+import org.example.model.User;
 
 public class MainMenu {
     private static final Scanner sc = new Scanner(System.in);
@@ -34,7 +32,7 @@ public class MainMenu {
                 }
                 break;
             case "2":
-                new CreateAccount().run(sc);
+                CreateAccount.run(sc);
                 break;
             case "3":
                 System.out.println("simulação em construção");

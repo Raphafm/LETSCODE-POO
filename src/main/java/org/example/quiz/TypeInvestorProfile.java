@@ -5,7 +5,6 @@ public enum TypeInvestorProfile {
     MODERADO("Moderado","02", 10),
     ARROJADO("Arrojado","03",14);
 
-
     static TypeInvestorProfile typeInvestorProfile;
     String label;
     String code;
