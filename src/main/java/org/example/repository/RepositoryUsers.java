@@ -4,14 +4,16 @@ import org.example.model.Client;
 import org.example.model.Stockbroker;
 import org.example.model.User;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class RepositoryUsers {
-    private static ArrayList<User> contasLista;
+    private static Set<User> contasLista;
 
     public static void initialize(){
-        contasLista = new ArrayList<>();
-        Stockbroker corretora = new Stockbroker("Banco 10","banco10","123","01234567891");
-        Client client1 = new Client("Matheus","123","123","012345678","123456", TypeInvestorProfile.ARROJADO);
+        contasLista = new TreeSet<>();
+        Stockbroker corretora = new Stockbroker("10 Banco 10","banco10","123","12345678901234");
+        Client client1 = new Client("Matheus","123","123","12345678901","123456", TypeInvestorProfile.ARROJADO);
         contasLista.add(corretora);
         contasLista.add(client1);
     }
@@ -20,7 +22,7 @@ public class RepositoryUsers {
         contasLista.add(client);
     }
 
-    public static ArrayList<User> getContasLista() {
+    public static Set<User> getContasLista() {
         return contasLista;
     }
 

@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class Client extends User implements Comparable<Client> {
+public class Client extends User {
 
     private TypeInvestorProfile tipoPerfilInvestidor;
     private BigDecimal valorDisponivel;
@@ -71,33 +71,11 @@ public class Client extends User implements Comparable<Client> {
 //    }
 
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "tipoPerfilInvestidor=" + tipoPerfilInvestidor +
-                ", valorDisponivel=" + valorDisponivel +
-                ", numeroConta='" + numeroConta + '\'' +
-                ", AGENCIA='" + AGENCIA + '\'' +
-                '}';
-    }
-
     public String printExtract() {
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         return "------------------------------------------------------------\n" +
                 extrato + String.format("------------------------------------------------------------ %n" +
                 "%-20s  %9.2f %n",data,this.valorDisponivel) +
                 "------------------------------------------------------------\n";
-    }
-
-    @Override
-    //TODO numeroConta para inteiro ou passar investimento
-    public int compareTo(Client cliente) {
-//        if (this.numeroConta < cliente.numeroConta) {
-//            return -1;
-//        }
-//        if (this.matricula > empregado.matricula) {
-//            return 1;
-//        }
-        return 0;
     }
 }

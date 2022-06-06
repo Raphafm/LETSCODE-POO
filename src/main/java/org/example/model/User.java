@@ -1,6 +1,6 @@
 package org.example.model;
 
-public abstract class User {
+public abstract class User implements Comparable<User>{
     protected String nome;
     protected final String login;
     protected final String senha;
@@ -37,6 +37,26 @@ public abstract class User {
         return this.login.equals(login) && this.senha.equals(senha);
     }
 
+    @Override
+    public String toString() {
+        return "nome: " + nome +
+                ", identificador: " + identificador;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.identificador.equals(((User)obj).identificador);
+    }
+
+    @Override
+    public int hashCode(){
+        return this.identificador.hashCode();
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return this.getNome().compareTo(user.getNome());
+    }
     //Realizar um metodo para autenticar o identificador ao criar a conta.
     //e na criação identificar pelo cpf ou cnpj pra ser new cliente ou new corretora
 }

@@ -6,22 +6,15 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class RepositoryProducts implements IRepository<Products> {
+public class RepositoryProducts{
     private static ArrayList<Products> products;
     static Scanner sc = new Scanner(System.in);
 
-    @Override
+
     public void initialize(){
         products = new ArrayList<>();
         Products produto1 = new Products(1,"Tesouro Prefixado", BigDecimal.valueOf(12.38d),BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), "01/01/2025");
         products.add(produto1);
-    }
-
-
-    @Override
-    public Collection<Products> sort(Comparator<Products> produtos){
-
-        return null;
     }
 
 
