@@ -45,6 +45,8 @@ public abstract class User implements Comparable<User>{
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
         return this.identificador.equals(((User)obj).identificador);
     }
 

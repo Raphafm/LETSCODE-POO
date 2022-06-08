@@ -10,7 +10,6 @@ public class Client extends User {
     private TypeInvestorProfile tipoPerfilInvestidor;
     private BigDecimal valorDisponivel;
     private String numeroConta;
-    private final String AGENCIA = "0000-1";
     private String extrato;
 
 
@@ -54,9 +53,7 @@ public class Client extends User {
         this.extrato += String.format("%-20s +%9.2f %n",data,valorDeposito);
     }
 
-    public String getAGENCIA() {
-        return AGENCIA;
-    }
+
 
     //    public Tipoinvestidor getTipoinvestidor() {
 //        return tipoinvestidor;

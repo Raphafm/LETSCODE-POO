@@ -1,5 +1,6 @@
 package org.example.views;
 import org.example.menus.MainMenu;
+import org.example.model.Stockbroker;
 import org.example.quiz.QuizInvestorProfile;
 import org.example.quiz.TypeInvestorProfile;
 import org.example.repository.RepositoryUsers;
@@ -15,6 +16,7 @@ public class CreateAccount {
         String nome = sc.nextLine();
 
         String cpf;
+        // TODO arrumar validateCPF
         do {
             System.out.print("CPF: ");
             cpf = sc.nextLine();
@@ -22,7 +24,8 @@ public class CreateAccount {
         verifyExistence(cpf);
 
         System.out.print("Login: ");
-        String login = sc.nextLine();//verificar se o login existe
+        // TODO verificar se o login ja existe
+        String login = sc.nextLine();
 
         String senha1;
         String senha2;
@@ -33,8 +36,8 @@ public class CreateAccount {
             senha2 = sc.nextLine();
         }while(validatePassword(senha1,senha2));
 
-        // criar um número da conta
-        String numeroConta = String.format("%04d", new Random().nextInt(9999));//nao pode ser uma conta que ja existe
+        // TODO verifica se numeroConta ja existe
+        String numeroConta = String.format("%04d", new Random().nextInt(9999));
 
         System.out.println("-----------------------------------------------------------------");
         System.out.println("Ufa! Agora falta pouco para completar a criação da sua conta, assim que \n" +
@@ -47,7 +50,7 @@ public class CreateAccount {
 
         System.out.println("Parabéns, sua conta foi criada com sucesso!");
         System.out.printf("Cliente: %s %n",nome);
-        System.out.printf("Agência: %s %n", client.getAGENCIA());
+        System.out.printf("Agência: %s %n", Stockbroker.getAGENCIA());
         System.out.printf("Conta: %s %n", numeroConta);
         System.out.printf("Perfil do investidor: %s %n", TypeInvestorProfile.getTipeInvestorPerfil(pontos));
         System.out.println("-----------------------------------------------------------------");

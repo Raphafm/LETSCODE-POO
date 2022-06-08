@@ -1,45 +1,50 @@
 package org.example.repository;
 import java.math.BigDecimal;
 import org.example.model.Products;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Scanner;
+import org.example.model.ProductsType;
+import java.time.LocalDate;
+import java.util.*;
 
 public class RepositoryProducts{
-    private static ArrayList<Products> products;
     static Scanner sc = new Scanner(System.in);
+    private static Map<Integer,Products> keyProducts;
 
 
     public void initialize(){
-        products = new ArrayList<>();
-        Products produto1 = new Products(1,"Tesouro Prefixado", BigDecimal.valueOf(12.38d),BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), "01/01/2025");
-        products.add(produto1);
+        Products produto1 = new Products(1,"Tesouro Prefixado 2025", 12.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2025,01,01),70, ProductsType.TITULOSPUBLICOS);
+        Products produto2 = new Products(2,"Tesouro Prefixado 2022", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2022,01,01),70, ProductsType.TITULOSPUBLICOS);
+        keyProducts = new TreeMap<>();
+        keyProducts.put(produto1.getCode(),produto1);
+        keyProducts.put(produto2.getCode(),produto2);
     }
-
 
     public static void save(Products product) {
-        products.add(product);
+        keyProducts.put(product.getCode(),product);
     }
 
-    public static ArrayList<Products> getProducts() {
-        return products;
+    public static List<Products> getProducts() {
+        ArrayList<Products> productsList= new ArrayList<>();
+        productsList.addAll(keyProducts.values());
+        return productsList;
     }
 
     //printa todos os investimentos do repositório e as suas caracteristicas e depois disso pede ao usuário para escolher um
     // TODO colocar em uma view
-    public static Products getInvestimento() {
-        printListaDeInvestimento();
-        System.out.print("Escolha uma opção: ");
-        int escolha = sc.nextInt();
-        return products.get(escolha-1);
-    }
+//    public static Products getInvestimento() {
+//        printListaDeInvestimento();
+//        System.out.print("Escolha uma opção: ");
+//        int escolha = sc.nextInt();
+//        return products.get(escolha-1);
+//    }
 
     public static void printListaDeInvestimento() {
-        ArrayList<Products> listaDeInvestimentos =getProducts();
-        for (Products investimento : listaDeInvestimentos) {
-            System.out.println(investimento);
+
+        for (Products investimento : keyProducts.values()) {
+            System.out.print(investimento);
         }
     }
 
+    public static Map<Integer, Products> getKeyProducts() {
+        return keyProducts;
+    }
 }

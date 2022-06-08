@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Stockbroker extends User {
 
+    private static final String AGENCIA = "0000-1";
+
     public Stockbroker(String nome, String login, String senha, String cnpj) {
         super(nome, login, senha, cnpj);
         }
@@ -21,7 +23,11 @@ public class Stockbroker extends User {
 
     public void registerUpdate(Scanner sc){
         CreateProduct titulo = new CreateProduct();
-        new RegisterUpdate().run(RepositoryProducts.getProducts(),titulo.run(sc));
+        new RegisterUpdate().run(titulo.run(sc));
+    }
+
+    public static String getAGENCIA() {
+        return AGENCIA;
     }
 
 

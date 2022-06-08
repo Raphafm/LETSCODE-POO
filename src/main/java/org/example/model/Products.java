@@ -1,32 +1,41 @@
 package org.example.model;
+import org.example.quiz.TypeInvestorProfile;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Products {
+public class Products implements Comparable<Products>{
 
-    private final int code;
+    private final Integer code;
     private String nome;
-    private BigDecimal rentabilidadeAnual;
+    private Double rentabilidadeAnual;
     private BigDecimal investimentoMinimo;
     private BigDecimal precoUnitario;
-    private String vencimento;
+    private LocalDate vencimento;
+    private int porcentagemRiscoDeInvestimento;
+    private ProductsType tipoDoProduto;
 
-    public Products(int code, String nome, BigDecimal rentabilidadeAnual, BigDecimal investimentoMinimo,
-                    BigDecimal precoUnitario, String vencimento) {
+    public Products(int code, String nome, double rentabilidadeAnual, BigDecimal investimentoMinimo,
+                    BigDecimal precoUnitario, LocalDate vencimento, int porcentagemRiscoDeInvestimento,
+                    ProductsType tipoDoProduto) {
         this.code = code;
         this.nome = nome;
-        this.rentabilidadeAnual = rentabilidadeAnual.divide(BigDecimal.valueOf(100.d), new MathContext(2));
+        this.rentabilidadeAnual = rentabilidadeAnual/100.d;
         this.investimentoMinimo = investimentoMinimo;
         this.precoUnitario = precoUnitario;
         this.vencimento = vencimento;
+        this.porcentagemRiscoDeInvestimento = porcentagemRiscoDeInvestimento;
+        this.tipoDoProduto = tipoDoProduto;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public BigDecimal getRentabilidadeAnual() {
+    public double getRentabilidadeAnual() {
         return rentabilidadeAnual;
     }
 
@@ -38,7 +47,7 @@ public class Products {
         return precoUnitario;
     }
 
-    public String getVencimento() {
+    public LocalDate getVencimento() {
         return vencimento;
     }
 
@@ -46,7 +55,7 @@ public class Products {
         this.nome = nome;
     }
 
-    public void setRentabilidadeAnual(BigDecimal rentabilidadeAnual) {
+    public void setRentabilidadeAnual(double rentabilidadeAnual) {
         this.rentabilidadeAnual = rentabilidadeAnual;
     }
 
@@ -58,7 +67,7 @@ public class Products {
         this.precoUnitario = precoUnitario;
     }
 
-    public void setVencimento(String vencimento) {
+    public void setVencimento(LocalDate vencimento) {
         this.vencimento = vencimento;
     }
 
@@ -70,7 +79,25 @@ public class Products {
     public String toString() {
         return String.format("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- Preço unitário: R$ %.2f -- " +
                         "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",code, nome,
-                investimentoMinimo, precoUnitario, rentabilidadeAnual.multiply(BigDecimal.valueOf(100d)), vencimento);
+                investimentoMinimo, precoUnitario, rentabilidadeAnual*100.d, vencimento);
+    }
+
+    @Override
+    public int compareTo(Products product) {
+//        return this.vencimento.compareTo(product.vencimento);
+        return this.rentabilidadeAnual.compareTo(product.rentabilidadeAnual);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.code.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        return ((Products)o).code.equals(this.code);
     }
 
 }
