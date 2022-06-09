@@ -1,12 +1,5 @@
 package org.example;
 
-import org.example.service.RegisterUpdate;
-import org.example.model.Products;
-import org.junit.Test;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 
 public class RegisterUpdateTest {

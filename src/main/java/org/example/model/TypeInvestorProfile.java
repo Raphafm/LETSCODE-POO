@@ -1,4 +1,4 @@
-package org.example.quiz;
+package org.example.model;
 
 public enum TypeInvestorProfile {
     CONSERVADOR("Conservador","01",0),

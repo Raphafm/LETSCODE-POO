@@ -1,9 +1,9 @@
 package org.example.repository;
-import org.example.quiz.TypeInvestorProfile;
+import org.example.model.TypeInvestorProfile;
 import org.example.model.Client;
 import org.example.model.Stockbroker;
 import org.example.model.User;
-import java.util.ArrayList;
+
 import java.util.Set;
 import java.util.TreeSet;
 

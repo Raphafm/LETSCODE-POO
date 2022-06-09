@@ -12,10 +12,13 @@ public class RepositoryProducts{
 
     public void initialize(){
         Products produto1 = new Products(1,"Tesouro Prefixado 2025", 12.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2025,01,01),70, ProductsType.TITULOSPUBLICOS);
-        Products produto2 = new Products(2,"Tesouro Prefixado 2022", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2022,01,01),70, ProductsType.TITULOSPUBLICOS);
+        Products produto2 = new Products(2,"Tesouro Selic 2027", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2027,01,01),70, ProductsType.TITULOSPUBLICOS);
+        Products produto3 = new Products(3,"Tesouro Prefixado 2022", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2022,01,01),70, ProductsType.TITULOSPUBLICOS);
+
         keyProducts = new TreeMap<>();
         keyProducts.put(produto1.getCode(),produto1);
         keyProducts.put(produto2.getCode(),produto2);
+        keyProducts.put(produto3.getCode(),produto3);
     }
 
     public static void save(Products product) {
@@ -36,13 +39,13 @@ public class RepositoryProducts{
 //        int escolha = sc.nextInt();
 //        return products.get(escolha-1);
 //    }
-
-    public static void printListaDeInvestimento() {
-
-        for (Products investimento : keyProducts.values()) {
-            System.out.print(investimento);
-        }
-    }
+    // TODO metodo para printar produtos em views
+//    public static void printListaDeInvestimento() {
+//
+//        for (Products investimento : keyProducts.values()) {
+//            System.out.print(investimento);
+//        }
+//    }
 
     public static Map<Integer, Products> getKeyProducts() {
         return keyProducts;

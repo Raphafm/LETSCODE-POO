@@ -1,13 +1,14 @@
 package org.example.model;
-import org.example.quiz.TypeInvestorProfile;
+import org.example.repository.RepositoryProducts;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
-public class Products implements Comparable<Products>{
+public class Products{
 
     private final Integer code;
     private String nome;
@@ -82,10 +83,23 @@ public class Products implements Comparable<Products>{
                 investimentoMinimo, precoUnitario, rentabilidadeAnual*100.d, vencimento);
     }
 
-    @Override
-    public int compareTo(Products product) {
-//        return this.vencimento.compareTo(product.vencimento);
-        return this.rentabilidadeAnual.compareTo(product.rentabilidadeAnual);
+    public static List<Products> ordenarPorVencimento(){
+        List<Products> productSort = asListSorted(RepositoryProducts.getProducts(),
+                Comparator.comparing(Products::getVencimento));
+        return productSort;
+    }
+
+    public static List<Products> ordemAlfabetica(){
+        List<Products> productSort = asListSorted(RepositoryProducts.getProducts(),
+                Comparator.comparing(Products::getNome));
+        return productSort;
+    }
+
+    private static List<Products> asListSorted(List<Products> productsList,Comparator<Products> comparator){
+        if(Objects.nonNull(comparator)) {
+            Collections.sort(productsList, comparator);
+        }
+        return productsList;
     }
 
     @Override
@@ -99,5 +113,6 @@ public class Products implements Comparable<Products>{
         if (o == null || getClass() != o.getClass()) return false;
         return ((Products)o).code.equals(this.code);
     }
+
 
 }

@@ -1,4 +1,4 @@
-package org.example.menus;
+package org.example.views;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
 import org.example.model.Stockbroker;
@@ -12,6 +12,7 @@ public class StockbrokerMenu {
         System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar/Atualizar produto");
         System.out.println("2 - Obter Relatório\n3 - Obter arrecadação\n4 - Visualizar produtos por vencimento");
         System.out.println("5 - Visualizar clientes");
+        System.out.println("6 - Visualizar produtos por ordem alfabética");
         System.out.print("Opcao: ");
         String option = sc.nextLine();
 
@@ -30,17 +31,22 @@ public class StockbrokerMenu {
                 System.out.println("Obter arrecadação em construção");
                 break;
             case "4":
-//                RepositoryProducts.printListaDeInvestimento();
                 System.out.println();
-                Collections.sort(RepositoryProducts.getProducts());
-
-//                RepositoryProducts.getProducts().sort(Products::compareTo);
-                RepositoryProducts.getProducts().forEach(products -> System.out.println(products));
+                List<Products> produtosPorVencimento = Products.ordenarPorVencimento();
+//                List<Products> produtosPorVencimento = RepositoryProducts.getProducts();
+//                Collections.sort(produtosPorVencimento);
+                produtosPorVencimento.forEach(products -> System.out.print(products));
                 System.out.println();
                 break;
             case "5":
                 System.out.println();
-                RepositoryUsers.getContasLista().forEach(user -> System.out.println(user));
+                RepositoryUsers.getContasLista().forEach(user -> System.out.print(user));
+                System.out.println();
+                break;
+            case "6":
+                System.out.println();
+                List<Products> produtosPorAlfabeto = Products.ordemAlfabetica();
+                produtosPorAlfabeto.forEach(products -> System.out.print(products));
                 System.out.println();
                 break;
             default:

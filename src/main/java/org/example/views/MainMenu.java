@@ -1,11 +1,13 @@
-package org.example.menus;
+package org.example.views;
 import java.util.Objects;
 import java.util.Scanner;
 import org.example.model.Client;
 import org.example.views.AccessAccount;
+import org.example.views.ClientMenu;
 import org.example.views.CreateAccount;
 import org.example.model.Stockbroker;
 import org.example.model.User;
+import org.example.views.StockbrokerMenu;
 
 public class MainMenu {
     private static final Scanner sc = new Scanner(System.in);
