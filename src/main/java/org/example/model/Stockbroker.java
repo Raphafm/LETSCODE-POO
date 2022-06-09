@@ -1,7 +1,7 @@
 package org.example.model;
 import org.example.repository.RepositoryProducts;
 import org.example.views.CreateProduct;
-import org.example.service.RegisterUpdate;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -22,8 +22,7 @@ public class Stockbroker extends User {
     }
 
     public void registerUpdate(Scanner sc){
-        CreateProduct titulo = new CreateProduct();
-        new RegisterUpdate().run(titulo.run(sc));
+        RepositoryProducts.save(new CreateProduct().run(sc));
     }
 
     public static String getAGENCIA() {

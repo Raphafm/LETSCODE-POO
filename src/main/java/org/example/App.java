@@ -1,5 +1,5 @@
 package org.example;
-import org.example.menus.MainMenu;
+import org.example.views.MainMenu;
 import org.example.repository.RepositoryProducts;
 import org.example.repository.RepositoryUsers;
 

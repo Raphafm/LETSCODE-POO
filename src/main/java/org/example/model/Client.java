@@ -1,5 +1,4 @@
 package org.example.model;
-import org.example.quiz.TypeInvestorProfile;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.menus.MainMenu;
+import org.example.views.MainMenu;
 import org.junit.Test;
 
 public class MainMenuTest {

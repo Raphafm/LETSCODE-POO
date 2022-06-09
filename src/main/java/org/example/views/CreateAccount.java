@@ -1,8 +1,6 @@
 package org.example.views;
-import org.example.menus.MainMenu;
 import org.example.model.Stockbroker;
-import org.example.quiz.QuizInvestorProfile;
-import org.example.quiz.TypeInvestorProfile;
+import org.example.model.TypeInvestorProfile;
 import org.example.repository.RepositoryUsers;
 import org.example.model.Client;
 import org.example.model.User;
