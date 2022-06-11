@@ -5,6 +5,7 @@ import org.example.repository.RepositoryUsers;
 
 public class App {
     public static void main( String[] args ) {
+
         RepositoryUsers.initialize();
         new RepositoryProducts().initialize();
         MainMenu.mainMenu();

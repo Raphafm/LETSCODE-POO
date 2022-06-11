@@ -6,20 +6,20 @@ import java.time.format.DateTimeFormatter;
 
 public class Client extends User {
 
-    private TypeInvestorProfile tipoPerfilInvestidor;
-    private BigDecimal valorDisponivel;
-    private String numeroConta;
-    private String extrato;
+    private TypeInvestorProfile typeInvestorProfile;
+    private BigDecimal fund;
+    private String accountNumber;
+    private String extract;
 
 
 //    private final ArrayList<Inventimentos> inventimentos;
 
-    public Client(String nome, String login, String senha, String cpf, String numeroConta, TypeInvestorProfile tipoPerfilInvestidor) {
+    public Client(String nome, String login, String senha, String cpf, String accountNumber, TypeInvestorProfile typeInvestorProfile) {
         super(nome, login, senha, cpf);
-        this.numeroConta = numeroConta;
-        this.valorDisponivel = BigDecimal.ZERO;
-        this.tipoPerfilInvestidor = tipoPerfilInvestidor;
-        this.extrato =String.format("%-20s %-10s %n","Data","Valor (R$)");
+        this.accountNumber = accountNumber;
+        this.fund = BigDecimal.ZERO;
+        this.typeInvestorProfile = typeInvestorProfile;
+        this.extract =String.format("%-20s %-10s %n","Data","Valor (R$)");
 
 //        this.inventimentos = new ArrayList<Inventimentos>();
 //        public BigDecimal resgatar(){
@@ -28,31 +28,33 @@ public class Client extends User {
     }
 
     public void withdraw(BigDecimal valorSaque) {
-        if (this.valorDisponivel.compareTo(valorSaque) >= 0) {
+        if (this.fund.compareTo(valorSaque) >= 0) {
             String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
             System.out.printf("%-45s %9s%n", "Historico", "Valor");
-            System.out.printf("%-45s %9.2f%n", "Valor disponivel anteriormente", this.valorDisponivel);
-            this.valorDisponivel = this.valorDisponivel.subtract(valorSaque);
+            System.out.printf("%-45s %9.2f%n", "Valor disponivel anteriormente", this.fund);
+            this.fund = this.fund.subtract(valorSaque);
             System.out.printf("%-45s %9.2f%n", "Valor do saque", valorSaque);
-            System.out.printf("%-45s %9.2f%n", "Valor disponível atualizado", this.valorDisponivel);
-            this.extrato += String.format("%-20s -%9.2f %n",data,valorSaque);
+            System.out.printf("%-45s %9.2f%n", "Valor disponível atualizado", this.fund);
+            this.extract += String.format("%-20s -%9.2f %n",data,valorSaque);
             return;
         }
         System.err.println("Saldo insuficiente!");
-        System.err.printf("Saldo Atual: R$ %.2f%n", this.valorDisponivel);
+        System.err.printf("Saldo Atual: R$ %.2f%n", this.fund);
     }
 
     public void deposit(BigDecimal valorDeposito) {
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         System.out.printf("%-45s %9s%n", "Historico", "Valor");
-        System.out.printf("%-45s %9.2f%n", "Valor disponivel anteriormente", this.valorDisponivel);
-        this.valorDisponivel = this.valorDisponivel.add(valorDeposito);
+        System.out.printf("%-45s %9.2f%n", "Valor disponivel anteriormente", this.fund);
+        this.fund = this.fund.add(valorDeposito);
         System.out.printf("%-45s %9.2f%n", "Valor do deposito", valorDeposito);
-        System.out.printf("%-45s %9.2f%n", "Valor disponível atualizado", this.valorDisponivel);
-        this.extrato += String.format("%-20s +%9.2f %n",data,valorDeposito);
+        System.out.printf("%-45s %9.2f%n", "Valor disponível atualizado", this.fund);
+        this.extract += String.format("%-20s +%9.2f %n",data,valorDeposito);
     }
 
-
+    public String getAccountNumber() {
+        return accountNumber;
+    }
 
     //    public Tipoinvestidor getTipoinvestidor() {
 //        return tipoinvestidor;
@@ -70,8 +72,8 @@ public class Client extends User {
     public String printExtract() {
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         return "------------------------------------------------------------\n" +
-                extrato + String.format("------------------------------------------------------------ %n" +
-                "%-20s  %9.2f %n",data,this.valorDisponivel) +
+                extract + String.format("------------------------------------------------------------ %n" +
+                "%-20s  %9.2f %n",data,this.fund) +
                 "------------------------------------------------------------\n";
     }
 }

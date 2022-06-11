@@ -26,7 +26,7 @@ public class MainMenu {
             case "1":
                 User usuario = AccessAccount.run(sc);
                 if (Objects.isNull(usuario)) {
-                    System.err.println("Usuario não encontrado!");
+                    System.out.println("Login ou senha não encontrados, tente novamente ou crie uma nova conta");
                 } else if (usuario instanceof Stockbroker) {
                     StockbrokerMenu.stockbrokerMenu(sc, ((Stockbroker) usuario));
                 } else {

@@ -6,7 +6,11 @@ import java.util.Scanner;
 public class ClientMenu {
     public static void clientMenu(Scanner sc, Client cliente) {
         System.out.println("Bem vindo ao menu do cliente");
-        System.out.println("Digite:\n0 - Sair da conta\n1 - Tirar o extrato\n2 - Realizar uma transferência\n3 - Investir");
+        System.out.println("Digite:");
+        System.out.println("\t0 - Sair da conta");
+        System.out.println("\t1 - Tirar o extrato");
+        System.out.println("\t2 - Realizar uma transferência");
+        System.out.println("\t3 - Investir");
         System.out.print("Opcao: ");
         String option = sc.nextLine();
 
@@ -31,7 +35,10 @@ public class ClientMenu {
         clientMenu(sc, cliente);
     }
     public static void transferMenu(Scanner sc, Client client){
-        System.out.println("Digite:\n0 - Sair da transferência\n1 - Sacar\n2 - Depositar");
+        System.out.println("Digite:");
+        System.out.println("\t0 - Sair da transferência");
+        System.out.println("\t1 - Sacar");
+        System.out.println("\t2 - Depositar");
         System.out.print("Opcao: ");
         String option = sc.nextLine();
         switch (option) {

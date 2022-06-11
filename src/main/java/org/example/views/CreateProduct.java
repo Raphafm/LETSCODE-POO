@@ -4,6 +4,7 @@ import org.example.model.ProductsType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CreateProduct {
@@ -14,9 +15,9 @@ public class CreateProduct {
         int code = sc.nextInt();
         sc.nextLine();
         System.out.print("Nome: ");
-        String nome = sc.nextLine();
+        String name = sc.nextLine();
         System.out.print("Rentabilidade Anual: ");
-        double rentabilidadeAnual = sc.nextDouble();
+        double annualProfitability = sc.nextDouble();
         System.out.print("Investimento minimo: ");
         BigDecimal investimentoMinimo = sc.nextBigDecimal();
         System.out.print("Preço unitário: ");
@@ -44,7 +45,10 @@ public class CreateProduct {
         System.out.print("Resposta: ");
         int tipoProduto = sc.nextInt();
 
-        return new Products(code,nome,rentabilidadeAnual,investimentoMinimo,precoUnitario,vencimento,porcentagemRiscoDoInvestimento,ProductsType.values()[tipoProduto]);
+        return new Products(code, name, annualProfitability,investimentoMinimo,precoUnitario,vencimento,porcentagemRiscoDoInvestimento,ProductsType.values()[tipoProduto]);
     }
 
+    public static double validateAnnualProfitability(Scanner sc) {
+      return 0;
+    }
 }
