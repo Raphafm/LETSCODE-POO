@@ -1,4 +1,5 @@
 package org.example.views;
+import org.example.controller.MainMenuController;
 import org.example.model.Stockbroker;
 import org.example.model.TypeInvestorProfile;
 import org.example.repository.RepositoryUsers;
@@ -67,19 +68,21 @@ public class CreateAccount {
             System.err.println("CPF invalido, digite novamente!");
             return true;
         }
-        try{
-            Integer.parseInt(cpf);
-        } catch (NumberFormatException ex){
-            System.err.println("Digite apenas números.");
+
+        if(cpf.matches("[0-9]+")){
+            return false;
         }
-        return false;
+        System.out.println("Digite apenas números.");
+        System.out.println("-----------------------------------------------------------------");
+        return true;
+
     }
 
     private static void verifyExistence(String cpf){
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getIdentificador().equals(cpf)){
                 System.err.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
-                MainMenu.mainMenu();
+                MainMenuController.run();
             }
         }
     }
