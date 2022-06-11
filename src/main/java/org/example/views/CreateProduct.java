@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class CreateProduct {
     public Products run(Scanner sc){
         // TODO tratar exceções
+        System.out.println("Atualizando ou Cadastrando produtos");
         System.out.println("Por favor, insira os dados.");
         System.out.print("Codigo: ");
         int code = sc.nextInt();
