@@ -12,5 +12,4 @@ public class ClientMenu extends BasicMenu{
 
         return option;
     }
-
 }

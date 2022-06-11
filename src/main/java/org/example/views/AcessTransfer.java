@@ -7,28 +7,28 @@ public class AcessTransfer {
     public static BigDecimal run(Scanner sc){
         BigDecimal value = BigDecimal.ZERO;
         do {
-            System.out.print("Informe o value: ");
+            System.out.print("Informe o valor: ");
             try {
                 value = sc.nextBigDecimal();
                 sc.nextLine();
             }catch (InputMismatchException ex){
-                System.err.println("Valor invalido!");
+                System.out.println("Valor invalido!");
                 run(sc);
             }
         }while(validateValue(sc, value));
         return value;
     }
 
-    public static boolean validateValue(Scanner sc, BigDecimal valor){
-        System.err.printf("Você confirma o valor de: R$ %.2f %nS - Sim %nN - Nao%n",valor);
-        System.err.print("Resposta: ");
-        String confirmacao = sc.nextLine();
-        if(confirmacao.equalsIgnoreCase("S") || confirmacao.equalsIgnoreCase("Sim")){
+    public static boolean validateValue(Scanner sc, BigDecimal value){
+        System.out.printf("Você confirma o value de: R$ %.2f %nS - Sim %nN - Nao%n", value);
+        System.out.print("Resposta: ");
+        String verification = sc.nextLine();
+        if(verification.equalsIgnoreCase("S") || verification.equalsIgnoreCase("Sim")){
             return false;
-        }else if (confirmacao.equalsIgnoreCase("N") || confirmacao.equalsIgnoreCase("Nao")) {
+        }else if (verification.equalsIgnoreCase("N") || verification.equalsIgnoreCase("Nao")) {
             return true;
         }
-        System.err.println("Opção invalida! \nDigite novamente!");
-        return validateValue(sc, valor);
+        System.out.println("Opção invalida! \nDigite novamente!");
+        return validateValue(sc, value);
     }
 }

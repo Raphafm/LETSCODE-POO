@@ -12,11 +12,11 @@ import org.example.views.StockbrokerMenu;
 public class MainMenu extends BasicMenu{
     public String printMenu(Scanner sc) {
 
+
         System.out.println("Bem vindo ao menu principal");
         System.out.println("Digite:\n0 - Sair\n1 - Fazer o login\n2 - Criar conta\n3 - Fazer simulação");
         System.out.print("Opcao: ");
         String option = sc.nextLine();
-
         return option;
     }
 
