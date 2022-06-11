@@ -1,6 +1,5 @@
 package org.example.model;
 import org.example.repository.RepositoryProducts;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;

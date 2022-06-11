@@ -1,4 +1,4 @@
-package org.example.views;
+package org.example.views.creation;
 import java.util.Scanner;
 
 public class QuizInvestorProfile {

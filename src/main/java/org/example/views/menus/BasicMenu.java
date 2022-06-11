@@ -1,4 +1,4 @@
-package org.example.views;
+package org.example.views.menus;
 import java.util.Scanner;
 
 abstract class BasicMenu {

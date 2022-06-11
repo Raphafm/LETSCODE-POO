@@ -9,7 +9,6 @@ public class RepositoryProducts{
     static Scanner sc = new Scanner(System.in);
     private static Map<Integer,Products> keyProducts;
 
-
     public static void initialize(){
         Products produto1 = new Products(1,"Tesouro Prefixado 2025", 12.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2025,01,01),70, ProductsType.TITULOSPUBLICOS);
         Products produto2 = new Products(2,"Tesouro Selic 2027", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2027,01,01),70, ProductsType.TITULOSPUBLICOS);

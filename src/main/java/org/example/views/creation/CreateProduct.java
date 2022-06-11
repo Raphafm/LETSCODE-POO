@@ -1,4 +1,4 @@
-package org.example.views;
+package org.example.views.creation;
 import org.example.model.Products;
 import org.example.model.ProductsType;
 

@@ -1,6 +1,6 @@
 package org.example;
 import org.example.controller.MainMenuController;
-import org.example.views.MainMenu;
+import org.example.repository.RepositoryInvestiment;
 import org.example.repository.RepositoryProducts;
 import org.example.repository.RepositoryUsers;
 
@@ -9,6 +9,7 @@ public class App {
 
         RepositoryUsers.initialize();
         RepositoryProducts.initialize();
+        RepositoryInvestiment.initialize();
         MainMenuController.run();
     }
 }

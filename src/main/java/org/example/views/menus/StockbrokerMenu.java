@@ -1,11 +1,6 @@
-package org.example.views;
-import org.example.model.Products;
-import org.example.repository.RepositoryProducts;
-import org.example.model.Stockbroker;
-import org.example.repository.RepositoryUsers;
+package org.example.views.menus;
 import java.util.*;
-import org.example.model.Stockbroker;
-import java.util.*;
+
 
 public class StockbrokerMenu extends BasicMenu {
     public String printMenu(Scanner sc) {
@@ -21,7 +16,4 @@ public class StockbrokerMenu extends BasicMenu {
         return option;
     }
 
-    public static void exit(){
-        System.out.println("Saindo da Conta e voltando para o menu principal");
-    }
 }

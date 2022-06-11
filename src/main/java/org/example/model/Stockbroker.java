@@ -1,6 +1,6 @@
 package org.example.model;
 import org.example.repository.RepositoryProducts;
-import org.example.views.CreateProduct;
+import org.example.views.creation.CreateProduct;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package org.example.views;
+package org.example.views.creation;
 import org.example.controller.MainMenuController;
 import org.example.model.Stockbroker;
 import org.example.model.TypeInvestorProfile;
@@ -91,6 +91,7 @@ public class CreateAccount {
                 return true;
             }
         }
+        return false;
     }
 
     private static void verifyExistenceCPF(String cpf){

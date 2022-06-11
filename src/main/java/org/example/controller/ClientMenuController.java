@@ -1,8 +1,7 @@
 package org.example.controller;
 import org.example.model.Client;
-import org.example.views.AcessTransfer;
-import org.example.views.ClientMenu;
-import org.example.views.TransferMenu;
+import org.example.views.menus.ClientMenu;
+
 import java.util.Scanner;
 
 public class ClientMenuController{

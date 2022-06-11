@@ -2,7 +2,8 @@ package org.example.controller;
 import org.example.model.Products;
 import org.example.model.Stockbroker;
 import org.example.repository.RepositoryUsers;
-import org.example.views.StockbrokerMenu;
+import org.example.views.ShowProducts;
+import org.example.views.menus.StockbrokerMenu;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,10 +25,7 @@ public class StockbrokerMenuController {
                 System.out.println("Obter arrecadação em construção");
                 break;
             case "4":
-                System.out.println();
-                List<Products> produtosPorVencimento = Products.ordenarPorVencimento();
-                produtosPorVencimento.forEach(products -> System.out.print(products));
-                System.out.println();
+                ShowProducts.showProducts(Products.ordenarPorVencimento());
                 break;
             case "5":
                 System.out.println();
@@ -35,10 +33,7 @@ public class StockbrokerMenuController {
                 System.out.println();
                 break;
             case "6":
-                System.out.println();
-                List<Products> produtosPorAlfabeto = Products.ordemAlfabetica();
-                produtosPorAlfabeto.forEach(products -> System.out.print(products));
-                System.out.println();
+                ShowProducts.showProducts(Products.ordemAlfabetica());
                 break;
             default:
                 StockbrokerMenu.invalidOption();

@@ -1,7 +1,6 @@
 package org.example.views;
 import org.example.repository.RepositoryUsers;
 import org.example.model.User;
-
 import java.util.Scanner;
 
 public class  AccessAccount {
