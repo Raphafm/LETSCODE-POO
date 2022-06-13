@@ -1,6 +1,7 @@
 package org.example.simulation;
 import org.example.model.Investiment;
 import org.example.model.Products;
+import org.example.views.ShowYields;
 import org.example.views.creation.CreateSimulation;
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -16,13 +17,14 @@ public class Simulation {
         BigDecimal priceIof = valueIof(yield,investiment.getTempoDeInvestimento());
         BigDecimal priceIR = valueIR(yield, investiment.getTempoDeInvestimento(), priceIof);
         BigDecimal priceYieldNet = yieldNet(priceIR,yield,priceIof);
-        BigDecimal priceTotalYield = totalYield(investiment.getQuantiaInvestida(),priceYieldNet);
-
+        BigDecimal priceTotalYieldNet = totalYieldNet(investiment.getQuantiaInvestida(),priceYieldNet);
+        BigDecimal priceTotalYield = totalYield(investiment.getQuantiaInvestida(),yield);
+        ShowYields.relatorio(investiment, yield, priceIof, priceIR, priceTotalYieldNet, priceTotalYield);
 
     }
 
     private BigDecimal anualFeesToDailyFees(double anualFees){
-        return BigDecimal.valueOf(Math.pow((1.0d+anualFees),1.0d/365.0d)-1.0d);
+        return BigDecimal.valueOf(Math.pow((1.0d+anualFees),1.0d/252.0d)-1.0d);
     }
 
     // rendimento bruto
@@ -52,8 +54,13 @@ public class Simulation {
         return yield.subtract(priceIR).subtract(priceIof);
     }
 
+    private BigDecimal totalYield(BigDecimal valueInvested,BigDecimal yield){
+        return valueInvested.add(yield);
+    }
+
     //Valores Finais
-    private BigDecimal totalYield(BigDecimal valueInvested,BigDecimal yieldNet){
+    private BigDecimal totalYieldNet(BigDecimal valueInvested,BigDecimal yieldNet){
         return valueInvested.add(yieldNet);
     }
+
 }

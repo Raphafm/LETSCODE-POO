@@ -1,22 +1,23 @@
 package org.example.views;
 
+import org.example.model.Investiment;
+
+import java.math.BigDecimal;
+
 public class ShowYields {
 
-//    public void relatorio(){
-//
-//        System.out.println("-----------------------------------------------------------------------------------------");
-//        System.out.printf("Relatório de investimento para %.2fR$ investidos, a uma taxa de juros anual de %.2f porcento.\n",
-//                this.quantiaInvestida,this.jurosAnual*100);
-//        for (int i=0; i<this.tempoDeInvestimento.size();i++){
-//            System.out.printf("%d - %.0f dias\n",i+1,this.tempoDeInvestimento.get(i));
-//        }
-//        System.out.println("-----------------------------------------------------------------------------------------");
-//        for (int i=0; i<this.tempoDeInvestimento.size();i++){
-//            System.out.printf("%d - Rendimento: %.2fR$, Tributos: %.2fR$, IOF: %.2fR$, Rendimentos Líquidos: %.2fR$, Valor Final: " +
-//                            "%.2fR$\n",i+1,this.rendimentos.get(i),
-//                    this.tributacao.get(i),this.iof.get(i),this.ganhoLiquido.get(i),this.valoresFinais.get(i));
-//        }
-//        System.out.println("-----------------------------------------------------------------------------------------");
-//    }
-//
+    public static void relatorio(Investiment investiment, BigDecimal yield, BigDecimal priceIof, BigDecimal priceIR,
+                                 BigDecimal priceTotalYieldNet, BigDecimal priceTotalYield){
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.printf("%d dias simulados\n",investiment.getTempoDeInvestimento());
+        System.out.printf("Relatório de investimento para R$ %.2f investidos, a uma taxa de juros anual de %.2f %%.\n",
+                investiment.getQuantiaInvestida(),investiment.getProduct().getRentabilidadeAnual()*100.);
+
+        System.out.println("-----------------------------------------------------------------------------------------");
+            System.out.printf("Rendimento: R$ %.2f, Tributos: R$ %.2f, IOF: R$ %.2f, Valor Bruto: R$ %.2f, Valor Líquido: " +
+                            "R$ %.2f\n",yield,priceIR,priceIof,priceTotalYield, priceTotalYieldNet);
+        System.out.println("-----------------------------------------------------------------------------------------");
+    }
+
 }

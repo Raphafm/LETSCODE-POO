@@ -11,6 +11,7 @@ public class CreateSimulation {
 
         System.out.println("Selecione o produto: ");
         ShowProducts.showProducts(RepositoryProducts.getProducts());
+        System.out.print("Item: ");
         int option = sc.nextInt();
 
         System.out.print("Insira a quantia que você deseja investir: ");
