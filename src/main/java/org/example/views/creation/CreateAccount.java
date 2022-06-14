@@ -1,10 +1,8 @@
 package org.example.views.creation;
 import org.example.controller.MainMenuController;
-import org.example.model.Stockbroker;
-import org.example.model.TypeInvestorProfile;
+import org.example.model.*;
 import org.example.repository.RepositoryUsers;
-import org.example.model.Client;
-import org.example.model.User;
+import org.example.views.ShowAccount;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -51,43 +49,48 @@ public class CreateAccount {
 
         // chamar o quiz
         int pontos = QuizInvestorProfile.quiz(sc);
-        Client client = new Client(name,login, password,cpf, accountNumber, TypeInvestorProfile.getTipeInvestorPerfil(pontos));
+        Client client = new Client(name,login, password,cpf, accountNumber, TypeInvestorProfile.getTypeInvestorPerfil(pontos));
         RepositoryUsers.addCliente(client);
 
         System.out.println("Parabéns, sua conta foi criada com sucesso!");
-        System.out.printf("Cliente: %s %n", name);
-        System.out.printf("Agência: %s %n", Stockbroker.getAGENCIA());
-        System.out.printf("Conta: %s %n", accountNumber);
-        System.out.printf("Perfil do investidor: %s %n", TypeInvestorProfile.getTipeInvestorPerfil(pontos));
-        System.out.println("-----------------------------------------------------------------");
+
+        ShowAccount.run(client);
     }
 
     private static boolean validatePassword(String password1, String password2){
         if (password1.equals(password2)){
             return false;
         }
+        System.out.println(Cores.RED);
         System.out.println("As senhas não são idênticas, digite novamente!\n");
+        System.out.println(Cores.RESET);
         return true;
     }
 
     private static boolean validateCPF(String cpf){
         if(cpf.length() != 11){
+            System.out.println(Cores.RED);
             System.out.println("CPF invalido, digite novamente!");
+            System.out.println(Cores.RESET);
             return true;
         }
 
         if (cpf.matches("[0-9]+")) {
            return false;
         }
+        System.out.println(Cores.RED);
         System.out.println("Digite apenas números");
-        System.out.println("-----------------------------------------------------------------");
+        System.out.println(Cores.RESET);
+
         return true;
     }
 
     private static boolean validateName(String name) {
         for (int i = 0; i < name.length(); i++) {
             if (!(Character.isAlphabetic((name.charAt(i))))) {
+                System.out.println(Cores.RED);
                 System.out.println("O nome nao pode ter números");
+                System.out.println(Cores.RESET);
                 return true;
             }
         }
@@ -98,10 +101,11 @@ public class CreateAccount {
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getIdentificador().equals(cpf)){
 
+                System.out.println(Cores.RED);
                 System.out.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
                 System.out.println("Voltando ao menu principal");
+                System.out.println(Cores.RESET);
                 MainMenuController.run();
-
             }
         }
     }
@@ -109,7 +113,9 @@ public class CreateAccount {
     private static boolean verifyExistenceLogin(String login){
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getLogin().equals(login)){
+                System.out.println(Cores.RED);
                 System.out.println("Esse login ja existe, tente outro");
+                System.out.println(Cores.RESET);
                 return true;
             }
         }

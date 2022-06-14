@@ -3,17 +3,19 @@ import java.util.*;
 
 
 public class StockbrokerMenu extends BasicMenu {
-    public String printMenu(Scanner sc) {
+    public static String printMenu(Scanner sc) {
 
         System.out.println("Bem vindo ao menu da corretora");
-        System.out.println("Digite:\n0 - Sair da conta\n1 - Cadastrar/Atualizar produto");
-        System.out.println("2 - Obter Relatório\n3 - Obter arrecadação\n4 - Visualizar produtos por vencimento");
-        System.out.println("5 - Visualizar clientes");
-        System.out.println("6 - Visualizar produtos por ordem alfabética");
+        System.out.println("Digite:");
+        System.out.println("\t0 - Sair da conta");
+        System.out.println("\t1 - Cadastrar/Atualizar produto");
+        System.out.println("\t2 - Obter Relatório");
+        System.out.println("\t3 - Obter arrecadação");
+        System.out.println("\t4 - Visualizar clientes");
+        System.out.println("\t5 - Visualizar produtos por vencimento");
+        System.out.println("\t6 - Visualizar produtos por ordem alfabética");
         System.out.print("Opcao: ");
-        String option = sc.nextLine();
 
-        return option;
+        return sc.nextLine();
     }
-
 }

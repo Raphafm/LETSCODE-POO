@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ClientMenuController{
     public static void runClientMenu(Scanner sc, Client cliente) {
-        String option = new ClientMenu().printMenu(sc);
+        String option = ClientMenu.printMenu(sc);
 
         switch (option) {
             case "0":

@@ -1,4 +1,6 @@
 package org.example.views.creation;
+import org.example.model.Cores;
+
 import java.util.Scanner;
 
 public class QuizInvestorProfile {
@@ -32,27 +34,31 @@ public class QuizInvestorProfile {
     public static int quiz(Scanner sc){
         int resposta = 0;
         int respostaFinal = 0;
-        for (int i = 0; i < PERGUNTAS.length; i++) {
+        for (String[] pergunta : PERGUNTAS) {
             do {
                 System.out.println("-----------------------------------------------------------------");
-                for (int i1 = 0; i1 < PERGUNTAS[i].length; i1++) {
-                    System.out.println(PERGUNTAS[i][i1]);
+                for (String s : pergunta) {
+                    System.out.println(s);
                 }
-                try{
+                try {
                     System.out.print("Resposta: ");
                     resposta = sc.nextInt();
-                    if (resposta < 1 || resposta > PERGUNTAS[i].length-1) {
-                        System.err.println("Resposta invalida! Tente novamente.");
+                    if (resposta < 1 || resposta > pergunta.length - 1) {
+                        System.out.println(Cores.RED);
+                        System.out.println("Resposta invalida! Tente novamente.");
+                        System.out.println(Cores.RESET);
                         System.out.println("-----------------------------------------------------------------");
-                    } else if (resposta >= 1 && resposta <= PERGUNTAS[i].length-1){
+                    } else if (resposta <= pergunta.length - 1) {
                         respostaFinal += resposta;
                     }
-                }catch(Exception NumberFormatException ){
-                    System.err.println("Resposta invalida! Tente novamente.");
+                } catch (Exception NumberFormatException) {
+                    System.out.println(Cores.RED);
+                    System.out.println("Resposta invalida! Tente novamente.");
+                    System.out.println(Cores.RESET);
                     sc.nextLine();
                     System.out.println("-----------------------------------------------------------------");
                 }
-            }while(!(resposta >= 1 && resposta <= PERGUNTAS[i].length-1));
+            } while (!(resposta >= 1 && resposta <= pergunta.length - 1));
             sc.nextLine();
         }
         System.out.println("-----------------------------------------------------------------");

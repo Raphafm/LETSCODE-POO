@@ -1,6 +1,5 @@
 package org.example.simulation;
 import org.example.model.Investiment;
-import org.example.model.Products;
 import org.example.views.ShowYields;
 import org.example.views.creation.CreateSimulation;
 import java.math.BigDecimal;
@@ -8,19 +7,17 @@ import java.util.Scanner;
 
 public class Simulation {
 
-    private Investiment investiment;
-
     public void runSimulation(Scanner sc) {
-        investiment = CreateSimulation.printSimulation(sc);
+        Investiment investiment = CreateSimulation.printSimulation(sc);
         BigDecimal dailyFees = anualFeesToDailyFees(investiment.getProduct().getRentabilidadeAnual());
-        BigDecimal yield = yields(investiment.getQuantiaInvestida(),dailyFees,investiment.getTempoDeInvestimento());
-        BigDecimal priceIof = valueIof(yield,investiment.getTempoDeInvestimento());
+        BigDecimal yield = yields(investiment.getQuantiaInvestida(),dailyFees, investiment.getTempoDeInvestimento());
+        BigDecimal priceIof = valueIof(yield, investiment.getTempoDeInvestimento());
         BigDecimal priceIR = valueIR(yield, investiment.getTempoDeInvestimento(), priceIof);
         BigDecimal priceYieldNet = yieldNet(priceIR,yield,priceIof);
         BigDecimal priceTotalYieldNet = totalYieldNet(investiment.getQuantiaInvestida(),priceYieldNet);
         BigDecimal priceTotalYield = totalYield(investiment.getQuantiaInvestida(),yield);
         ShowYields.relatorio(investiment, yield, priceIof, priceIR, priceTotalYieldNet, priceTotalYield);
-
+        sc.nextLine();
     }
 
     private BigDecimal anualFeesToDailyFees(double anualFees){
@@ -37,6 +34,7 @@ public class Simulation {
         BigDecimal txIof = timeInvestedDays<30? BigDecimal.valueOf((2880d-96d*timeInvestedDays)/2900d) : BigDecimal.ZERO;
         return yield.multiply(txIof);
     }
+
     //Funcao valueIR
     private BigDecimal valueIR(BigDecimal yield, int timeInvestedDays, BigDecimal priceIof) {
         BigDecimal Txtributacao = BigDecimal.ONE;

@@ -56,9 +56,9 @@ public class Client extends User {
         return accountNumber;
     }
 
-    //    public Tipoinvestidor getTipoinvestidor() {
-//        return tipoinvestidor;
-//    }
+    public TypeInvestorProfile getTypeInvestorProfile() {
+        return typeInvestorProfile;
+    }
 //
 //    public void setTipoinvestidor(Tipoinvestidor tipoinvestidor) {
 //        this.tipoinvestidor = tipoinvestidor;

@@ -5,12 +5,18 @@ public abstract class User implements Comparable<User>{
     protected final String login;
     protected final String senha;
     protected final String identificador;
+    protected static final String AGENCIA = "0000-1";
 
     public User(String nome, String login, String senha, String identificador) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.identificador = identificador;
+
+    }
+
+    public static String getAGENCIA() {
+        return AGENCIA;
     }
 
     public String getNome() {
@@ -60,5 +66,5 @@ public abstract class User implements Comparable<User>{
         return this.getNome().compareTo(user.getNome());
     }
     //Realizar um metodo para autenticar o identificador ao criar a conta.
-    //e na criação identificar pelo cpf ou cnpj pra ser new cliente ou new corretora
+    //E na criação identificar pelo cpf ou cnpj para ser new cliente ou new corretora
 }

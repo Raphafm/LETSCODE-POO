@@ -4,16 +4,15 @@ import org.example.model.Stockbroker;
 import org.example.repository.RepositoryUsers;
 import org.example.views.ShowProducts;
 import org.example.views.menus.StockbrokerMenu;
-import java.util.List;
 import java.util.Scanner;
 
 public class StockbrokerMenuController {
     public static void runStockbrokerMenu(Scanner sc, Stockbroker stockbroker) {
-        String option = new StockbrokerMenu().printMenu(sc);
+        String option = StockbrokerMenu.printMenu(sc);
 
         switch (option) {
             case "0":
-                new StockbrokerMenu().exit();
+                StockbrokerMenu.exit();
                 return;
             case "1":
                 stockbroker.registerUpdate(sc);
@@ -25,12 +24,12 @@ public class StockbrokerMenuController {
                 System.out.println("Obter arrecadação em construção");
                 break;
             case "4":
-                ShowProducts.showProducts(Products.ordenarPorVencimento());
+                System.out.println();
+                RepositoryUsers.getContasLista().forEach(System.out::println);
+                System.out.println();
                 break;
             case "5":
-                System.out.println();
-                RepositoryUsers.getContasLista().forEach(user -> System.out.print(user));
-                System.out.println();
+                ShowProducts.showProducts(Products.ordenarPorVencimento());
                 break;
             case "6":
                 ShowProducts.showProducts(Products.ordemAlfabetica());

@@ -14,7 +14,6 @@ public class MainMenuController {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void run() {
-//        System.out.println();
         String option = new MainMenu().printMenu(sc);
 
         switch (option) {
@@ -24,7 +23,7 @@ public class MainMenuController {
             case "1":
                 User usuario = AccessAccount.run(sc);
                 if (Objects.isNull(usuario)) {
-                    System.err.println("Usuario não encontrado!");
+                    MainMenu.nonExistentUser();
                 } else if (usuario instanceof Stockbroker) {
                     StockbrokerMenuController.runStockbrokerMenu(sc, ((Stockbroker) usuario));
                 } else {
@@ -35,16 +34,13 @@ public class MainMenuController {
                 CreateAccount.run(sc);
                 break;
             case "3":
-//                System.out.println("simulação em construção");
-//                Simulation meuInvestimento = new Simulation(RepositoryProducts.getInvestimento().getRentabilidadeAnual().doubleValue());
-//                meuInvestimento.relatorio();
                 new Simulation().runSimulation(sc);
                 break;
             default:
                 MainMenu.invalidOption();
                 break;
         }
-        sc.nextLine(); // limpar o scanner
+        sc.reset(); // limpar o scanner
         MainMenuController.run();
     }
 }
