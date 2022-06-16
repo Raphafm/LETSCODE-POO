@@ -1,4 +1,5 @@
 package org.example.views.creation;
+import org.example.controller.validations.ValidateNumber;
 import org.example.model.Investiment;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
@@ -11,8 +12,11 @@ public class CreateSimulation {
 
         System.out.println("Selecione o produto: ");
         ShowProducts.showProducts(RepositoryProducts.getProducts());
-        System.out.print("Item: ");
-        int option = sc.nextInt();
+        System.out.print("Codigo: ");
+
+        ValidateNumber<Integer> validatorInteger = new ValidateNumber<>();
+        int code = validatorInteger.run(sc);
+        sc.nextLine();
 
         System.out.print("Insira a quantia que você deseja investir: ");
         BigDecimal quantiaInvestida = sc.nextBigDecimal();
@@ -20,10 +24,12 @@ public class CreateSimulation {
         System.out.print("Insira o tempo que você quer manter esse investimento (insira o tempo em dias): ");
         int tempoDiasInvestido = sc.nextInt();
 
-        Products productSelected = RepositoryProducts.getKeyProducts().get(option);
+        Products productSelected = RepositoryProducts.getKeyProducts().get(code);
         Investiment investiment = new Investiment(productSelected, tempoDiasInvestido, quantiaInvestida);
 
         return investiment;
     }
+
+//    private static boolean verify
 
 }

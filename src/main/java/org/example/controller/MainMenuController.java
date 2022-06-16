@@ -24,6 +24,7 @@ public class MainMenuController {
                 User usuario = AccessAccount.run(sc);
                 if (Objects.isNull(usuario)) {
                     MainMenu.nonExistentUser();
+                //TODO quando mexer nisso, mexer tbm em CreateAccount.verifyExistenceAccountNumber
                 } else if (usuario instanceof Stockbroker) {
                     StockbrokerMenuController.runStockbrokerMenu(sc, ((Stockbroker) usuario));
                 } else {

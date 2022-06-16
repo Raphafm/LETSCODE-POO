@@ -1,5 +1,7 @@
 package org.example.views.creation;
 import org.example.controller.MainMenuController;
+import org.example.controller.validations.ValidateCPF;
+import org.example.controller.validations.ValidateName;
 import org.example.model.*;
 import org.example.repository.RepositoryUsers;
 import org.example.views.ShowAccount;
@@ -11,17 +13,9 @@ public class CreateAccount {
     public static void run(Scanner sc){
         System.out.println("Informe as seguintes informações");
 
-        String name;
-        do {
-            System.out.print("Nome: ");
-            name = sc.nextLine();
-        } while (validateName(name));
+        String name = ValidateName.run(sc);
 
-        String cpf;
-        do {
-            System.out.print("CPF: ");
-            cpf = sc.nextLine();
-        }while(validateCPF(cpf));
+        String cpf = ValidateCPF.run(sc);
         verifyExistenceCPF(cpf);
 
         String login;
@@ -35,7 +29,7 @@ public class CreateAccount {
             System.out.print("Senha: ");
             password = sc.nextLine();
             System.out.print("Escreva novamente a senha: ");
-        }while(validatePassword(password,sc.nextLine()));
+        }while(verifyPassword(password,sc.nextLine()));
 
         String accountNumber;
        do{
@@ -57,45 +51,45 @@ public class CreateAccount {
         ShowAccount.run(client);
     }
 
-    private static boolean validatePassword(String password1, String password2){
+    private static boolean verifyPassword(String password1, String password2){
         if (password1.equals(password2)){
             return false;
         }
         System.out.println(Cores.RED);
-        System.out.println("As senhas não são idênticas, digite novamente!\n");
+        System.out.println("As senhas não são idênticas, digite novamente!");
         System.out.println(Cores.RESET);
         return true;
     }
 
-    private static boolean validateCPF(String cpf){
-        if(cpf.length() != 11){
-            System.out.println(Cores.RED);
-            System.out.println("CPF invalido, digite novamente!");
-            System.out.println(Cores.RESET);
-            return true;
-        }
-
-        if (cpf.matches("[0-9]+")) {
-           return false;
-        }
-        System.out.println(Cores.RED);
-        System.out.println("Digite apenas números");
-        System.out.println(Cores.RESET);
-
-        return true;
-    }
-
-    private static boolean validateName(String name) {
-        for (int i = 0; i < name.length(); i++) {
-            if (!(Character.isAlphabetic((name.charAt(i))))) {
-                System.out.println(Cores.RED);
-                System.out.println("O nome nao pode ter números");
-                System.out.println(Cores.RESET);
-                return true;
-            }
-        }
-        return false;
-    }
+//    private static boolean validateCPF(String cpf){
+//        if(cpf.length() != 11){
+//            System.out.println(Cores.RED);
+//            System.out.println("CPF invalido, digite novamente!");
+//            System.out.println(Cores.RESET);
+//            return true;
+//        }
+//
+//        if (cpf.matches("[0-9]+")) {
+//           return false;
+//        }
+//        System.out.println(Cores.RED);
+//        System.out.println("Digite apenas números");
+//        System.out.println(Cores.RESET);
+//
+//        return true;
+//    }
+//
+//    private static boolean validateName(String name) {
+//        for (int i = 0; i < name.length(); i++) {
+//            if (!(Character.isAlphabetic((name.charAt(i))))) {
+//                System.out.println(Cores.RED);
+//                System.out.println("O nome nao pode ter números");
+//                System.out.println(Cores.RESET);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     private static void verifyExistenceCPF(String cpf){
         for (User user : RepositoryUsers.getContasLista()) {

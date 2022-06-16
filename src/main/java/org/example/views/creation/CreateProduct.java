@@ -1,4 +1,6 @@
 package org.example.views.creation;
+import org.example.controller.validations.ValidateNumber;
+import org.example.controller.validations.ValidateWithMaxAndMin;
 import org.example.model.Cores;
 import org.example.model.Products;
 import org.example.model.ProductsType;
@@ -11,52 +13,55 @@ import java.util.Scanner;
 
 public class CreateProduct {
     public Products run(Scanner sc) {
-        // TODO tratar exceções
+
         System.out.println("Atualizando ou Cadastrando produtos");
         System.out.println("Por favor, insira os dados.");
 
-
         System.out.print("Codigo: ");
-        int code = validateInt(sc);
+        ValidateNumber<Integer> validatorInteger = new ValidateNumber<>();
+        int code = validatorInteger.run(sc);
         sc.nextLine();
 
         System.out.print("Nome: ");
         String name = sc.nextLine();
 
         System.out.print("Rentabilidade Anual: ");
-        double annualProfitability = validateDouble(sc);
+        ValidateNumber<Double> valdiatorDouble = new ValidateNumber<>();
+        double annualProfitability = valdiatorDouble.run(sc);
 
         System.out.print("Investimento minimo: ");
-        BigDecimal investimentoMinimo = validateBigDecimal(sc);
+        ValidateNumber<BigDecimal> validatorBigDecimal = new ValidateNumber<>();
+        BigDecimal investimentoMinimo = validatorBigDecimal.run(sc);
 
         System.out.print("Preço unitário: ");
-        BigDecimal precoUnitario = validateBigDecimal(sc);
+        BigDecimal precoUnitario = validatorBigDecimal.run(sc);
 
         System.out.println("Vencimento: ");
         System.out.print("\tDia: ");
-        int day = validateWithMaxandMin(sc,1,30);
+        ValidateWithMaxAndMin<Integer> validateWithMaxAndMinInt = new ValidateWithMaxAndMin<>();
+        int day = validateWithMaxAndMinInt.run(sc, 1, 30);
         System.out.print("\tMês: ");
-        int month = validateWithMaxandMin(sc,1,12);
+        int month = validateWithMaxAndMinInt.run(sc, 1, 12);
         System.out.print("\tAno: ");
-        int year = validateYear(sc);
+        int year = validateWithMaxAndMinInt.run(sc,LocalDate.now().getYear(), LocalDate.now().getYear() + 100);
         LocalDate vencimento = LocalDate.of(year, month, day);
 
         System.out.print("Porcentagem de risco do investimento: ");
-        int porcentagemRiscoDoInvestimento = validateInt(sc);
+        int porcentagemRiscoDoInvestimento = validatorInteger.run(sc).intValue();
 
         System.out.println("Selecione o tipo do produto: ");
         for (int i = 0; i < ProductsType.values().length; i++) {
             System.out.printf("\t %d - %s %n", i, ProductsType.values()[i].getLabel());
         }
         System.out.print("Resposta: ");
-        int tipoProduto = validateWithMaxandMin(sc,0, ProductsType.values().length);
+        int tipoProduto = validateWithMaxAndMinInt.run(sc, 0, ProductsType.values().length);
         sc.nextLine();
 
         return new Products(code, name, annualProfitability, investimentoMinimo, precoUnitario,
                 vencimento, porcentagemRiscoDoInvestimento, ProductsType.values()[tipoProduto]);
-
     }
 
+    /*
     private static int validateInt(Scanner sc) {
         try {
             return sc.nextInt();
@@ -139,4 +144,6 @@ public class CreateProduct {
             return validateYear(sc);
         }
     }
+
+     */
 }
