@@ -11,20 +11,12 @@ public class Client extends User {
     private String accountNumber;
     private String extract;
 
-
-//    private final ArrayList<Inventimentos> inventimentos;
-
     public Client(String nome, String login, String senha, String cpf, String accountNumber, TypeInvestorProfile typeInvestorProfile) {
         super(nome, login, senha, cpf);
         this.accountNumber = accountNumber;
         this.fund = BigDecimal.ZERO;
         this.typeInvestorProfile = typeInvestorProfile;
         this.extract =String.format("%-20s %-10s %n","Data","Valor (R$)");
-
-//        this.inventimentos = new ArrayList<Inventimentos>();
-//        public BigDecimal resgatar(){
-//            return BigDecimal.ZERO;
-//        }
     }
 
     public void withdraw(BigDecimal valorSaque) {
@@ -59,15 +51,6 @@ public class Client extends User {
     public TypeInvestorProfile getTypeInvestorProfile() {
         return typeInvestorProfile;
     }
-//
-//    public void setTipoinvestidor(Tipoinvestidor tipoinvestidor) {
-//        this.tipoinvestidor = tipoinvestidor;
-//    }
-//
-//    public ArrayList<Inventimentos> getInventimentos() {
-//        return inventimentos;
-//    }
-
 
     public String printExtract() {
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));

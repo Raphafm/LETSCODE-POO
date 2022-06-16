@@ -11,7 +11,7 @@ public class RepositoryInvestiment {
     public static void initialize(){
         keyInvestiments = new TreeMap<>();
         List<Investiment> investimentsList = new ArrayList<>();
-        Investiment clientInvestiment1 = new Investiment(RepositoryProducts.getKeyProducts().get(1),100, BigDecimal.valueOf(1000));
+        Investiment clientInvestiment1 = new Investiment(RepositoryProducts.getKeyProducts().get(1),20, BigDecimal.valueOf(1000));
         investimentsList.add(clientInvestiment1);
         keyInvestiments.put("12345678901",investimentsList);
     }
@@ -36,6 +36,12 @@ public class RepositoryInvestiment {
 
     public static Map<String, List<Investiment>> getInvestimentsMap() {
         return keyInvestiments;
+    }
+
+    public static void remove(Client client,int index) {
+        List<Investiment> investimentsList = getInvestimentList(client.getIdentificador());
+        investimentsList.remove(index);
+        keyInvestiments.put(client.getIdentificador(),investimentsList);
     }
 
 }

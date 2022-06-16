@@ -1,8 +1,8 @@
 package org.example.model;
-import org.example.repository.RepositoryProducts;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Investiment {
 
@@ -14,10 +14,18 @@ public class Investiment {
     private BigDecimal ganhoLiquido;
     private BigDecimal valoresFinais;
     private BigDecimal iof;
+    private LocalDate diaDoInvenstimento;
 
-    public Investiment(Products product, int tempoDeInvestimento,BigDecimal quantiaInvestida) {
+    public Investiment(Products product, int tempoDeInvestimento, BigDecimal quantiaInvestida) {
         this.product = product;
         this.tempoDeInvestimento = tempoDeInvestimento;
+        this.quantiaInvestida = quantiaInvestida;
+    }
+
+    public Investiment(Products product, LocalDate diaDoInvenstimento,BigDecimal quantiaInvestida) {
+        this.product = product;
+        this.diaDoInvenstimento = diaDoInvenstimento;
+        this.tempoDeInvestimento = (int) ChronoUnit.DAYS.between(diaDoInvenstimento,LocalDate.now());
         this.quantiaInvestida = quantiaInvestida;
     }
 
@@ -79,5 +87,9 @@ public class Investiment {
 
     public void setIof(BigDecimal iof) {
         this.iof = iof;
+    }
+
+    public LocalDate getDiaDoInvenstimento() {
+        return diaDoInvenstimento;
     }
 }
