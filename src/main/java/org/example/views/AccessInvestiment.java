@@ -12,7 +12,8 @@ public class AccessInvestiment {
         System.out.println("Selecione o produto: ");
         new Simulation().runInvestiment(RepositoryInvestiment.getInvestimentList(client.getIdentificador()));
         System.out.print("Item: ");
-        return sc.nextInt()-1;
+        int index = sc.nextInt()-1;
+        sc.nextLine();
+        return index;
     }
-
 }

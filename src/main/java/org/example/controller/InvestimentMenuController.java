@@ -33,7 +33,7 @@ public class InvestimentMenuController {
             default:
                 InvestimentMenu.invalidOption();
         }
-        sc.nextLine();
+//        sc.nextLine();
         runInvestimentMenu(sc, client);
     }
 }

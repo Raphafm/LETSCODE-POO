@@ -22,8 +22,8 @@ public class CreateInvestiment {
 
         Products productSelected = RepositoryProducts.getKeyProducts().get(option);
         Investiment investiment = new Investiment(productSelected, LocalDate.now(), quantiaInvestida);
+        sc.nextLine();
 
         return investiment;
     }
-
 }
