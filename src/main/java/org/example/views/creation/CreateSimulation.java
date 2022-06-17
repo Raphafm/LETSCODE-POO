@@ -27,7 +27,4 @@ public class CreateSimulation {
 
         return new Investiment(productSelected, tempoDiasInvestido, quantiaInvestida);
     }
-
-//    private static boolean verify
-
 }
