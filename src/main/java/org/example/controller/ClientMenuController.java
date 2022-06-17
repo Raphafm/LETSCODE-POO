@@ -23,7 +23,7 @@ public class ClientMenuController{
                 TransferMenuController.runTransferMenu(sc, cliente);
                 break;
             case "4":
-                System.out.println("investir em construção");
+                InvestimentMenuController.runInvestimentMenu(sc,cliente);
                 break;
             default:
                 ClientMenu.invalidOption();

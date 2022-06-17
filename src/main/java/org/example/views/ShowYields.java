@@ -10,7 +10,7 @@ public class ShowYields {
                                  BigDecimal priceTotalYieldNet, BigDecimal priceTotalYield){
 
         System.out.println("-----------------------------------------------------------------------------------------");
-        System.out.printf("%d dias simulados\n",investiment.getTempoDeInvestimento());
+        System.out.printf("%d dias rendendo\n",investiment.getTempoDeInvestimento());
         System.out.printf("Relatório de investimento para R$ %.2f investidos, a uma taxa de juros anual de %.2f %%.\n",
                 investiment.getQuantiaInvestida(),investiment.getProduct().getRentabilidadeAnual()*100.);
 

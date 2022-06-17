@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class AcessTransfer {
+public class AccessTransfer {
     public static BigDecimal run(Scanner sc){
         BigDecimal value = BigDecimal.ZERO;
         do {
