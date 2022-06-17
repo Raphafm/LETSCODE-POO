@@ -1,5 +1,6 @@
 package org.example.views.creation;
 
+import org.example.controller.validations.ValidateWithMaxAndMin;
 import org.example.model.Investiment;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
@@ -14,8 +15,11 @@ public class CreateInvestiment {
 
         System.out.println("Selecione o produto: ");
         ShowProducts.showProducts(RepositoryProducts.getProducts());
-        System.out.print("Item: ");
+        System.out.print("Item: ");//codigo do protudos
+//        RepositoryProducts.getKeyProducts().containsKey(sc.nextInt());
         int option = sc.nextInt();
+
+
 
         System.out.print("Insira a quantia que você deseja investir: ");
         BigDecimal quantiaInvestida = sc.nextBigDecimal();

@@ -11,16 +11,16 @@ public class ValidateCPF {
             System.out.println(Cores.RED);
             System.out.println("CPF invalido, digite novamente!");
             System.out.println(Cores.RESET);
-            System.out.print("Resposta: ");
+            System.out.print("Cpf: ");
             return run(sc);
         }
 
         if (!cpf.matches("[0-9]+")) {
+            System.out.println(Cores.RED);
+            System.out.println("Digite apenas números");
+            System.out.println(Cores.RESET);
             return run(sc);
         }
-        System.out.println(Cores.RED);
-        System.out.println("Digite apenas números");
-        System.out.println(Cores.RESET);
 
         return cpf;
     }

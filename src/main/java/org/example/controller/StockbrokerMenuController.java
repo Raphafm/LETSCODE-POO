@@ -1,9 +1,16 @@
 package org.example.controller;
+
+import org.example.model.Investiment;
 import org.example.model.Products;
 import org.example.model.Stockbroker;
+import org.example.repository.RepositoryInvestiment;
 import org.example.repository.RepositoryUsers;
+import org.example.views.ShowAllInvestiment;
 import org.example.views.ShowProducts;
+import org.example.views.ShowRevenues;
 import org.example.views.menus.StockbrokerMenu;
+
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class StockbrokerMenuController {
@@ -18,14 +25,14 @@ public class StockbrokerMenuController {
                 stockbroker.registerUpdate(sc);
                 break;
             case "2":
-                System.out.println("Obter relatorio em construção");
+                ShowAllInvestiment.run(RepositoryInvestiment.getInvestimentsMap());
                 break;
             case "3":
-                System.out.println("Obter arrecadação em construção");
+                ShowRevenues.run(RepositoryInvestiment.getInvestimentsMap());
                 break;
             case "4":
                 System.out.println();
-                RepositoryUsers.getContasLista().forEach(System.out::println);
+                RepositoryUsers.getListaClientes().forEach(System.out::println);
                 System.out.println();
                 break;
             case "5":

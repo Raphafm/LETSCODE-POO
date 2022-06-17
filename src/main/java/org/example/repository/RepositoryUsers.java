@@ -4,8 +4,7 @@ import org.example.model.Client;
 import org.example.model.Stockbroker;
 import org.example.model.User;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class RepositoryUsers {
     private static Set<User> contasLista;
@@ -20,6 +19,7 @@ public class RepositoryUsers {
 
     public static void addCliente(Client client){
         contasLista.add(client);
+
     }
 
     public static Set<User> getContasLista() {
@@ -33,5 +33,15 @@ public class RepositoryUsers {
             }
         }
         return null;
+    }
+
+    public static Set<Client> getListaClientes() {
+        Set<Client> contasClientes = new HashSet<>();
+        for (User user : contasLista) {
+            if(user instanceof Client){
+                contasClientes.add((Client)user);
+            }
+        }
+        return contasClientes;
     }
 }

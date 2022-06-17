@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 public class Simulation {
 
+    private final BigDecimal TAXACORETORA = BigDecimal.valueOf(0.005d);
+
     public void runSimulation(Scanner sc) {
         resumeCalculo(CreateSimulation.printSimulation(sc));
         sc.nextLine();
@@ -25,13 +27,17 @@ public class Simulation {
     public void resumeCalculo(Investiment investiment) {
         BigDecimal dailyFees = anualFeesToDailyFees(investiment.getProduct().getRentabilidadeAnual());
         BigDecimal yield = yields(investiment.getQuantiaInvestida(),dailyFees, investiment.getTempoDeInvestimento());
+//        investiment.setRendimentos(yield);
         BigDecimal priceIof = valueIof(yield, investiment.getTempoDeInvestimento());
+//        investiment.setIof(priceIof);
         BigDecimal priceIR = valueIR(yield, investiment.getTempoDeInvestimento(), priceIof);
+//        investiment.setTributacao(priceIR);
         BigDecimal priceYieldNet = yieldNet(priceIR,yield,priceIof);
-        BigDecimal priceTotalYieldNet = totalYieldNet(investiment.getQuantiaInvestida(),priceYieldNet);
+        investiment.setGanhoCoretora(priceYieldNet.multiply(TAXACORETORA));
+        BigDecimal priceTotalYieldNet = totalYieldNet(investiment.getQuantiaInvestida(),priceYieldNet.subtract(investiment.getGanhoCoretora()));
         investiment.setGanhoLiquido(priceTotalYieldNet);
         BigDecimal priceTotalYield = totalYield(investiment.getQuantiaInvestida(),yield);
-        ShowYields.relatorio(investiment, yield, priceIof, priceIR, priceTotalYieldNet, priceTotalYield);
+        ShowYields.relatorio(investiment, yield, priceIof,investiment.getGanhoCoretora(), priceIR, priceTotalYieldNet, priceTotalYield);
     }
 
     private BigDecimal anualFeesToDailyFees(double anualFees){

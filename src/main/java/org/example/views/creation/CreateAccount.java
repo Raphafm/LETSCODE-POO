@@ -65,7 +65,6 @@ public class CreateAccount {
     private static void verifyExistenceCPF(String cpf){
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getIdentificador().equals(cpf)){
-
                 System.out.println(Cores.RED);
                 System.out.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
                 System.out.println("Voltando ao menu principal");
@@ -86,11 +85,8 @@ public class CreateAccount {
         return false;
     }
     private static boolean verifyExistenceAccountNumber(String accountNumber){
-        for (User user : RepositoryUsers.getContasLista()) {
-            if (user instanceof Stockbroker) {
-                continue;
-            }
-            if (((Client) user).getAccountNumber().equals(accountNumber)){
+        for (Client client : RepositoryUsers.getListaClientes()) {
+            if ((client.getAccountNumber().equals(accountNumber))){
                 return true;
             }
         }

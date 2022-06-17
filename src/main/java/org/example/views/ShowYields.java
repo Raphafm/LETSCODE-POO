@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class ShowYields {
 
-    public static void relatorio(Investiment investiment, BigDecimal yield, BigDecimal priceIof, BigDecimal priceIR,
+    public static void relatorio(Investiment investiment, BigDecimal yield, BigDecimal priceIof,BigDecimal priceADM, BigDecimal priceIR,
                                  BigDecimal priceTotalYieldNet, BigDecimal priceTotalYield){
 
         System.out.println("-----------------------------------------------------------------------------------------");
@@ -15,8 +15,8 @@ public class ShowYields {
                 investiment.getQuantiaInvestida(),investiment.getProduct().getRentabilidadeAnual()*100.);
 
         System.out.println("-----------------------------------------------------------------------------------------");
-            System.out.printf("Rendimento: R$ %.2f // Tributos: R$ %.2f // IOF: R$ %.2f // Valor Bruto: R$ %.2f // " +
-                    "Valor Líquido: R$ %.2f\n",yield,priceIR,priceIof,priceTotalYield, priceTotalYieldNet);
+            System.out.printf("Rendimento: R$ %.2f // Tributos: R$ %.2f // IOF: R$ %.2f // Taxa Administrativa: R$ %.2f // Valor Bruto: R$ %.2f // " +
+                    "Valor Líquido: R$ %.2f\n",yield,priceIR,priceIof,priceADM,priceTotalYield, priceTotalYieldNet);
         System.out.println("-----------------------------------------------------------------------------------------");
     }
 

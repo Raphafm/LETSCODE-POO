@@ -12,6 +12,7 @@ public class Investiment {
     private BigDecimal rendimentos;
     private BigDecimal tributacao;
     private BigDecimal ganhoLiquido;
+    private BigDecimal ganhoCoretora;
     private BigDecimal valoresFinais;
     private BigDecimal iof;
     private LocalDate diaDoInvenstimento;
@@ -91,5 +92,13 @@ public class Investiment {
 
     public LocalDate getDiaDoInvenstimento() {
         return diaDoInvenstimento;
+    }
+
+    public BigDecimal getGanhoCoretora() {
+        return ganhoCoretora;
+    }
+
+    public void setGanhoCoretora(BigDecimal ganhoCoretora) {
+        this.ganhoCoretora = ganhoCoretora;
     }
 }
