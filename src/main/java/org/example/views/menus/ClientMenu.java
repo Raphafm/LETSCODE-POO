@@ -6,6 +6,7 @@ public class ClientMenu extends BasicMenu {
         System.out.println("Bem vindo ao menu do cliente");
         System.out.println("Digite:");
         System.out.println("\t0 - Sair da conta");
+        System.out.println("\t1 - Ver informações da conta");
         System.out.println("\t1 - Tirar o extrato");
         System.out.println("\t2 - Realizar uma transferência");
         System.out.println("\t3 - Investir");

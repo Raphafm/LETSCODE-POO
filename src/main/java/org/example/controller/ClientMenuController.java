@@ -1,5 +1,6 @@
 package org.example.controller;
 import org.example.model.Client;
+import org.example.views.ShowAccount;
 import org.example.views.menus.ClientMenu;
 
 import java.util.Scanner;
@@ -13,12 +14,15 @@ public class ClientMenuController{
                 ClientMenu.exit();
                 return;
             case "1":
-                System.out.print(cliente.printExtract());
+                ShowAccount.run(cliente);
                 break;
             case "2":
-                TransferMenuController.runTransferMenu(sc, cliente);
+                System.out.print(cliente.printExtract());
                 break;
             case "3":
+                TransferMenuController.runTransferMenu(sc, cliente);
+                break;
+            case "4":
                 InvestimentMenuController.runInvestimentMenu(sc,cliente);
                 break;
             default:
