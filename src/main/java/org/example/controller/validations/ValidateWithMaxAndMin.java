@@ -2,15 +2,16 @@ package org.example.controller.validations;
 
 import org.example.model.Cores;
 
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ValidateWithMaxAndMin<T> {
-    public T run(Scanner sc, T min, T max) {
+public class ValidateWithMaxAndMin {
+    public static BigDecimal run(Scanner sc, BigDecimal min, BigDecimal max) {
         try {
-            Object valor = sc.nextDouble();
-            if ((Double)valor >= (Double) min && (Double) valor <= (Double) max) {
-                return (T) valor;
+            BigDecimal valor = sc.nextBigDecimal();
+            if (valor.compareTo(min) >= 0 && valor.compareTo(max) <= 0) {
+                return  valor;
             }
 
             sc.nextLine();

@@ -2,15 +2,15 @@ package org.example.controller.validations;
 
 import org.example.model.Cores;
 
+import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ValidateNumber<T> {
+public class ValidateNumber {
 
-    public T run (Scanner sc) {
+    public static BigDecimal run (Scanner sc) {
             try {
-                Object valor = sc.nextDouble();
-                return (T) valor;
+                return sc.nextBigDecimal();
             } catch (InputMismatchException ex) {
                 sc.nextLine();
                 System.out.println(Cores.RED);

@@ -14,20 +14,18 @@ public class CreateSimulation {
         ShowProducts.showProducts(RepositoryProducts.getProducts());
         System.out.print("Codigo: ");
 
-        ValidateNumber<Integer> validatorInteger = new ValidateNumber<>();
-        int code = validatorInteger.run(sc);
+        int code = ValidateNumber.run(sc).intValue();
         sc.nextLine();
 
         System.out.print("Insira a quantia que você deseja investir: ");
-        BigDecimal quantiaInvestida = sc.nextBigDecimal();
+        BigDecimal quantiaInvestida = ValidateNumber.run(sc);
 
         System.out.print("Insira o tempo que você quer manter esse investimento (insira o tempo em dias): ");
-        int tempoDiasInvestido = sc.nextInt();
+        int tempoDiasInvestido = ValidateNumber.run(sc).intValue();
 
         Products productSelected = RepositoryProducts.getKeyProducts().get(code);
-        Investiment investiment = new Investiment(productSelected, tempoDiasInvestido, quantiaInvestida);
 
-        return investiment;
+        return new Investiment(productSelected, tempoDiasInvestido, quantiaInvestida);
     }
 
 //    private static boolean verify

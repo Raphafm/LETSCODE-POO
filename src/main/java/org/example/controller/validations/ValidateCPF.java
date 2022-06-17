@@ -11,6 +11,7 @@ public class ValidateCPF {
             System.out.println(Cores.RED);
             System.out.println("CPF invalido, digite novamente!");
             System.out.println(Cores.RESET);
+            System.out.print("Resposta: ");
             return run(sc);
         }
 

@@ -13,8 +13,10 @@ public class CreateAccount {
     public static void run(Scanner sc){
         System.out.println("Informe as seguintes informações");
 
+        System.out.print("Nome: ");
         String name = ValidateName.run(sc);
 
+        System.out.print("Cpf: ");
         String cpf = ValidateCPF.run(sc);
         verifyExistenceCPF(cpf);
 
@@ -60,37 +62,6 @@ public class CreateAccount {
         System.out.println(Cores.RESET);
         return true;
     }
-
-//    private static boolean validateCPF(String cpf){
-//        if(cpf.length() != 11){
-//            System.out.println(Cores.RED);
-//            System.out.println("CPF invalido, digite novamente!");
-//            System.out.println(Cores.RESET);
-//            return true;
-//        }
-//
-//        if (cpf.matches("[0-9]+")) {
-//           return false;
-//        }
-//        System.out.println(Cores.RED);
-//        System.out.println("Digite apenas números");
-//        System.out.println(Cores.RESET);
-//
-//        return true;
-//    }
-//
-//    private static boolean validateName(String name) {
-//        for (int i = 0; i < name.length(); i++) {
-//            if (!(Character.isAlphabetic((name.charAt(i))))) {
-//                System.out.println(Cores.RED);
-//                System.out.println("O nome nao pode ter números");
-//                System.out.println(Cores.RESET);
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
     private static void verifyExistenceCPF(String cpf){
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getIdentificador().equals(cpf)){
@@ -103,7 +74,6 @@ public class CreateAccount {
             }
         }
     }
-
     private static boolean verifyExistenceLogin(String login){
         for (User user : RepositoryUsers.getContasLista()) {
             if(user.getLogin().equals(login)){
@@ -115,7 +85,6 @@ public class CreateAccount {
         }
         return false;
     }
-
     private static boolean verifyExistenceAccountNumber(String accountNumber){
         for (User user : RepositoryUsers.getContasLista()) {
             if (user instanceof Stockbroker) {

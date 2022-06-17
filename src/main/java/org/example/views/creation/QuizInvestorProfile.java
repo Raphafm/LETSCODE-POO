@@ -1,6 +1,9 @@
 package org.example.views.creation;
+import org.example.controller.validations.ValidateNumber;
+import org.example.controller.validations.ValidateWithMaxAndMin;
 import org.example.model.Cores;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class QuizInvestorProfile {
@@ -32,7 +35,7 @@ public class QuizInvestorProfile {
                     "3 - Todos os dias leio pelo menos um pouquinho sobre o assunto."}};
 
     public static int quiz(Scanner sc){
-        int resposta = 0;
+        int resposta;
         int respostaFinal = 0;
         for (String[] pergunta : PERGUNTAS) {
             do {
@@ -40,24 +43,24 @@ public class QuizInvestorProfile {
                 for (String s : pergunta) {
                     System.out.println(s);
                 }
-                try {
+//                try {
                     System.out.print("Resposta: ");
-                    resposta = sc.nextInt();
-                    if (resposta < 1 || resposta > pergunta.length - 1) {
-                        System.out.println(Cores.RED);
-                        System.out.println("Resposta invalida! Tente novamente.");
-                        System.out.println(Cores.RESET);
-                        System.out.println("-----------------------------------------------------------------");
-                    } else if (resposta <= pergunta.length - 1) {
-                        respostaFinal += resposta;
-                    }
-                } catch (Exception NumberFormatException) {
-                    System.out.println(Cores.RED);
-                    System.out.println("Resposta invalida! Tente novamente.");
-                    System.out.println(Cores.RESET);
-                    sc.nextLine();
-                    System.out.println("-----------------------------------------------------------------");
-                }
+                    resposta = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(1),BigDecimal.valueOf(pergunta.length - 1)).intValue();
+//                    if (resposta < 1 || resposta > pergunta.length - 1) {
+//                        System.out.println(Cores.RED);
+//                        System.out.println("Resposta invalida! Tente novamente.");
+//                        System.out.println(Cores.RESET);
+//                        System.out.println("-----------------------------------------------------------------");
+//                    } else if (resposta <= pergunta.length - 1) {
+//                        respostaFinal += resposta;
+//                    }
+//                } catch (Exception NumberFormatException) {
+//                    System.out.println(Cores.RED);
+//                    System.out.println("Resposta invalida! Tente novamente.");
+//                    System.out.println(Cores.RESET);
+//                    sc.nextLine();
+//                    System.out.println("-----------------------------------------------------------------");
+//                }
             } while (!(resposta >= 1 && resposta <= pergunta.length - 1));
             sc.nextLine();
         }
