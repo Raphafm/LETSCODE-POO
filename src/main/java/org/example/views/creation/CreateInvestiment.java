@@ -1,17 +1,16 @@
 package org.example.views.creation;
 
-import org.example.controller.validations.ValidateWithMaxAndMin;
-import org.example.model.Investiment;
+import org.example.model.Investment;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
-import org.example.views.ShowProducts;
+import org.example.views.show.ShowProducts;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CreateInvestiment {
-    public static Investiment printInvestiment(Scanner sc) {
+    public static Investment printInvestment(Scanner sc) {
 
         System.out.println("Selecione o produto: ");
         ShowProducts.showProducts(RepositoryProducts.getProducts());
@@ -25,9 +24,9 @@ public class CreateInvestiment {
         BigDecimal quantiaInvestida = sc.nextBigDecimal();
 
         Products productSelected = RepositoryProducts.getKeyProducts().get(option);
-        Investiment investiment = new Investiment(productSelected, LocalDate.now(), quantiaInvestida);
+        Investment investment = new Investment(productSelected, LocalDate.now(), quantiaInvestida);
         sc.nextLine();
 
-        return investiment;
+        return investment;
     }
 }

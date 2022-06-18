@@ -1,8 +1,8 @@
 package org.example.model;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
 
 public class Client extends User {
 
@@ -11,37 +11,12 @@ public class Client extends User {
     private String accountNumber;
     private String extract;
 
-    public Client(String nome, String login, String senha, String cpf, String accountNumber, TypeInvestorProfile typeInvestorProfile) {
-        super(nome, login, senha, cpf);
+    public Client(String name, String login, String password, String cpf, String accountNumber, TypeInvestorProfile typeInvestorProfile) {
+        super(name, login, password, cpf);
         this.accountNumber = accountNumber;
         this.fund = BigDecimal.ZERO;
         this.typeInvestorProfile = typeInvestorProfile;
         this.extract =String.format("%-20s %-10s %n","Data","Valor (R$)");
-    }
-
-    public void withdraw(BigDecimal valorSaque) {
-        if (this.fund.compareTo(valorSaque) >= 0) {
-            String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-            System.out.printf("%-45s %9s%n", "Historico", "Valor");
-            System.out.printf("%-45s %9.2f%n", "Valor disponivel anteriormente", this.fund);
-            this.fund = this.fund.subtract(valorSaque);
-            System.out.printf("%-45s %9.2f%n", "Valor do saque", valorSaque);
-            System.out.printf("%-45s %9.2f%n", "Valor disponível atualizado", this.fund);
-            this.extract += String.format("%-20s -%9.2f %n",data,valorSaque);
-            return;
-        }
-        System.err.println("Saldo insuficiente!");
-        System.err.printf("Saldo Atual: R$ %.2f%n", this.fund);
-    }
-
-    public void deposit(BigDecimal valorDeposito) {
-        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-        System.out.printf("%-45s %9s%n", "Historico", "Valor");
-        System.out.printf("%-45s %9.2f%n", "Valor disponivel anteriormente", this.fund);
-        this.fund = this.fund.add(valorDeposito);
-        System.out.printf("%-45s %9.2f%n", "Valor do deposito", valorDeposito);
-        System.out.printf("%-45s %9.2f%n", "Valor disponível atualizado", this.fund);
-        this.extract += String.format("%-20s +%9.2f %n",data,valorDeposito);
     }
 
     public String getAccountNumber() {
@@ -52,11 +27,27 @@ public class Client extends User {
         return typeInvestorProfile;
     }
 
-    public String printExtract() {
+    public String toStringExtract() {
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         return "------------------------------------------------------------\n" +
                 extract + String.format("------------------------------------------------------------ %n" +
                 "%-20s  %9.2f %n",data,this.fund) +
                 "------------------------------------------------------------\n";
+    }
+
+    public BigDecimal getFund() {
+        return fund;
+    }
+
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setFund(BigDecimal fund) {
+        this.fund = fund;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
     }
 }

@@ -4,7 +4,7 @@ import org.example.controller.validations.ValidateCPF;
 import org.example.controller.validations.ValidateName;
 import org.example.model.*;
 import org.example.repository.RepositoryUsers;
-import org.example.views.ShowAccount;
+import org.example.views.show.ShowAccount;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -45,8 +45,8 @@ public class CreateAccount {
 
         // chamar o quiz
         int pontos = QuizInvestorProfile.quiz(sc);
-        Client client = new Client(name,login, password,cpf, accountNumber, TypeInvestorProfile.getTypeInvestorPerfil(pontos));
-        RepositoryUsers.addCliente(client);
+        Client client = new Client(name,login, password,cpf, accountNumber, TypeInvestorProfile.getTypeInvestorProfile(pontos));
+        RepositoryUsers.addClient(client);
 
         System.out.println("Parabéns, sua conta foi criada com sucesso!");
 
@@ -63,8 +63,8 @@ public class CreateAccount {
         return true;
     }
     private static void verifyExistenceCPF(String cpf){
-        for (User user : RepositoryUsers.getContasLista()) {
-            if(user.getIdentificador().equals(cpf)){
+        for (User user : RepositoryUsers.getListAccount()) {
+            if(user.getId().equals(cpf)){
                 System.out.println(Cores.RED);
                 System.out.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
                 System.out.println("Voltando ao menu principal");
@@ -74,7 +74,7 @@ public class CreateAccount {
         }
     }
     private static boolean verifyExistenceLogin(String login){
-        for (User user : RepositoryUsers.getContasLista()) {
+        for (User user : RepositoryUsers.getListAccount()) {
             if(user.getLogin().equals(login)){
                 System.out.println(Cores.RED);
                 System.out.println("Esse login ja existe, tente outro");
@@ -85,7 +85,7 @@ public class CreateAccount {
         return false;
     }
     private static boolean verifyExistenceAccountNumber(String accountNumber){
-        for (Client client : RepositoryUsers.getListaClientes()) {
+        for (Client client : RepositoryUsers.getClientList()) {
             if ((client.getAccountNumber().equals(accountNumber))){
                 return true;
             }

@@ -1,7 +1,5 @@
 package org.example.views.menus;
-
 import org.example.model.Cores;
-
 import java.util.Scanner;
 
 public class InvestimentMenu extends BasicMenu {

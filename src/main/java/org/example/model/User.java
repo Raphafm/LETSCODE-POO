@@ -1,70 +1,60 @@
 package org.example.model;
 
 public abstract class User implements Comparable<User>{
-    protected String nome;
+    protected String name;
     protected final String login;
-    protected final String senha;
-    protected final String identificador;
-    protected static final String AGENCIA = "0000-1";
+    protected final String password;
+    protected final String id;
+    protected static final String AGENCY = "0000-1";
 
-    public User(String nome, String login, String senha, String identificador) {
-        this.nome = nome;
+    public User(String name, String login, String password, String id) {
+        this.name = name;
         this.login = login;
-        this.senha = senha;
-        this.identificador = identificador;
-
+        this.password = password;
+        this.id = id;
     }
 
-    public static String getAGENCIA() {
-        return AGENCIA;
+    public static String getAGENCY() {
+        return AGENCY;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getName() {
+        return name;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getId() {
+        return id;
     }
 
-    public String getIdentificador() {
-        return identificador;
-    }
-
-    public boolean autenticarLogin(String login, String senha){
-        return this.login.equals(login) && this.senha.equals(senha);
+    public boolean loginValidate(String login, String password){
+        return this.login.equals(login) && this.password.equals(password);
     }
 
     @Override
     public String toString() {
-        return "nome: " + nome +
-                ", identificador: " + identificador;
+        return "nome: " + name +
+                ", identificador: " + id;
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        return this.identificador.equals(((User)obj).identificador);
+        return this.id.equals(((User)obj).id);
     }
 
     @Override
     public int hashCode(){
-        return this.identificador.hashCode();
+        return this.id.hashCode();
     }
 
     @Override
     public int compareTo(User user) {
-        return this.getNome().compareTo(user.getNome());
+        return this.getName().compareTo(user.getName());
     }
-    //Realizar um metodo para autenticar o identificador ao criar a conta.
-    //E na criação identificar pelo cpf ou cnpj para ser new cliente ou new corretora
+
 }

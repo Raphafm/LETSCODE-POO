@@ -1,21 +1,19 @@
 package org.example.controller;
 
-import org.example.model.Investiment;
 import org.example.model.Products;
 import org.example.model.Stockbroker;
-import org.example.repository.RepositoryInvestiment;
+import org.example.repository.RepositoryInvestment;
 import org.example.repository.RepositoryUsers;
-import org.example.views.ShowAllInvestiment;
-import org.example.views.ShowProducts;
-import org.example.views.ShowRevenues;
+import org.example.views.show.ShowAllInvestment;
+import org.example.views.show.ShowProducts;
+import org.example.views.show.ShowRevenues;
 import org.example.views.menus.StockbrokerMenu;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class StockbrokerMenuController {
     public static void runStockbrokerMenu(Scanner sc, Stockbroker stockbroker) {
-        String option = StockbrokerMenu.printMenu(sc);
+        String option = new StockbrokerMenu().printMenu(sc);
 
         switch (option) {
             case "0":
@@ -25,21 +23,21 @@ public class StockbrokerMenuController {
                 stockbroker.registerUpdate(sc);
                 break;
             case "2":
-                ShowAllInvestiment.run(RepositoryInvestiment.getInvestimentsMap());
+                ShowAllInvestment.run(RepositoryInvestment.getInvestmentsMap());
                 break;
             case "3":
-                ShowRevenues.run(RepositoryInvestiment.getInvestimentsMap());
+                ShowRevenues.run(RepositoryInvestment.getInvestmentsMap());
                 break;
             case "4":
                 System.out.println();
-                RepositoryUsers.getListaClientes().forEach(System.out::println);
+                RepositoryUsers.getClientList().forEach(System.out::println);
                 System.out.println();
                 break;
             case "5":
-                ShowProducts.showProducts(Products.ordenarPorVencimento());
+                ShowProducts.showProducts(Products.sortByDueDate());
                 break;
             case "6":
-                ShowProducts.showProducts(Products.ordemAlfabetica());
+                ShowProducts.showProducts(Products.sortByABC());
                 break;
             default:
                 StockbrokerMenu.invalidOption();

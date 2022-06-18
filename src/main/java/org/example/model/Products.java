@@ -10,65 +10,45 @@ import java.util.Objects;
 public class Products{
 
     private final Integer code;
-    private String nome;
-    private Double rentabilidadeAnual;
-    private BigDecimal investimentoMinimo;
-    private BigDecimal precoUnitario;
-    private LocalDate vencimento;
-    private int porcentagemRiscoDeInvestimento;
-    private ProductsType tipoDoProduto;
+    private String name;
+    private Double annualProfitability;
+    private BigDecimal minInvestment;
+    private BigDecimal unitPrice;
+    private LocalDate dueDate;
+    private int riskOfInvestment;
+    private ProductsType productType;
 
-    public Products(int code, String nome, double rentabilidadeAnual, BigDecimal investimentoMinimo,
-                    BigDecimal precoUnitario, LocalDate vencimento, int porcentagemRiscoDeInvestimento,
-                    ProductsType tipoDoProduto) {
+    public Products(int code, String name, double annualProfitability, BigDecimal minInvestment,
+                    BigDecimal unitPrice, LocalDate dueDate, int riskOfInvestment,
+                    ProductsType productType) {
         this.code = code;
-        this.nome = nome;
-        this.rentabilidadeAnual = rentabilidadeAnual/100.d;
-        this.investimentoMinimo = investimentoMinimo;
-        this.precoUnitario = precoUnitario;
-        this.vencimento = vencimento;
-        this.porcentagemRiscoDeInvestimento = porcentagemRiscoDeInvestimento;
-        this.tipoDoProduto = tipoDoProduto;
+        this.name = name;
+        this.annualProfitability = annualProfitability /100.d;
+        this.minInvestment = minInvestment;
+        this.unitPrice = unitPrice;
+        this.dueDate = dueDate;
+        this.riskOfInvestment = riskOfInvestment;
+        this.productType = productType;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public double getRentabilidadeAnual() {
-        return rentabilidadeAnual;
+    public double getAnnualProfitability() {
+        return annualProfitability;
     }
 
-    public BigDecimal getInvestimentoMinimo() {
-        return investimentoMinimo;
+    public BigDecimal getMinInvestment() {
+        return minInvestment;
     }
 
-    public BigDecimal getPrecoUnitario() {
-        return precoUnitario;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public LocalDate getVencimento() {
-        return vencimento;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setRentabilidadeAnual(double rentabilidadeAnual) {
-        this.rentabilidadeAnual = rentabilidadeAnual;
-    }
-
-    public void setInvestimentoMinimo(BigDecimal investimentoMinimo) {
-        this.investimentoMinimo = investimentoMinimo;
-    }
-
-    public void setPrecoUnitario(BigDecimal precoUnitario) {
-        this.precoUnitario = precoUnitario;
-    }
-
-    public void setVencimento(LocalDate vencimento) {
-        this.vencimento = vencimento;
+    public LocalDate getDueDate() {
+        return dueDate;
     }
 
     public int getCode() {
@@ -78,19 +58,19 @@ public class Products{
     @Override
     public String toString() {
         return String.format("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- Preço unitário: R$ %.2f -- " +
-                        "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",code, nome,
-                investimentoMinimo, precoUnitario, rentabilidadeAnual*100.d, vencimento);
+                        "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",code, name,
+                minInvestment, unitPrice, annualProfitability *100.d, dueDate);
     }
 
-    public static List<Products> ordenarPorVencimento(){
+    public static List<Products> sortByDueDate(){
         List<Products> productSort = asListSorted(RepositoryProducts.getProducts(),
-                Comparator.comparing(Products::getVencimento));
+                Comparator.comparing(Products::getDueDate));
         return productSort;
     }
 
-    public static List<Products> ordemAlfabetica(){
+    public static List<Products> sortByABC(){
         List<Products> productSort = asListSorted(RepositoryProducts.getProducts(),
-                Comparator.comparing(Products::getNome));
+                Comparator.comparing(Products::getName));
         return productSort;
     }
 
@@ -112,6 +92,5 @@ public class Products{
         if (o == null || getClass() != o.getClass()) return false;
         return ((Products)o).code.equals(this.code);
     }
-
 
 }

@@ -1,4 +1,5 @@
-package org.example.views;
+package org.example.views.access;
+import org.example.controller.validations.ValidateNumber;
 import org.example.model.Cores;
 
 import java.math.BigDecimal;
@@ -10,13 +11,8 @@ public class AccessTransfer {
         BigDecimal value = BigDecimal.ZERO;
         do {
             System.out.print("Informe o valor: ");
-            try {
-                value = sc.nextBigDecimal();
-                sc.nextLine();
-            }catch (InputMismatchException ex){
-                System.out.println("Valor invalido!");
-                run(sc);
-            }
+            value = ValidateNumber.run(sc);
+            sc.nextLine();
         }while(validateValue(sc, value));
         return value;
     }

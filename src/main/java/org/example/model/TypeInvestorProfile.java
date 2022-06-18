@@ -16,7 +16,7 @@ public enum TypeInvestorProfile {
         this.code = code;
     }
 
-    public static TypeInvestorProfile getTypeInvestorPerfil(int score) {
+    public static TypeInvestorProfile getTypeInvestorProfile(int score) {
         if (score < 10){
             typeInvestorProfile = TypeInvestorProfile.CONSERVADOR;
         } else if(score >= 10 && score < 14){

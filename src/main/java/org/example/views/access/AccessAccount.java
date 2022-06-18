@@ -1,4 +1,4 @@
-package org.example.views;
+package org.example.views.access;
 import org.example.repository.RepositoryUsers;
 import org.example.model.User;
 import java.util.Scanner;

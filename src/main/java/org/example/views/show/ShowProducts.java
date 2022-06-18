@@ -1,4 +1,4 @@
-package org.example.views;
+package org.example.views.show;
 
 import java.util.List;
 

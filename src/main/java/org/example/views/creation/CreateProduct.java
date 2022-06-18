@@ -27,10 +27,10 @@ public class CreateProduct {
         double annualProfitability = ValidateNumber.run(sc).doubleValue();
 
         System.out.print("Investimento minimo: ");
-        BigDecimal investimentoMinimo = ValidateNumber.run(sc);
+        BigDecimal minInvestment = ValidateNumber.run(sc);
 
         System.out.print("Preço unitário: ");
-        BigDecimal precoUnitario = ValidateNumber.run(sc);
+        BigDecimal unitPrice = ValidateNumber.run(sc);
 
         System.out.println("Vencimento: ");
         System.out.print("\tDia: ");
@@ -38,22 +38,22 @@ public class CreateProduct {
         System.out.print("\tMês: ");
         int month = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(1),BigDecimal.valueOf(12)).intValue();
         System.out.print("\tAno: ");
-        int year = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(LocalDate.now().getYear()),BigDecimal.valueOf(LocalDate.now().getYear() + 100)).intValue();
-        LocalDate vencimento = LocalDate.of(year, month, day);
+        int year = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(LocalDate.now().getYear()),BigDecimal.valueOf(LocalDate.now().getYear() + 35)).intValue();
+        LocalDate dueDate = LocalDate.of(year, month, day);
         LocalDate.now();
 
         System.out.print("Porcentagem de risco do investimento: ");
-        int porcentagemRiscoDoInvestimento = ValidateNumber.run(sc).intValue();
+        int riskOfInvestment = ValidateNumber.run(sc).intValue();
 
         System.out.println("Selecione o tipo do produto: ");
         for (int i = 0; i < ProductsType.values().length; i++) {
             System.out.printf("\t %d - %s %n", i, ProductsType.values()[i].getLabel());
         }
         System.out.print("Resposta: ");
-        int tipoProduto = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(0),BigDecimal.valueOf(ProductsType.values().length)).intValue();
+        int productType = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(0),BigDecimal.valueOf(ProductsType.values().length)).intValue();
         sc.nextLine();
 
-        return new Products(code, name, annualProfitability, investimentoMinimo, precoUnitario,
-                vencimento, porcentagemRiscoDoInvestimento, ProductsType.values()[tipoProduto]);
+        return new Products(code, name, annualProfitability, minInvestment, unitPrice,
+                dueDate, riskOfInvestment, ProductsType.values()[productType]);
     }
 }

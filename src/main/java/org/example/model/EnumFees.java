@@ -1,4 +1,4 @@
-package org.example.simulation;
+package org.example.model;
 
 public enum EnumFees {
     IR180(180,.225d),IR365(360,.2d),IR720(720,.175d),IR(Integer.MAX_VALUE,.15d);

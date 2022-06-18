@@ -1,14 +1,14 @@
 package org.example.views.creation;
 import org.example.controller.validations.ValidateNumber;
-import org.example.model.Investiment;
+import org.example.model.Investment;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
-import org.example.views.ShowProducts;
+import org.example.views.show.ShowProducts;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class CreateSimulation {
-    public static Investiment printSimulation(Scanner sc) {
+    public static Investment printSimulation(Scanner sc) {
 
         System.out.println("Selecione o produto: ");
         ShowProducts.showProducts(RepositoryProducts.getProducts());
@@ -25,6 +25,6 @@ public class CreateSimulation {
 
         Products productSelected = RepositoryProducts.getKeyProducts().get(code);
 
-        return new Investiment(productSelected, tempoDiasInvestido, quantiaInvestida);
+        return new Investment(productSelected, tempoDiasInvestido, quantiaInvestida);
     }
 }

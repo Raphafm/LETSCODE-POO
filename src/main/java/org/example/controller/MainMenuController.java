@@ -1,9 +1,9 @@
 package org.example.controller;
+import org.example.controller.service.Simulation;
 import org.example.model.Client;
 import org.example.model.Stockbroker;
 import org.example.model.User;
-import org.example.simulation.Simulation;
-import org.example.views.*;
+import org.example.views.access.AccessAccount;
 import org.example.views.creation.CreateAccount;
 import org.example.views.menus.MainMenu;
 import java.util.Objects;
@@ -21,27 +21,27 @@ public class MainMenuController {
                 MainMenu.exit();
                 return;
             case "1":
-                User usuario = AccessAccount.run(sc);
-                if (Objects.isNull(usuario)) {
+                User user = AccessAccount.run(sc);
+                if (Objects.isNull(user)) {
                     MainMenu.nonExistentUser();
-                //TODO quando mexer nisso, mexer tbm em CreateAccount.verifyExistenceAccountNumber
-                } else if (usuario instanceof Stockbroker) {
-                    StockbrokerMenuController.runStockbrokerMenu(sc, ((Stockbroker) usuario));
+                } else if (user instanceof Stockbroker) {
+                    StockbrokerMenuController.runStockbrokerMenu(sc, ((Stockbroker) user));
                 } else {
-                    ClientMenuController.runClientMenu(sc, ((Client) usuario));
+                    ClientMenuController.runClientMenu(sc, ((Client) user));
                 }
+
                 break;
             case "2":
                 CreateAccount.run(sc);
                 break;
             case "3":
-                new Simulation().runSimulation(sc);
+                Simulation.run(sc);
                 break;
             default:
                 MainMenu.invalidOption();
                 break;
         }
-        sc.reset(); // limpar o scanner
+        sc.reset(); // clean scanner
         MainMenuController.run();
     }
 }

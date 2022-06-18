@@ -1,9 +1,8 @@
 package org.example.views.menus;
 import java.util.*;
 
-
 public class StockbrokerMenu extends BasicMenu {
-    public static String printMenu(Scanner sc) {
+    public String printMenu(Scanner sc) {
 
         System.out.println("Bem vindo ao menu da corretora");
         System.out.println("Digite:");

@@ -1,10 +1,9 @@
 package org.example.views.menus;
-
 import org.example.model.Cores;
-
+import java.util.Scanner;
 
 abstract class BasicMenu {
-    // abstract String printMenu(Scanner sc);
+    abstract String printMenu(Scanner sc);
 
     public static void exit() {
         System.out.println(Cores.RED);

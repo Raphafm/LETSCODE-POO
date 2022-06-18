@@ -1,13 +1,11 @@
 package org.example.views.creation;
-import org.example.controller.validations.ValidateNumber;
 import org.example.controller.validations.ValidateWithMaxAndMin;
-import org.example.model.Cores;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class QuizInvestorProfile {
-    private static final String[][] PERGUNTAS = {
+    private static final String[][] QUESTIONS = {
             {"(1) Qual o seu principal objetivo ao investir seu dinheiro?",
                     "1 - Preservar meu patrimônio assumindo um menor risco.",
                     "2 - Uma combinação entre preservação do patrimônio e sua valorização.",
@@ -35,37 +33,21 @@ public class QuizInvestorProfile {
                     "3 - Todos os dias leio pelo menos um pouquinho sobre o assunto."}};
 
     public static int quiz(Scanner sc){
-        int resposta;
-        int respostaFinal = 0;
-        for (String[] pergunta : PERGUNTAS) {
+        int answer;
+        int answerFinal = 0;
+        for (String[] question : QUESTIONS) {
             do {
                 System.out.println("-----------------------------------------------------------------");
-                for (String s : pergunta) {
+                for (String s : question) {
                     System.out.println(s);
                 }
-//                try {
-                    System.out.print("Resposta: ");
-                    resposta = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(1),BigDecimal.valueOf(pergunta.length - 1)).intValue();
-//                    if (resposta < 1 || resposta > pergunta.length - 1) {
-//                        System.out.println(Cores.RED);
-//                        System.out.println("Resposta invalida! Tente novamente.");
-//                        System.out.println(Cores.RESET);
-//                        System.out.println("-----------------------------------------------------------------");
-//                    } else if (resposta <= pergunta.length - 1) {
-//                        respostaFinal += resposta;
-//                    }
-//                } catch (Exception NumberFormatException) {
-//                    System.out.println(Cores.RED);
-//                    System.out.println("Resposta invalida! Tente novamente.");
-//                    System.out.println(Cores.RESET);
-//                    sc.nextLine();
-//                    System.out.println("-----------------------------------------------------------------");
-//                }
-            } while (!(resposta >= 1 && resposta <= pergunta.length - 1));
+                System.out.print("Resposta: ");
+                answer = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(1),BigDecimal.valueOf(question.length - 1)).intValue();
+            } while (!(answer >= 1 && answer <= question.length - 1));
             sc.nextLine();
         }
         System.out.println("-----------------------------------------------------------------");
 
-       return respostaFinal;
+       return answerFinal;
     }
 }

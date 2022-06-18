@@ -1,6 +1,6 @@
 package org.example.controller;
 import org.example.model.Client;
-import org.example.views.AccessTransfer;
+import org.example.views.access.AccessTransfer;
 import org.example.views.menus.TransferMenu;
 import java.util.Scanner;
 
@@ -13,10 +13,10 @@ public class TransferMenuController {
                 TransferMenu.exit();
                 return;
             case "1":
-                client.withdraw(AccessTransfer.run(sc));
+                Withdraw.run(AccessTransfer.run(sc),client);
                 break;
             case "2":
-                client.deposit(AccessTransfer.run(sc));
+                Deposit.run(AccessTransfer.run(sc),client);
                 break;
             default:
                 TransferMenu.invalidOption();

@@ -7,41 +7,40 @@ import org.example.model.User;
 import java.util.*;
 
 public class RepositoryUsers {
-    private static Set<User> contasLista;
+    private static Set<User> listAccount;
 
     public static void initialize(){
-        contasLista = new TreeSet<>();
-        Stockbroker corretora = new Stockbroker("10 Banco 10","banco10","123","12345678901234");
+        listAccount = new TreeSet<>();
+        Stockbroker stockbroker = new Stockbroker("10 Banco 10","banco10","123","12345678901234");
         Client client1 = new Client("Matheus","123","123","12345678901","123456", TypeInvestorProfile.ARROJADO);
-        contasLista.add(corretora);
-        contasLista.add(client1);
+        listAccount.add(stockbroker);
+        listAccount.add(client1);
     }
 
-    public static void addCliente(Client client){
-        contasLista.add(client);
-
+    public static void addClient(Client client){
+        listAccount.add(client);
     }
 
-    public static Set<User> getContasLista() {
-        return contasLista;
+    public static Set<User> getListAccount() {
+        return listAccount;
     }
 
-    public static User findAccountByLoginPassword(String login, String senha){
-        for (User user : contasLista) {
-            if(user.autenticarLogin(login,senha)){
+    public static User findAccountByLoginPassword(String login, String password){
+        for (User user : listAccount) {
+            if(user.loginValidate(login, password)){
                 return user;
             }
         }
         return null;
     }
 
-    public static Set<Client> getListaClientes() {
-        Set<Client> contasClientes = new HashSet<>();
-        for (User user : contasLista) {
+    public static Set<Client> getClientList() {
+        Set<Client> clientList = new HashSet<>();
+        for (User user : listAccount) {
             if(user instanceof Client){
-                contasClientes.add((Client)user);
+                clientList.add((Client)user);
             }
         }
-        return contasClientes;
+        return clientList;
     }
 }
