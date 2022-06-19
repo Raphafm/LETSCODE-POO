@@ -1,5 +1,7 @@
 package org.example.model;
+
 import org.example.repository.RepositoryProducts;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -7,27 +9,23 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-public class Products{
+public class Products {
 
     private final Integer code;
-    private String name;
-    private Double annualProfitability;
-    private BigDecimal minInvestment;
-    private BigDecimal unitPrice;
-    private LocalDate dueDate;
-    private int riskOfInvestment;
-    private ProductsType productType;
+    private final String name;
+    private final Double annualProfitability;
+    private final BigDecimal minInvestment;
+    private final LocalDate dueDate;
+    private final ProductsType productType;
 
     public Products(int code, String name, double annualProfitability, BigDecimal minInvestment,
-                    BigDecimal unitPrice, LocalDate dueDate, int riskOfInvestment,
+                    LocalDate dueDate,
                     ProductsType productType) {
         this.code = code;
         this.name = name;
-        this.annualProfitability = annualProfitability /100.d;
+        this.annualProfitability = annualProfitability / 100.d;
         this.minInvestment = minInvestment;
-        this.unitPrice = unitPrice;
         this.dueDate = dueDate;
-        this.riskOfInvestment = riskOfInvestment;
         this.productType = productType;
     }
 
@@ -43,10 +41,6 @@ public class Products{
         return minInvestment;
     }
 
-    public BigDecimal getUnitPrice() {
-        return unitPrice;
-    }
-
     public LocalDate getDueDate() {
         return dueDate;
     }
@@ -57,25 +51,25 @@ public class Products{
 
     @Override
     public String toString() {
-        return String.format("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- Preço unitário: R$ %.2f -- " +
-                        "Rentabilidade anual: %.2f%% -- Vencimento: %s\n",code, name,
-                minInvestment, unitPrice, annualProfitability *100.d, dueDate);
+        return String.format("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- " +
+                        "Rentabilidade anual: %.2f%% -- Vencimento: %s\n", code, name,
+                minInvestment, annualProfitability * 100.d, dueDate);
     }
 
-    public static List<Products> sortByDueDate(){
+    public static List<Products> sortByDueDate() {
         List<Products> productSort = asListSorted(RepositoryProducts.getProducts(),
                 Comparator.comparing(Products::getDueDate));
         return productSort;
     }
 
-    public static List<Products> sortByABC(){
+    public static List<Products> sortByABC() {
         List<Products> productSort = asListSorted(RepositoryProducts.getProducts(),
                 Comparator.comparing(Products::getName));
         return productSort;
     }
 
-    private static List<Products> asListSorted(List<Products> productsList,Comparator<Products> comparator){
-        if(Objects.nonNull(comparator)) {
+    private static List<Products> asListSorted(List<Products> productsList, Comparator<Products> comparator) {
+        if (Objects.nonNull(comparator)) {
             Collections.sort(productsList, comparator);
         }
         return productsList;
@@ -90,7 +84,10 @@ public class Products{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        return ((Products)o).code.equals(this.code);
+        return ((Products) o).code.equals(this.code);
     }
 
+    public ProductsType getProductType() {
+        return productType;
+    }
 }

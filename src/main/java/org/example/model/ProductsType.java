@@ -6,7 +6,7 @@ public enum ProductsType {
     LCI("Letra de Crédito Imobiliário"),
     LCA("Letra de Crédito do Agronegócio");
 
-    private String label;
+    private final String label;
 
     ProductsType(String label) {
         this.label = label;

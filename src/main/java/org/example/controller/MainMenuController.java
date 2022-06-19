@@ -1,7 +1,5 @@
 package org.example.controller;
 import org.example.controller.service.Simulation;
-import org.example.model.Client;
-import org.example.model.Stockbroker;
 import org.example.model.User;
 import org.example.views.access.AccessAccount;
 import org.example.views.creation.CreateAccount;
@@ -24,12 +22,9 @@ public class MainMenuController {
                 User user = AccessAccount.run(sc);
                 if (Objects.isNull(user)) {
                     MainMenu.nonExistentUser();
-                } else if (user instanceof Stockbroker) {
-                    StockbrokerMenuController.runStockbrokerMenu(sc, ((Stockbroker) user));
-                } else {
-                    ClientMenuController.runClientMenu(sc, ((Client) user));
+                }else{
+                    user.accessMenu(sc,user);
                 }
-
                 break;
             case "2":
                 CreateAccount.run(sc);

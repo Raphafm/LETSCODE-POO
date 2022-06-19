@@ -5,13 +5,11 @@ import java.time.temporal.ChronoUnit;
 
 public class Investment {
 
-    private Products product;
-    private int timeInvested;
-    private BigDecimal valueInvested;
-    private BigDecimal profitNet;
+    private final Products product;
+    private final int timeInvested;
+    private final BigDecimal valueInvested;
     private BigDecimal profitStockbroker;
     private LocalDate dateInvested;
-
     private BigDecimal yield;
     private BigDecimal priceIof;
     private BigDecimal priceIR;
@@ -41,14 +39,6 @@ public class Investment {
 
     public BigDecimal getValueInvested() {
         return valueInvested;
-    }
-
-    public BigDecimal getProfitNet() {
-        return profitNet;
-    }
-
-    public void setProfitNet(BigDecimal profitNet) {
-        this.profitNet = profitNet;
     }
 
     public LocalDate getDateInvested() {

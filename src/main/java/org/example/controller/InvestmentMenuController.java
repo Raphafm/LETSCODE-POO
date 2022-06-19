@@ -19,7 +19,7 @@ public class InvestmentMenuController {
                 InvestimentMenu.exit();
                 return;
             case "1":
-                RepositoryInvestment.save(client,CreateInvestiment.printInvestment(sc));
+                RepositoryInvestment.save(client,CreateInvestiment.printInvestment(sc,client));
                 break;
             case "2":
                 ToInvest.run(RepositoryInvestment.getInvestmentList(client.getId()));
@@ -33,7 +33,6 @@ public class InvestmentMenuController {
             default:
                 InvestimentMenu.invalidOption();
         }
-//        sc.nextLine();
         runInvestmentMenu(sc, client);
     }
 }

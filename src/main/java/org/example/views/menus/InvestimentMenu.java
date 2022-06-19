@@ -3,6 +3,7 @@ import org.example.model.Cores;
 import java.util.Scanner;
 
 public class InvestimentMenu extends BasicMenu {
+
     public String printMenu(Scanner sc){
         System.out.println("Digite:");
         System.out.println("\t0 - Sair do investimento");
@@ -10,7 +11,6 @@ public class InvestimentMenu extends BasicMenu {
         System.out.println("\t2 - Olha o rendimento");
         System.out.println("\t3 - Resgate");
         System.out.print("Opcao: ");
-
         return sc.nextLine();
     }
 

@@ -42,9 +42,6 @@ public class CreateProduct {
         LocalDate dueDate = LocalDate.of(year, month, day);
         LocalDate.now();
 
-        System.out.print("Porcentagem de risco do investimento: ");
-        int riskOfInvestment = ValidateNumber.run(sc).intValue();
-
         System.out.println("Selecione o tipo do produto: ");
         for (int i = 0; i < ProductsType.values().length; i++) {
             System.out.printf("\t %d - %s %n", i, ProductsType.values()[i].getLabel());
@@ -53,7 +50,7 @@ public class CreateProduct {
         int productType = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(0),BigDecimal.valueOf(ProductsType.values().length)).intValue();
         sc.nextLine();
 
-        return new Products(code, name, annualProfitability, minInvestment, unitPrice,
-                dueDate, riskOfInvestment, ProductsType.values()[productType]);
+        return new Products(code, name, annualProfitability, minInvestment,
+                dueDate, ProductsType.values()[productType]);
     }
 }

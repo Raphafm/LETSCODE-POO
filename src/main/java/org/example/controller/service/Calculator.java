@@ -1,31 +1,23 @@
 package org.example.controller.service;
+
 import org.example.model.EnumFees;
 import org.example.model.Investment;
-import org.example.views.show.ShowYields;
+import org.example.model.Stockbroker;
 
 import java.math.BigDecimal;
 
 public class Calculator {
 
-    private static final BigDecimal FEES_STOCKBROKER = BigDecimal.valueOf(0.02d);
-
     public static void run(Investment investment) {
         BigDecimal dailyFees = annualFeesToDailyFees(investment.getProduct().getAnnualProfitability());
-        BigDecimal yield = yields(investment.getValueInvested(),dailyFees, investment.getTimeInvested());
-        BigDecimal priceIof = valueIof(yield, investment.getTimeInvested());
-        BigDecimal priceIR = valueIR(yield, investment.getTimeInvested(), priceIof);
-        BigDecimal priceYieldNet = yieldNet(priceIR,yield,priceIof);
-
-        investment.setProfitStockbroker(priceYieldNet.multiply(FEES_STOCKBROKER));
-        BigDecimal priceTotalYieldNet = totalYieldNet(investment.getValueInvested(),
-                priceYieldNet.subtract(investment.getProfitStockbroker()));
-        BigDecimal priceTotalYield = totalYield(investment.getValueInvested(),yield);
-
-        investment.setYield(yield);
-        investment.setPriceIof(priceIof);
-        investment.setPriceIR(priceIR);
-        investment.setPriceTotalYieldNet(priceTotalYieldNet);
-        investment.setPriceTotalYield(priceTotalYield);
+        investment.setYield(yields(investment.getValueInvested(),dailyFees, investment.getTimeInvested()));
+        investment.setPriceIof(valueIof(investment.getYield(), investment.getTimeInvested()));
+        investment.setPriceIR(valueIR(investment.getYield(), investment.getTimeInvested(), investment.getPriceIof()));
+        BigDecimal priceYieldNet = yieldNet(investment.getPriceIR(),investment.getYield(),investment.getPriceIof());
+        investment.setProfitStockbroker(priceYieldNet.multiply(Stockbroker.getFeesStockbroker()));
+        investment.setPriceTotalYieldNet(totalYieldNet(investment.getValueInvested(),
+                priceYieldNet.subtract(investment.getProfitStockbroker())));
+        investment.setPriceTotalYield(totalYield(investment.getValueInvested(),investment.getYield()));
 
     }
 

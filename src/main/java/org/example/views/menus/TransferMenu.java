@@ -5,13 +5,12 @@ import org.example.model.Cores;
 import java.util.Scanner;
 
 public class TransferMenu extends BasicMenu {
-    public String printMenu(Scanner sc){
+    public String printMenu(Scanner sc) {
         System.out.println("Digite:");
         System.out.println("\t0 - Sair da transferência");
         System.out.println("\t1 - Sacar");
         System.out.println("\t2 - Depositar");
         System.out.print("Opcao: ");
-
         return sc.nextLine();
     }
 

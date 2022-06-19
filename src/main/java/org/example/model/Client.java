@@ -1,8 +1,11 @@
 package org.example.model;
 
+import org.example.controller.ClientMenuController;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Client extends User {
 
@@ -49,5 +52,10 @@ public class Client extends User {
 
     public void setExtract(String extract) {
         this.extract = extract;
+    }
+
+    @Override
+    public void accessMenu(Scanner sc, User client) {
+        ClientMenuController.runClientMenu(sc, this);
     }
 }

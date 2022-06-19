@@ -1,6 +1,8 @@
 package org.example.model;
 
-public abstract class User implements Comparable<User>{
+import java.util.Scanner;
+
+public abstract class User implements Comparable<User> {
     protected String name;
     protected final String login;
     protected final String password;
@@ -30,7 +32,7 @@ public abstract class User implements Comparable<User>{
         return id;
     }
 
-    public boolean loginValidate(String login, String password){
+    public boolean loginValidate(String login, String password) {
         return this.login.equals(login) && this.password.equals(password);
     }
 
@@ -44,11 +46,11 @@ public abstract class User implements Comparable<User>{
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        return this.id.equals(((User)obj).id);
+        return this.id.equals(((User) obj).id);
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return this.id.hashCode();
     }
 
@@ -56,5 +58,7 @@ public abstract class User implements Comparable<User>{
     public int compareTo(User user) {
         return this.getName().compareTo(user.getName());
     }
+
+    public abstract void accessMenu(Scanner sc, User user);
 
 }

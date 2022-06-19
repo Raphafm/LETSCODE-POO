@@ -1,19 +1,17 @@
 package org.example.model;
 
 public enum TypeInvestorProfile {
-    CONSERVADOR("Conservador","01",0),
-    MODERADO("Moderado","02", 10),
-    ARROJADO("Arrojado","03",14);
+    CONSERVADOR("Conservador",0),
+    MODERADO("Moderado", 10),
+    ARROJADO("Arrojado",14);
 
     static TypeInvestorProfile typeInvestorProfile;
     String label;
-    String code;
     int minScore;
 
-    TypeInvestorProfile(String label, String code, int minScore) {
+    TypeInvestorProfile(String label, int minScore) {
         this.minScore = minScore;
         this.label = label;
-        this.code = code;
     }
 
     public static TypeInvestorProfile getTypeInvestorProfile(int score) {
@@ -24,7 +22,6 @@ public enum TypeInvestorProfile {
         } else{
             typeInvestorProfile = TypeInvestorProfile.ARROJADO;
         }
-
         return typeInvestorProfile;
     }
 }

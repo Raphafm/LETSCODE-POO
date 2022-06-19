@@ -9,9 +9,9 @@ public class RepositoryProducts{
     private static Map<Integer,Products> keyProducts;
 
     public static void initialize(){
-        Products product1 = new Products(1,"Tesouro Prefixado 2025", 12.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2025,1,1),70, ProductsType.TITULOSPUBLICOS);
-        Products product2 = new Products(2,"Tesouro Selic 2027", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2027,1,1),70, ProductsType.TITULOSPUBLICOS);
-        Products product3 = new Products(3,"Tesouro Prefixado 2022", 1.38d,BigDecimal.valueOf(36.89d),BigDecimal.valueOf(737.98d), LocalDate.of(2022,1,1),70, ProductsType.TITULOSPUBLICOS);
+        Products product1 = new Products(1,"Tesouro Prefixado 2025", 12.38d,BigDecimal.valueOf(36.89d), LocalDate.of(2025,1,1), ProductsType.TITULOSPUBLICOS);
+        Products product2 = new Products(2,"Tesouro Selic 2027", 1.38d,BigDecimal.valueOf(36.89d),LocalDate.of(2027,1,1), ProductsType.TITULOSPUBLICOS);
+        Products product3 = new Products(3,"Tesouro Prefixado 2022", 1.38d,BigDecimal.valueOf(36.89d), LocalDate.of(2022,1,1), ProductsType.TITULOSPUBLICOS);
 
         keyProducts = new TreeMap<>();
         keyProducts.put(product1.getCode(),product1);
