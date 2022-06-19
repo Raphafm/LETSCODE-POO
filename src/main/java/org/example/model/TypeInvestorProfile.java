@@ -1,31 +1,36 @@
 package org.example.model;
 
 public enum TypeInvestorProfile {
-    CONSERVADOR("Conservador",0),
-    MODERADO("Moderado", 10),
-    ARROJADO("Arrojado",14);
+    CONSERVADOR("Conservador",0){
+        @Override
+        public TypeInvestorProfile getTypeInvestorProfile(int score) {
+            return this;
+        }
+    },
+    MODERADO("Moderado", 10){
+        @Override
+        public TypeInvestorProfile getTypeInvestorProfile(int score) {
+            return score < this.minScore ? TypeInvestorProfile.CONSERVADOR.getTypeInvestorProfile(score) : this;
+        }
+    },
+    ARROJADO("Arrojado",14){
+        @Override
+        public TypeInvestorProfile getTypeInvestorProfile(int score) {
+            return score < this.minScore ? TypeInvestorProfile.MODERADO.getTypeInvestorProfile(score) : this;
+        }
+    };
 
-    static TypeInvestorProfile typeInvestorProfile;
-    String label;
-    int minScore;
+    private final String label;
+    protected final int minScore;
 
     TypeInvestorProfile(String label, int minScore) {
         this.minScore = minScore;
         this.label = label;
     }
 
-    public static TypeInvestorProfile getTypeInvestorProfile(int score) {
-        if (score < 10){
-            typeInvestorProfile = TypeInvestorProfile.CONSERVADOR;
-        } else if(score < 14){
-            typeInvestorProfile = TypeInvestorProfile.MODERADO;
-        } else{
-            typeInvestorProfile = TypeInvestorProfile.ARROJADO;
-        }
-        return typeInvestorProfile;
-    }
+    public abstract TypeInvestorProfile getTypeInvestorProfile(int score);
 
     public String getLabel() {
-        return label;
+        return label;  
     }
-}
+ }

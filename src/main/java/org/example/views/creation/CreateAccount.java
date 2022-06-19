@@ -45,7 +45,7 @@ public class CreateAccount {
 
         // chamar o quiz
         int pontos = QuizInvestorProfile.quiz(sc);
-        Client client = new Client(name,login, password,cpf, accountNumber, TypeInvestorProfile.getTypeInvestorProfile(pontos));
+        Client client = new Client(name,login, password,cpf, accountNumber, TypeInvestorProfile.ARROJADO.getTypeInvestorProfile(pontos));
         RepositoryUsers.addClient(client);
 
         System.out.println("Parabéns, sua conta foi criada com sucesso!");
