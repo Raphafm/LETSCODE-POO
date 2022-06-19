@@ -44,7 +44,7 @@ public class QuizInvestorProfile {
                 System.out.print("Resposta: ");
                 answer = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(1),BigDecimal.valueOf(question.length - 1)).intValue();
             } while (!(answer >= 1 && answer <= question.length - 1));
-            answerFinal+= answer;
+            answerFinal += answer;
             sc.nextLine();
         }
         System.out.println("-----------------------------------------------------------------");

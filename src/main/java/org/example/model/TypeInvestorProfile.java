@@ -31,6 +31,6 @@ public enum TypeInvestorProfile {
     public abstract TypeInvestorProfile getTypeInvestorProfile(int score);
 
     public String getLabel() {
-        return label;
+        return label;  
     }
-}
+ }

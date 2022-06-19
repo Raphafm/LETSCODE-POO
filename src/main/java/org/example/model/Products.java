@@ -51,8 +51,7 @@ public class Products {
 
     @Override
     public String toString() {
-        return String.format("%d - Nome: %s -- Investimento Mínimo: R$ %.2f -- " +
-                        "Rentabilidade anual: %.2f%% -- Vencimento: %s\n", code, name,
+        return String.format("%-20d %-30s %-30.2f %-30.2f %-20s\n", code, name,
                 minInvestment, annualProfitability * 100.d, dueDate);
     }
 

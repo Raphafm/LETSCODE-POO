@@ -11,7 +11,7 @@ public class Simulation {
         Investment investment = CreateSimulation.printSimulation(sc);
         Calculator.run(investment);
         sc.nextLine();
-        ShowYields.report(investment, investment.getYield(), investment.getPriceIof(), investment.getProfitStockbroker(),
+        ShowYields.run(investment, investment.getYield(), investment.getPriceIof(), investment.getProfitStockbroker(),
                 investment.getPriceIR(), investment.getPriceTotalYieldNet(), investment.getPriceTotalYield());
     }
 }

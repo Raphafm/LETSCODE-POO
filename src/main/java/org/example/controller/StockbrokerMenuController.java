@@ -4,6 +4,7 @@ import org.example.model.Products;
 import org.example.model.Stockbroker;
 import org.example.repository.RepositoryInvestment;
 import org.example.repository.RepositoryUsers;
+import org.example.views.show.ShowAllClients;
 import org.example.views.show.ShowAllInvestment;
 import org.example.views.show.ShowProducts;
 import org.example.views.show.ShowRevenues;
@@ -29,9 +30,7 @@ public class StockbrokerMenuController {
                 ShowRevenues.run(RepositoryInvestment.getInvestmentsMap());
                 break;
             case "4":
-                System.out.println();
-                RepositoryUsers.getClientList().forEach(System.out::println);
-                System.out.println();
+                ShowAllClients.run();
                 break;
             case "5":
                 ShowProducts.showProducts(Products.sortByDueDate());

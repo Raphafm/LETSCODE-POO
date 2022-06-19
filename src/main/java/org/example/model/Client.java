@@ -30,6 +30,11 @@ public class Client extends User {
         return typeInvestorProfile;
     }
 
+    public String toString() {
+        return String.format("%-30s %-15s %-20.2f %-30s %-20s\n", name, super.id,
+                fund, typeInvestorProfile.getLabel(), accountNumber);
+    }
+
     public String toStringExtract() {
         String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
         return "------------------------------------------------------------\n" +
