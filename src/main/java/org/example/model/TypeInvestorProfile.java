@@ -17,11 +17,15 @@ public enum TypeInvestorProfile {
     public static TypeInvestorProfile getTypeInvestorProfile(int score) {
         if (score < 10){
             typeInvestorProfile = TypeInvestorProfile.CONSERVADOR;
-        } else if(score >= 10 && score < 14){
+        } else if(score < 14){
             typeInvestorProfile = TypeInvestorProfile.MODERADO;
         } else{
             typeInvestorProfile = TypeInvestorProfile.ARROJADO;
         }
         return typeInvestorProfile;
+    }
+
+    public String getLabel() {
+        return label;
     }
 }
