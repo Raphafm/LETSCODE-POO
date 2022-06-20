@@ -23,4 +23,10 @@ public class ShowAllInvestment {
         }
         System.out.println();
     }
+    public static void warning(){
+        System.out.print(TextColors.RED);
+        System.out.println("Não existe nenhum investimento");
+        System.out.print(TextColors.RESET);
+    }
 }
+

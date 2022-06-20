@@ -41,6 +41,7 @@ public class StockbrokerMenuController {
                 StockbrokerMenu.invalidOption();
                 break;
         }
+        sc.reset();
         runStockbrokerMenu(sc, stockbroker);
     }
 

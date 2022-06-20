@@ -21,6 +21,7 @@ public class TransferMenuController {
             default:
                 TransferMenu.invalidOption();
         }
+        sc.reset();
         runTransferMenu(sc, client);
     }
 }

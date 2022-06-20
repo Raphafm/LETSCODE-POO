@@ -8,7 +8,7 @@ public class ValidateName {
     public static String run(Scanner sc) {
         String name = sc.nextLine();
         for (int i = 0; i < name.length(); i++) {
-            if (!(Character.isAlphabetic((name.charAt(i))))) {
+            if (name.matches("[0-9]+")) {
                 System.out.println(TextColors.RED);
                 System.out.println("O nome nao pode conter números. Digite novamente");
                 System.out.println(TextColors.RESET);

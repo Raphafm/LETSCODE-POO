@@ -28,6 +28,7 @@ public class ClientMenuController{
                 ClientMenu.invalidOption();
                 break;
         }
+        sc.reset();
         runClientMenu(sc, client);
     }
 

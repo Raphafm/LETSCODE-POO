@@ -11,5 +11,6 @@ public class App {
         RepositoryProducts.initialize();
         RepositoryInvestment.initialize();
         MainMenuController.run();
+
     }
 }
