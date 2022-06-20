@@ -29,9 +29,6 @@ public class CreateProduct {
         System.out.print("Investimento minimo: ");
         BigDecimal minInvestment = ValidateNumber.run(sc);
 
-        System.out.print("Preço unitário: ");
-        BigDecimal unitPrice = ValidateNumber.run(sc);
-
         System.out.println("Vencimento: ");
         System.out.print("\tDia: ");
         int day = ValidateWithMaxAndMin.run(sc, BigDecimal.valueOf(1),BigDecimal.valueOf(30)).intValue();

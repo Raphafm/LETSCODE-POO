@@ -1,5 +1,5 @@
 package org.example.views.menus;
-import org.example.model.Cores;
+import org.example.model.TextColors;
 import java.util.Scanner;
 
 public class InvestimentMenu extends BasicMenu {
@@ -15,8 +15,8 @@ public class InvestimentMenu extends BasicMenu {
     }
 
     public static void exit() {
-        System.out.println(Cores.RED);
+        System.out.println(TextColors.RED);
         System.out.println("Voltando para o menu do cliente");
-        System.out.println(Cores.RESET);
+        System.out.println(TextColors.RESET);
     }
 }

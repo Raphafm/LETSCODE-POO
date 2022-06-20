@@ -57,18 +57,18 @@ public class CreateAccount {
         if (password1.equals(password2)){
             return false;
         }
-        System.out.println(Cores.RED);
+        System.out.println(TextColors.RED);
         System.out.println("As senhas não são idênticas, digite novamente!");
-        System.out.println(Cores.RESET);
+        System.out.println(TextColors.RESET);
         return true;
     }
     private static void verifyExistenceCPF(String cpf){
         for (User user : RepositoryUsers.getListAccount()) {
             if(user.getId().equals(cpf)){
-                System.out.println(Cores.RED);
+                System.out.println(TextColors.RED);
                 System.out.println("Você já possui uma conta na corretora, não é possível criar uma nova conta");
                 System.out.println("Voltando ao menu principal");
-                System.out.println(Cores.RESET);
+                System.out.println(TextColors.RESET);
                 MainMenuController.run();
             }
         }
@@ -76,9 +76,9 @@ public class CreateAccount {
     private static boolean verifyExistenceLogin(String login){
         for (User user : RepositoryUsers.getListAccount()) {
             if(user.getLogin().equals(login)){
-                System.out.println(Cores.RED);
+                System.out.println(TextColors.RED);
                 System.out.println("Esse login ja existe, tente outro");
-                System.out.println(Cores.RESET);
+                System.out.println(TextColors.RESET);
                 return true;
             }
         }

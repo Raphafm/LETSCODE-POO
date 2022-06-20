@@ -1,7 +1,7 @@
 package org.example.views.access;
 
 import org.example.controller.validations.ValidateNumber;
-import org.example.model.Cores;
+import org.example.model.TextColors;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -18,9 +18,9 @@ public class AccessTransfer {
     }
 
     private static boolean validateValue(Scanner sc, BigDecimal value){
-        System.out.println(Cores.RED);
+        System.out.println(TextColors.RED);
         System.out.printf("Você confirma o value de: R$ %.2f %nS - Sim %nN - Nao%n", value);
-        System.out.println(Cores.RESET);
+        System.out.println(TextColors.RESET);
         System.out.print("Resposta: ");
         String verification = sc.nextLine();
         if(verification.equalsIgnoreCase("S") || verification.equalsIgnoreCase("Sim")){
@@ -28,9 +28,9 @@ public class AccessTransfer {
         }else if (verification.equalsIgnoreCase("N") || verification.equalsIgnoreCase("Nao")) {
             return true;
         }
-        System.out.println(Cores.RED);
+        System.out.println(TextColors.RED);
         System.out.println("Opção inválida, digite novamente");
-        System.out.println(Cores.RESET);
+        System.out.println(TextColors.RESET);
         return validateValue(sc, value);
     }
 }

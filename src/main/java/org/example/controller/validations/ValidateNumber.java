@@ -1,6 +1,6 @@
 package org.example.controller.validations;
 
-import org.example.model.Cores;
+import org.example.model.TextColors;
 
 import java.math.BigDecimal;
 import java.util.InputMismatchException;
@@ -13,9 +13,9 @@ public class ValidateNumber {
                 return sc.nextBigDecimal();
             } catch (InputMismatchException ex) {
                 sc.nextLine();
-                System.out.println(Cores.RED);
+                System.out.println(TextColors.RED);
                 System.out.println("Não digite letras, por favor");
-                System.out.println(Cores.RESET);
+                System.out.println(TextColors.RESET);
                 System.out.print("Nova resposta: ");
                 return run(sc);
             }

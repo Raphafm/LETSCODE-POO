@@ -1,7 +1,7 @@
 package org.example.views.creation;
 import org.example.controller.validations.ValidateNumber;
 import org.example.controller.validations.ValidateWithMaxAndMin;
-import org.example.model.Cores;
+import org.example.model.TextColors;
 import org.example.model.Investment;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
@@ -19,9 +19,9 @@ public class CreateSimulation {
             System.out.print("Codigo: ");
             code = ValidateNumber.run(sc).intValue();
             if(!RepositoryProducts.getKeyProducts().containsKey(code)){
-                System.out.println(Cores.RED);
+                System.out.println(TextColors.RED);
                 System.out.println("Codido do produto invalido!\nTente novamente!");
-                System.out.println(Cores.RESET);
+                System.out.println(TextColors.RESET);
             }
         } while (!RepositoryProducts.getKeyProducts().containsKey(code));
 
