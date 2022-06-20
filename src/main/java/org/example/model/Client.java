@@ -60,7 +60,7 @@ public class Client extends User {
     }
 
     @Override
-    public void accessMenu(Scanner sc, User client) {
+    public void accessMenu(Scanner sc) {
         ClientMenuController.runClientMenu(sc, this);
     }
 }

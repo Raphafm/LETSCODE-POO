@@ -23,7 +23,7 @@ public class Stockbroker extends User {
     }
 
     @Override
-    public void accessMenu(Scanner sc, User stockbroker) {
+    public void accessMenu(Scanner sc) {
         StockbrokerMenuController.runStockbrokerMenu(sc, this);
     }
 }

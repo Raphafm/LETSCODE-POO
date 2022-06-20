@@ -23,7 +23,7 @@ public class MainMenuController {
                 if (Objects.isNull(user)) {
                     MainMenu.nonExistentUser();
                 }else{
-                    user.accessMenu(sc,user);
+                    user.accessMenu(sc);
                 }
                 break;
             case "2":

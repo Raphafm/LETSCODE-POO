@@ -59,6 +59,6 @@ public abstract class User implements Comparable<User> {
         return this.getName().compareTo(user.getName());
     }
 
-    public abstract void accessMenu(Scanner sc, User user);
+    public abstract void accessMenu(Scanner sc);
 
 }
