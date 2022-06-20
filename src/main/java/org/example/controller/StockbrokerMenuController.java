@@ -3,7 +3,6 @@ package org.example.controller;
 import org.example.model.Products;
 import org.example.model.Stockbroker;
 import org.example.repository.RepositoryInvestment;
-import org.example.repository.RepositoryUsers;
 import org.example.views.show.ShowAllClients;
 import org.example.views.show.ShowAllInvestment;
 import org.example.views.show.ShowProducts;

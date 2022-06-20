@@ -4,7 +4,7 @@ import org.example.controller.ClientMenuController;
 import org.example.controller.Withdraw;
 import org.example.controller.validations.ValidateNumber;
 import org.example.model.Client;
-import org.example.model.Cores;
+import org.example.model.TextColors;
 import org.example.model.Investment;
 import org.example.model.Products;
 import org.example.repository.RepositoryProducts;
@@ -25,9 +25,9 @@ public class CreateInvestiment {
             System.out.print("Item: ");
             option = ValidateNumber.run(sc).intValue();
             if(!RepositoryProducts.getKeyProducts().containsKey(option)){
-                System.out.println(Cores.RED);
+                System.out.println(TextColors.RED);
                 System.out.println("Codido do produto invalido!\nTente novamente!");
-                System.out.println(Cores.RESET);
+                System.out.println(TextColors.RESET);
             }
         } while (!RepositoryProducts.getKeyProducts().containsKey(option));
 
@@ -48,10 +48,10 @@ public class CreateInvestiment {
         try {
             BigDecimal valor = sc.nextBigDecimal();
             if (max.compareTo(min) < 0) {
-                System.out.println(Cores.RED);
+                System.out.println(TextColors.RED);
                 System.out.println("Saldo insuficiente para fazer investimento minimo");
                 System.out.println("Deposite mais dinheiro em sua conta para realizar esta operação");
-                System.out.println(Cores.RESET);
+                System.out.println(TextColors.RESET);
                 InvestimentMenu.exit();
                 ClientMenuController.runClientMenu(sc, client);
             }
@@ -59,17 +59,17 @@ public class CreateInvestiment {
                 return  valor;
             }
             sc.nextLine();
-            System.out.println(Cores.RED);
+            System.out.println(TextColors.RED);
             System.out.printf("Valor invalido, digite valores entre %s e %s%n", min, max);
-            System.out.println(Cores.RESET);
+            System.out.println(TextColors.RESET);
             System.out.print("Nova resposta: ");
             return validateValueInvested(sc, min, max, client);
 
         } catch (InputMismatchException ex) {
             sc.nextLine();
-            System.out.println(Cores.RED);
+            System.out.println(TextColors.RED);
             System.out.println("Não digite letras, por favor");
-            System.out.println(Cores.RESET);
+            System.out.println(TextColors.RESET);
             System.out.print("Nova resposta: ");
             return validateValueInvested(sc, min, max, client);
         }

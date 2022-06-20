@@ -1,7 +1,7 @@
 package org.example.views.show;
 
 import org.example.model.Client;
-import org.example.model.Cores;
+import org.example.model.TextColors;
 import org.example.model.Investment;
 import org.example.repository.RepositoryInvestment;
 import org.example.repository.RepositoryUsers;
@@ -17,9 +17,9 @@ import java.util.Map;
                 BigDecimal revenue = BigDecimal.ZERO;
                 for (Client client : RepositoryUsers.getClientList()) {
                     if(client.getId().equals(key.toString())){
-                        System.out.print(Cores.YELLOW);
+                        System.out.print(TextColors.YELLOW);
                         System.out.println(client.getName());
-                        System.out.print(Cores.RESET);
+                        System.out.print(TextColors.RESET);
                         break;
                     }
                 }
@@ -29,9 +29,9 @@ import java.util.Map;
                 System.out.printf("\tArrecadação: R$ %.2f%n",revenue);
                 revenueTotal = revenueTotal.add(revenue);
             }
-            System.out.print(Cores.GREEN);
+            System.out.print(TextColors.GREEN);
             System.out.printf("%nArrecadação Total: R$ %.2f%n",revenueTotal);
-            System.out.print(Cores.RESET);
+            System.out.print(TextColors.RESET);
         }
     }
 

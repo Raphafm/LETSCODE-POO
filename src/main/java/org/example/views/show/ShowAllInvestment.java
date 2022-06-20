@@ -1,7 +1,7 @@
 package org.example.views.show;
 import org.example.controller.service.ToInvest;
 import org.example.model.Client;
-import org.example.model.Cores;
+import org.example.model.TextColors;
 import org.example.repository.RepositoryInvestment;
 import org.example.repository.RepositoryUsers;
 
@@ -13,9 +13,9 @@ public class ShowAllInvestment {
         for (K key : listAllInvestment.keySet()) {
             for (Client client : RepositoryUsers.getClientList()) {
                 if(client.getId().equals(key.toString())){
-                    System.out.print(Cores.YELLOW);
+                    System.out.print(TextColors.YELLOW);
                     System.out.println(client.getName());
-                    System.out.print(Cores.RESET);
+                    System.out.print(TextColors.RESET);
                     break;
                 }
             }
